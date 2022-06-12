@@ -1,4 +1,4 @@
-# MyFreelancePall
+# MyFreelancePal
 
 _made by Piotr Łątka_
 
