@@ -9,12 +9,10 @@ import java.time.Instant;
 import java.util.List;
 
 
-@Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@AllArgsConstructor
+@Builder
 @Table()
 @Entity(name = "Employer")
 public class Employer {
@@ -26,10 +24,6 @@ public class Employer {
     private String name;
     @Column(name = "NIP", nullable = false)
     private String nip;
-    @CreationTimestamp
-    private Instant createdAt;
-    @UpdateTimestamp
-    private Instant updatedAt;
 
     @ManyToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     private List<Address> address;
@@ -37,4 +31,9 @@ public class Employer {
     @OneToMany(mappedBy = "employers", fetch = FetchType.LAZY)
     private List<Project> projects;
 
+    @CreationTimestamp
+    @Column(updatable = false)
+    private Instant createdAt;
+    @UpdateTimestamp
+    private Instant updatedAt;
 }

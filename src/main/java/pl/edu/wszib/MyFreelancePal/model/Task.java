@@ -9,13 +9,10 @@ import javax.persistence.*;
 import java.time.Duration;
 import java.time.Instant;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "Task")
 @Entity
 public class Task {
@@ -26,6 +23,7 @@ public class Task {
     private String name;
     private Duration time;
     @CreationTimestamp
+    @Column(updatable = false)
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;

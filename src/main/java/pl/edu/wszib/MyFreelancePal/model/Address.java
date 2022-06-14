@@ -10,12 +10,10 @@ import java.time.Instant;
 import java.util.List;
 
 
-@Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@AllArgsConstructor
+@Builder
 @Table(name = "Address")
 @Entity
 public class Address {
@@ -25,11 +23,12 @@ public class Address {
     private Integer id;
     private String street;
     private String postalCode;
-    private String buldingNumber;
+    private String buildingNumber;
     private String flatNumber;
     private String city;
     private String country;
     @CreationTimestamp
+    @Column(updatable = false)
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;

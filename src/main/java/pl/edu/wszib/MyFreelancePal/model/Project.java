@@ -8,12 +8,10 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.List;
 
-@Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@AllArgsConstructor
+@Builder
 @Table(name = "Project")
 @Entity
 public class Project {
@@ -23,6 +21,7 @@ public class Project {
     private Integer id;
     private String name;
     @CreationTimestamp
+    @Column(updatable = false)
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
