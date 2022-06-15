@@ -1,19 +1,20 @@
-package pl.edu.wszib.MyFreelancePal.service.domain;
+package pl.edu.wszib.MyFreelancePal.controller.dto;
+
+
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Duration;
 
-@Getter
+
 @Setter
-public class TaskDomain {
+@Getter
+public class TaskDTO {
 
     private Integer id;
     private String name;
     private Duration time;
-
-
 
 
 

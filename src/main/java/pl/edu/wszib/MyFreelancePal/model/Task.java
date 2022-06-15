@@ -28,7 +28,7 @@ public class Task {
     @UpdateTimestamp
     private Instant updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn
     private Project project;
 

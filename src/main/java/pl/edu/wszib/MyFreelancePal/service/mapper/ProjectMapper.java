@@ -6,7 +6,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {TaskMapper.class})
 public interface ProjectMapper {
 
     ProjectDomain map(Project project);

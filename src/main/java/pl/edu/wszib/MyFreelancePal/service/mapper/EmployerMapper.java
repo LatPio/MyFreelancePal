@@ -6,7 +6,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {ProjectMapper.class, AddressMapper.class} )
 public interface EmployerMapper {
 
     EmployerDomain map(Employer employer);
