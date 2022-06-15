@@ -1,6 +1,6 @@
 package pl.edu.wszib.MyFreelancePal.controller.dto;
 
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 import pl.edu.wszib.MyFreelancePal.model.Address;
