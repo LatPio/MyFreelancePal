@@ -16,21 +16,24 @@ import java.util.List;
 @ToString
 @Table()
 @Entity
-public class Employe {
+public class Employee {
 
-    @ToString.Include
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Integer id;
-    @ToString.Include
     private String name;
+    private String nip;
     @CreationTimestamp
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
 
-    @ManyToMany(mappedBy = "employe", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private List<Address> addresses;
+
+    @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Employer> employer;
 
 }

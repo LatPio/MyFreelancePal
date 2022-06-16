@@ -10,6 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.EmployerMapper;
 
 import java.util.List;
+
 @Service
 public class EmployerService implements CrudService<EmployerDomain, Integer> {
 

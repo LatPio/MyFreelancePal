@@ -1,32 +1,25 @@
 package pl.edu.wszib.MyFreelancePal.service.domain;
 
 
-import lombok.Data;
+import lombok.*;
 
 
-@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 public class ProjectDomain {
 
     private Integer id;
     private String name;
+    private EmployerDomain employerDomain;
 
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 
 }

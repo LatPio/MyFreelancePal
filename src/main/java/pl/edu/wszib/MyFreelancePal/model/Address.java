@@ -21,6 +21,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String name;
     private String street;
     private String postalCode;
     private String buildingNumber;
@@ -39,7 +40,7 @@ public class Address {
     private List<Employer> employer;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable (name = "employe_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "employe_id", referencedColumnName = "id"))
-    private List<Employe> employe;
+    @JoinTable (name = "employee_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
+    private List<Employee> employee;
 }

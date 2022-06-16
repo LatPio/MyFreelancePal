@@ -8,9 +8,9 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.List;
 
-
-@Data
 @NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 @Builder
 @Table()
@@ -28,8 +28,16 @@ public class Employer {
     @ManyToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     private List<Address> address;
 
-    @OneToMany(mappedBy = "employers", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     private List<Project> projects;
+
+    @ManyToMany
+    @JoinTable(name = "employer_employee_map",
+               joinColumns = @JoinColumn(name = "employer_id",
+                                        referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "employee_id",
+                                        referencedColumnName = "id"))
+    private List<Employee> employee;
 
     @CreationTimestamp
     @Column(updatable = false)
