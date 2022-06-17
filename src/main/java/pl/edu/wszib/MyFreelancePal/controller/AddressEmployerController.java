@@ -10,6 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.AddressEmployerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -23,8 +24,8 @@ public class AddressEmployerController {
 
 
     @GetMapping("/list")
-    public List<AddressEmployerDTO> list(){
-        return addressEmployerMapperDTO.mapToDTO(addressEmployerService.list());
+    public List<AddressEmployerDTO> list(@RequestParam Integer id){
+        return addressEmployerMapperDTO.mapToDTO(addressEmployerService.list2(id));
     }
 
     @GetMapping

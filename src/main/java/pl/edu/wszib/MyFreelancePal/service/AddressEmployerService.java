@@ -24,6 +24,10 @@ public class AddressEmployerService implements CrudService<AddressEmployerDomain
         return mapper.mapToDomain(addressRepository.findAll());
     }
 
+    public List<AddressEmployerDomain> list2(Integer id) {
+        return mapper.mapToDomain(addressRepository.findByEmployer_id(id));
+    }
+
     @Override
     public AddressEmployerDomain get(Integer integer) {
         return addressRepository.findById(integer)

@@ -22,8 +22,8 @@ public class AddressEmployeeController {
 
 
     @GetMapping("/list")
-    public List<AddressEmployeeDTO> list() {
-        return addressEmployeeMapperDTO.mapToDTO(addressEmployeeService.list());
+    public List<AddressEmployeeDTO> list(@RequestParam Integer id) {
+        return addressEmployeeMapperDTO.mapToDTO(addressEmployeeService.list2(id));
     }
 
     @GetMapping
