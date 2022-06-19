@@ -12,8 +12,8 @@ import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 import java.util.List;
 
 @RestController
-@RequestMapping("/task")
-public class TaskController {
+@RequestMapping("/rest/task")
+public class TaskRestController {
 
     @Autowired
     private TaskService taskService;
@@ -23,6 +23,11 @@ public class TaskController {
     @GetMapping("/list")
     public List<TaskDTO> list(){
         return taskMapperDTO.mapToDTO(taskService.list());
+    }
+
+    @GetMapping("/list2")
+    public List<TaskDTO> list2(Integer id){
+        return taskMapperDTO.mapToDTO(taskService.list2(id));
     }
 
     @GetMapping

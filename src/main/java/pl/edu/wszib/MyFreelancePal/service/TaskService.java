@@ -24,6 +24,10 @@ public class TaskService implements CrudService<TaskDomain, Integer> {
         return mapper.mapToDomain(taskRepository.findAll());
     }
 
+    public List<TaskDomain> list2(Integer id){
+        return mapper.mapToDomain(taskRepository.findByProject_Id(id));
+    }
+
     @Override
     public TaskDomain get(Integer integer) {
         return taskRepository.findById(integer)

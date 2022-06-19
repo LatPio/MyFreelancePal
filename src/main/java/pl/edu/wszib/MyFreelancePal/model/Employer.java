@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.Instant;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode
 @Table()
 @Entity(name = "Employer")
 public class Employer {
@@ -24,6 +26,11 @@ public class Employer {
     private String name;
     @Column(name = "NIP", nullable = false)
     private String nip;
+
+    private String phone;
+    @Email
+    private String email;
+
 
     @ManyToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     private List<Address> address;
@@ -38,6 +45,9 @@ public class Employer {
                inverseJoinColumns = @JoinColumn(name = "employee_id",
                                         referencedColumnName = "id"))
     private List<Employee> employee;
+
+    @OneToOne(mappedBy = "employer")
+    private Invoice invoice;
 
     @CreationTimestamp
     @Column(updatable = false)

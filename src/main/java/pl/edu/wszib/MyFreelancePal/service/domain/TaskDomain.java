@@ -5,6 +5,7 @@ package pl.edu.wszib.MyFreelancePal.service.domain;
 import lombok.*;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 
 @Builder
 @AllArgsConstructor
@@ -17,7 +18,9 @@ public class TaskDomain {
 
     private Integer id;
     private String name;
-    private Duration time;
+//    private Duration time;
+    private LocalDateTime dateStart;
+    private LocalDateTime dateEnd;
     private ProjectDomain projectDomain;
 
     }

@@ -10,6 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.ProjectMapper;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
@@ -24,6 +25,8 @@ public class ProjectService implements CrudService<ProjectDomain, Integer> {
     public List<ProjectDomain> list() {
         return mapper.mapToDomain(projectRepository.findAll());
     }
+
+    public List<ProjectDomain> list2(Integer id){ return mapper.mapToDomain(projectRepository.findByEmployer_Id(id));}
 
     @Override
     public ProjectDomain get(Integer integer) {

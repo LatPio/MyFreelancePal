@@ -12,8 +12,8 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 import java.util.List;
 
 @RestController
-@RequestMapping("/project")
-public class ProjectController {
+@RequestMapping("/rest/project")
+public class ProjectRestController {
 
     @Autowired
     private ProjectService projectService;
@@ -24,6 +24,9 @@ public class ProjectController {
     public List<ProjectDTO> list() {
         return projectMapperDTO.mapToDTO(projectService.list());
     }
+
+    @GetMapping("/list2")
+    public List<ProjectDTO> list2(@RequestParam Integer id) {return projectMapperDTO.mapToDTO(projectService.list2(id));}
 
     @GetMapping
     public ProjectDTO get(@RequestParam Integer id) {

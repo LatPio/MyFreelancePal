@@ -25,10 +25,9 @@ public class Employee {
     private Integer id;
     private String name;
     private String nip;
-    @CreationTimestamp
-    private Instant createdAt;
-    @UpdateTimestamp
-    private Instant updatedAt;
+    private String bankNumber;
+    private String bankIban;
+
 
     @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private List<Address> addresses;
@@ -36,4 +35,13 @@ public class Employee {
     @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private List<Employer> employer;
 
+
+    @OneToOne(mappedBy = "employee")
+    private Invoice invoice;
+
+
+    @CreationTimestamp
+    private Instant createdAt;
+    @UpdateTimestamp
+    private Instant updatedAt;
 }

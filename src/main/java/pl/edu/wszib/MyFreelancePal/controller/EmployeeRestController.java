@@ -12,8 +12,8 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
-public class EmployeeController {
+@RequestMapping("/rest/employee")
+public class EmployeeRestController {
 
     @Autowired
     private EmployeeService employeeService;

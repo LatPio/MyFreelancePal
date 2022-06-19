@@ -10,12 +10,11 @@ import pl.edu.wszib.MyFreelancePal.service.AddressEmployerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping("/address_employer")
-public class AddressEmployerController {
+@RequestMapping("/rest/address_employer")
+public class AddressEmployerRestController {
 
     @Autowired
     private AddressEmployerService addressEmployerService;

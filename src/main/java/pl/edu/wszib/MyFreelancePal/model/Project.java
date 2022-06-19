@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.time.Instant;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
+    private String color;
+
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;
@@ -34,8 +37,11 @@ public class Project {
     private List<Task> tasks;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "employer_id")
     private Employer employer;
 
+
+    @ManyToMany(mappedBy = "projects")
+    private List<Invoice> invoice;
 
 }
