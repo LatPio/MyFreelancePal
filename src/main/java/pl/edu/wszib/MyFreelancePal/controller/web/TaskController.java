@@ -25,53 +25,52 @@ public class TaskController {
 
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
 
-
     @GetMapping("/list")
-    public String listView(@NotNull Model model){
+    public String listView(@NotNull Model model) {
         List<TaskDTO> allTasks = taskMapperDTO.mapToDTO(taskService.list());
         model.addAttribute("tasks", allTasks);
         return "task/taskList";
     }
 
     @GetMapping("/list2")
-    public String listViewByProject(@NotNull Model model, @RequestParam Integer id){
+    public String listViewByProject(@NotNull Model model, @RequestParam Integer id) {
         List<TaskDTO> TasksByProject = taskMapperDTO.mapToDTO(taskService.list2(id));
         model.addAttribute("tasks", TasksByProject);
         return "task/taskList";
     }
 
     @GetMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
         model.addAttribute("newTask", new TaskDTO());
         return "task/taskCreate";
     }
 
     @PostMapping("/create")
-    public String createAction(TaskDTO taskDTO, Model model){
-        TaskDomain taskDomain  = taskService.create(taskMapperDTO.map(taskDTO));
+    public String createAction(TaskDTO taskDTO, Model model) {
+        TaskDomain taskDomain = taskService.create(taskMapperDTO.map(taskDTO));
         return "redirect:/tasks";
     }
 
     @GetMapping("/update")
-    public String update(@RequestParam Integer id, Model model){
+    public String update(@RequestParam Integer id, Model model) {
         model.addAttribute("updateTask", taskMapperDTO.map(taskService.get(id)));
         return "task/taskUpdate";
     }
 
     @PostMapping("/update")
-    public String updateAction(TaskDTO taskDTO, Model model){
-        TaskDomain taskDomain  = taskService.update(taskMapperDTO.map(taskDTO));
+    public String updateAction(TaskDTO taskDTO, Model model) {
+        TaskDomain taskDomain = taskService.update(taskMapperDTO.map(taskDTO));
         return "redirect:/tasks";
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam Integer id, Model model){
+    public String delete(@RequestParam Integer id, Model model) {
         model.addAttribute("deleteTask", taskService.get(id));
         return "task/taskDelete";
     }
 
     @PostMapping("/delete")
-    public String deleteAction(TaskDTO taskDTO, Model model){
+    public String deleteAction(TaskDTO taskDTO, Model model) {
         taskService.delete(taskDTO.getId());
         return "redirect:/tasks";
     }
