@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
+<head>
+</head>
+<body>
+
+<div class="container1">
+
+    <div class="container">
+        <a class="btn btn-secondary" th:href="@{/projects/create}">Utwórz</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Project Name</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="project : ${projects}">
+
+                <td th:text="${project.id}"></td>
+                <td th:text="${project.name}"></td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/tasks/list2/(id=${project.id})}">Otwórz</a>
+                    <a class="btn btn-secondary" th:href="@{/projects/update(id=${project.id})}">Edit</a>
+                    <a class="btn btn-danger" th:href="@{/projects/delete(id=${project.id})}">Delete</a>
+
+                </td>
+
+
+
+
+            </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>

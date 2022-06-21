@@ -1,4 +1,4 @@
-package pl.edu.wszib.MyFreelancePal.controller;
+package pl.edu.wszib.MyFreelancePal.controller.rest;
 
 
 import org.mapstruct.factory.Mappers;

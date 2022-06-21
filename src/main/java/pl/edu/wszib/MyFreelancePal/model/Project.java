@@ -33,7 +33,7 @@ public class Project {
     private Instant updatedAt;
 
 
-    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Task> tasks;
 
     @ManyToOne

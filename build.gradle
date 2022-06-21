@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.0'
+	id 'org.springframework.boot' version '2.6.8'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 
@@ -24,12 +24,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
+    implementation 'org.jetbrains:annotations:23.0.0'
+    compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springdoc:springdoc-openapi-ui:1.6.7'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+
 
 	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.1.Final'
 	annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.5.1.Final'
@@ -39,11 +41,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-tasks.withType(JavaCompile) {
-	options.compilerArgs = [
-			'-Amapstruct.suppressGeneratorTimestamp=true'
-	]
-}
+
 
 
 

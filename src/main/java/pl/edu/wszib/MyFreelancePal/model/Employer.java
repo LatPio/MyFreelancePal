@@ -35,10 +35,10 @@ public class Employer {
     @ManyToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     private List<Address> address;
 
-    @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Project> projects;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "employer_employee_map",
                joinColumns = @JoinColumn(name = "employer_id",
                                         referencedColumnName = "id"),
