@@ -3,6 +3,8 @@ package pl.edu.wszib.MyFreelancePal.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -33,6 +35,7 @@ public class Address {
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable (name = "employer_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),

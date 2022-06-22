@@ -25,13 +25,13 @@
 
                 <td th:text="${task.id}"></td>
                 <td th:text="${task.name}"></td>
-                <td th:text="${task.dateStart}"></td>
-                <td th:text="${task.dateEnd}"></td>
+                <td th:text="${#temporals.format(task.dateStart, 'dd-MM-yyyy    HH:mm:ss')}"></td>
+                <td th:text="${#temporals.format(task.dateEnd, 'dd-MM-yyyy    HH:mm:ss')}"></td>
                 <td th:text="${task.projectDTO.id}"></td>
                 <td th:text="${task.projectDTO.name}"></td>
                 <td>
-                    <a class="btn btn-secondary" th:href="@{/task/update(id=${task.id})}">Edit</a>
-                    <a class="btn btn-danger" th:href="@{/task/delete(id=${task.id})}">Delete</a>
+                    <a class="btn btn-secondary" th:href="@{/tasks/update(id=${task.id})}">Edit</a>
+                    <a class="btn btn-danger" th:href="@{/tasks/delete(id=${task.id})}">Delete</a>
 
                 </td>
 

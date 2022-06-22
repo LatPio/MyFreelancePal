@@ -18,7 +18,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Table(name = "Project")
 @Entity
-public class Project {
+public class    Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

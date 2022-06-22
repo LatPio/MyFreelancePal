@@ -2,6 +2,8 @@ package pl.edu.wszib.MyFreelancePal.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -31,14 +33,14 @@ public class Employer {
     @Email
     private String email;
 
-
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     private List<Address> address;
 
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Project> projects;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "employer_employee_map",
                joinColumns = @JoinColumn(name = "employer_id",
                                         referencedColumnName = "id"),
@@ -46,7 +48,8 @@ public class Employer {
                                         referencedColumnName = "id"))
     private List<Employee> employee;
 
-    @OneToOne(mappedBy = "employer")
+
+    @OneToOne(mappedBy = "employer", cascade = CascadeType.ALL)
     private Invoice invoice;
 
     @CreationTimestamp

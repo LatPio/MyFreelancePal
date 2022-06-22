@@ -69,8 +69,9 @@ public class ProjectController {
 
     @PostMapping("/delete")
     public String deleteAction(ProjectDTO projectDTO, Model model){
+        ProjectDomain idToPass = projectService.get((projectDTO.getId()));
         projectService.delete(projectDTO.getId());
-        return "redirect:/projects";
+        return "redirect:/projects/list/?id=" + idToPass.getEmployerDomain().getId();
     }
 
 }

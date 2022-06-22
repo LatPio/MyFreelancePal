@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.wszib.MyFreelancePal.controller.dto.ProjectDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.TaskDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.TaskMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.TaskService;
-import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Controller
@@ -25,8 +24,14 @@ public class TaskController {
 
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
 
+    @GetMapping
+    public String defaultView() {
+        return "redirect:/tasks/list2";
+    }
+
+
     @GetMapping("/list")
-    public String listView(@NotNull Model model) {
+    public String listView(Model model) {
         List<TaskDTO> allTasks = taskMapperDTO.mapToDTO(taskService.list());
         model.addAttribute("tasks", allTasks);
         return "task/taskList";
@@ -48,7 +53,8 @@ public class TaskController {
     @PostMapping("/create")
     public String createAction(TaskDTO taskDTO, Model model) {
         TaskDomain taskDomain = taskService.create(taskMapperDTO.map(taskDTO));
-        return "redirect:/tasks";
+        TaskDomain idToPass = taskService.get(taskDTO.getId());
+        return "redirect:/tasks/list2/?id=" + idToPass.getProjectDomain().getId();
     }
 
     @GetMapping("/update")
@@ -60,7 +66,8 @@ public class TaskController {
     @PostMapping("/update")
     public String updateAction(TaskDTO taskDTO, Model model) {
         TaskDomain taskDomain = taskService.update(taskMapperDTO.map(taskDTO));
-        return "redirect:/tasks";
+        TaskDomain idToPass = taskService.get(taskDTO.getId());
+        return "redirect:/tasks/list2/?id=" + idToPass.getProjectDomain().getId();
     }
 
     @GetMapping("/delete")
@@ -71,8 +78,9 @@ public class TaskController {
 
     @PostMapping("/delete")
     public String deleteAction(TaskDTO taskDTO, Model model) {
+        TaskDomain idToPass = taskService.get(taskDTO.getId());
         taskService.delete(taskDTO.getId());
-        return "redirect:/tasks";
+            return "redirect:/tasks/list2/?id=" + idToPass.getProjectDomain().getId();
     }
 
 }
