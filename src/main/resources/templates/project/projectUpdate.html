@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" class="form-control btn btn-primary" value="Zapisz">
+                <input type="submit" class="form-control btn btn-primary" value="Zapisz" th:href="@{/projects/list/(id=${updateProject.employerDTO.id})}">
                 <input onclick='javascript:window.history.back()' value='Anuluj' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>

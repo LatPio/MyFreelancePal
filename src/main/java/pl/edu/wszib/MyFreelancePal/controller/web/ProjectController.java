@@ -40,13 +40,15 @@ public class ProjectController {
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("newProjekt", new ProjectDTO());
+
         return "project/projectCreate";
     }
 
     @PostMapping("/create")
     public String createAction(ProjectDTO projectDTO, Model model){
         ProjectDomain projectDomain  = projectService.create(projectMapperDTO.map(projectDTO));
-        return "redirect:/projects";
+        ProjectDomain idToPass = projectService.get((projectDTO.getId()));
+        return "redirect:/projects/list/?id=" + idToPass.getEmployerDomain().getId();
     }
 
     @GetMapping("/update")
@@ -57,8 +59,9 @@ public class ProjectController {
 
     @PostMapping("/update")
     public String updateAction(ProjectDTO projectDTO, Model model){
+        ProjectDomain idToPass = projectService.get((projectDTO.getId()));
         ProjectDomain projectDomain  = projectService.update(projectMapperDTO.map(projectDTO));
-        return "redirect:/projects";
+        return "redirect:/projects/list/?id=" + idToPass.getEmployerDomain().getId();
     }
 
     @GetMapping("/delete")

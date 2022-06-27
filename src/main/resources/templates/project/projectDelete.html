@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <input type="number" th:field="*{id}" hidden>
-                <input type="submit" class="form-control btn btn-danger" value="Tak">
+                <input type="submit" class="form-control btn btn-danger" value="Tak" th:href="@{/projects/list/(id=${deleteProject.employerDomain.id})}">
                 <input onclick='javascript:window.history.back()' value='Nie' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
