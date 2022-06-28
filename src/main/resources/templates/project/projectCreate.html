@@ -16,14 +16,19 @@
             </div>
             <div class="form-group">
                 <label th:for="employerDTO.id">EmployerId</label>
-<!--                <input id="employerDTO.id" class="form-control" type="number" th:field="*{employerDTO.id}" >-->
-                <input th:id="employerDTO.id" class="form-control" type="number"  th:name="employerDTO.id" th:value="${idToPas.intValue()}" >
+                <input class="form-control" type="number"
+                       th:id="employerDTO.id"
+                       th:name="employerDTO.id"
+                       th:value="${idToPas.intValue()}" >
 
 
             </div>
 
             <div class="form-group">
-                <input type="submit" class="form-control btn btn-primary" value="Stwórz" th:href="@{/projects/list/(id=${idToPas.intValue()})}">
+                <input type="submit"
+                       class="form-control btn btn-primary"
+                       value="Stwórz"
+                       th:href="@{/projects/list/(id=${idToPas.intValue()})}">
                 <input onclick='javascript:window.history.back()' value='Anuluj' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>

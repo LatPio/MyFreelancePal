@@ -40,21 +40,23 @@ public class TaskController {
     @GetMapping("/list2")
     public String listViewByProject(@NotNull Model model, @RequestParam Integer id) {
         List<TaskDTO> TasksByProject = taskMapperDTO.mapToDTO(taskService.list2(id));
+        model.addAttribute("id", id);
         model.addAttribute("tasks", TasksByProject);
         return "task/taskList";
     }
 
     @GetMapping("/create")
-    public String create(Model model) {
+    public String create(Model model, @RequestParam Integer id) {
         model.addAttribute("newTask", new TaskDTO());
+        model.addAttribute("idToPas", id);
         return "task/taskCreate";
     }
 
     @PostMapping("/create")
-    public String createAction(TaskDTO taskDTO, Model model) {
+    public String createAction(TaskDTO taskDTO, Model model, @RequestParam Integer id) {
         TaskDomain taskDomain = taskService.create(taskMapperDTO.map(taskDTO));
-        TaskDomain idToPass = taskService.get(taskDTO.getId());
-        return "redirect:/tasks/list2/?id=" + idToPass.getProjectDomain().getId();
+
+        return "redirect:/tasks/list2/?id=" + id;
     }
 
     @GetMapping("/update")
