@@ -29,8 +29,8 @@ public class Employee {
     private String bankIban;
 
 
-    @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private List<Address> addresses;
+//    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+//    private List<Address> addresses;
 
     @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private List<Employer> employer;

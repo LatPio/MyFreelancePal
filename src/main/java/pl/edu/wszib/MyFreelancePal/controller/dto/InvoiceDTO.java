@@ -16,20 +16,13 @@ public class InvoiceDTO {
 
 
     private Integer id;
-
     private Date invoiceCreationDate;
     private Date secondDate;
-
     private EmployeeDTO employee;
-
     private EmployerDTO employer;
-
     private List<ProjectDTO> projects;
-
     private Integer priceNet;
-
     private Integer vat;
-
     private Date payDue;
 
 

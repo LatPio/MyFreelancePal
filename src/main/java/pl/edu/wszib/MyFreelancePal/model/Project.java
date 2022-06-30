@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.awt.*;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
@@ -24,8 +25,11 @@ public class    Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String color;
-
+    private Color color;
+    private String description;
+    @Column(nullable = true)
+    private Boolean active;
+    private BigDecimal hourPrice;
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;

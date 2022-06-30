@@ -37,13 +37,14 @@ public class Address {
     private Instant updatedAt;
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable (name = "employer_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "employer_id", referencedColumnName = "id"))
-    private List<Employer> employer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employer_id")
+//    @JoinTable (name = "employer_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
+//    inverseJoinColumns = @JoinColumn(name = "employer_id", referencedColumnName = "id"))
+    private Employer employer;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable (name = "employee_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
-    private List<Employee> employee;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinTable (name = "employee_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
+//    private Employee employee;
 }

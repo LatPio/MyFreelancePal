@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
+<head>
+</head>
+<body>
+
+<div class="container1">
+
+    <div class="container">
+
+        <div class="card my-2" th:each="employer : ${employers}">
+            <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3" >
+                <h5 th:text="*{employer.name}" ></h5>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/employer/update(id=*{employer.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
+                        <a type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-circle-info"></i>Detailed Information</a>
+                    </div>
+                    <a type="button" class="btn btn-sm btn-outline-secondary">
+                        <span style="color: red">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </span>
+                        Delete
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-body" >
+                <div class="row">
+                    <div class="col">
+                        <h7 class="card-title" > Address: </h7>
+                            <p class="card-text">
+                                <div th:each="addresses : ${employer.address}">
+                                    <div class="fw-bold" th:text="*{addresses.name}"></div>
+                                    <div th:text="|*{addresses.street} *{addresses.buildingNumber}/*{addresses.flatNumber}|"></div>
+                                    <div th:text="|*{addresses.postalCode} *{addresses.city}, *{addresses.country}|"></div>
+                                 </div>
+                            </p>
+                    </div>
+                    <div class="col">Pozostałe dane i ustawienia dodać, dodać rozszrzony widok z projektami i taskmai generator faktur, spróbować dodać zakres datowy do dodawania tasków</div>
+                    <div class="col">Statystyki : ilość tasków, średniczas na taski, ilośc nie wykonanych taksóe(rozpoczetych), kwota za robotę, ilosc wystawioncyh faktur  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

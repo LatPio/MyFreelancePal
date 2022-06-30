@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.awt.*;
 import java.time.Instant;
 import java.util.List;
 
@@ -26,15 +27,18 @@ public class Employer {
     private Integer id;
     @Column(name = "Name", nullable = false)
     private String name;
+    private String description;
+    private String notes;
     @Column(name = "NIP", nullable = false)
     private String nip;
-
     private String phone;
     @Email
     private String email;
-
+    private Color badgeColor;
+    @Column(nullable = true)
+    private Boolean active;
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @ManyToMany(mappedBy = "employer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     private List<Address> address;
 
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

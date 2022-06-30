@@ -3,17 +3,22 @@ package pl.edu.wszib.MyFreelancePal.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import org.mapstruct.factory.Mappers;
+import pl.edu.wszib.MyFreelancePal.model.Address;
 import pl.edu.wszib.MyFreelancePal.model.Employee;
 import pl.edu.wszib.MyFreelancePal.model.Employer;
+import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-22T15:17:53+0200",
+    date = "2022-06-30T22:27:19+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployerMapperImpl implements EmployerMapper {
+
+    private final AddressEmployerMapper addressEmployerMapper = Mappers.getMapper( AddressEmployerMapper.class );
 
     @Override
     public EmployerDomain map(Employer employer) {
@@ -27,6 +32,7 @@ public class EmployerMapperImpl implements EmployerMapper {
         employerDomain.id( employer.getId() );
         employerDomain.name( employer.getName() );
         employerDomain.nip( employer.getNip() );
+        employerDomain.address( addressEmployerMapper.mapToDomain( employer.getAddress() ) );
 
         return employerDomain.build();
     }
@@ -43,6 +49,7 @@ public class EmployerMapperImpl implements EmployerMapper {
         employer.id( employerDomain.getId() );
         employer.name( employerDomain.getName() );
         employer.nip( employerDomain.getNip() );
+        employer.address( addressEmployerDomainListToAddressList( employerDomain.getAddress() ) );
 
         return employer.build();
     }
@@ -110,6 +117,19 @@ public class EmployerMapperImpl implements EmployerMapper {
         List<Employee> list1 = new ArrayList<Employee>( list.size() );
         for ( EmployeeDomain employeeDomain : list ) {
             list1.add( employeeDomainToEmployee( employeeDomain ) );
+        }
+
+        return list1;
+    }
+
+    protected List<Address> addressEmployerDomainListToAddressList(List<AddressEmployerDomain> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Address> list1 = new ArrayList<Address>( list.size() );
+        for ( AddressEmployerDomain addressEmployerDomain : list ) {
+            list1.add( addressEmployerMapper.map( addressEmployerDomain ) );
         }
 
         return list1;

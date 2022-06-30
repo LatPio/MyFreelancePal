@@ -21,10 +21,10 @@ public class AddressEmployeeRestController {
     private final AddressEmployeeMapperDTO addressEmployeeMapperDTO = Mappers.getMapper(AddressEmployeeMapperDTO.class);
 
 
-    @GetMapping("/list")
-    public List<AddressEmployeeDTO> list(@RequestParam Integer id) {
-        return addressEmployeeMapperDTO.mapToDTO(addressEmployeeService.list2(id));
-    }
+//    @GetMapping("/list")
+//    public List<AddressEmployeeDTO> list(@RequestParam Integer id) {
+//        return addressEmployeeMapperDTO.mapToDTO(addressEmployeeService.list2(id));
+//    }
 
     @GetMapping
     public AddressEmployeeDTO get(@RequestParam Integer id) {

@@ -92,26 +92,26 @@ VALUES (1100, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', '2021-
 
 -- adresses
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat)
-VALUES (100, 24,'Kraków','Polska','2021-05-10 13:07:12.000000', 12, 'domowy', '30-398', 'Narutowicza', '2021-05-10 13:07:12.000000');
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
+VALUES (100, 24,'Kraków','Polska','2021-05-10 13:07:12.000000', 12, 'domowy', '30-398', 'Narutowicza', '2021-05-10 13:07:12.000000', 100);
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat)
-VALUES (200, 46,'Bydgoszcz','Polska','2021-05-10 13:07:12.000000', 15, 'Firmowy', '30-398', 'Krakowska', '2021-05-10 13:07:12.000000');
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
+VALUES (200, 46,'Bydgoszcz','Polska','2021-05-10 13:07:12.000000', 15, 'Firmowy', '30-398', 'Krakowska', '2021-05-10 13:07:12.000000', 200);
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat)
-VALUES (300, 21,'Tarnów','Polska','2021-05-10 13:07:12.000000', 1, 'domowy', '30-398', 'Lwowska', '2021-05-10 13:07:12.000000');
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat,employer_id)
+VALUES (300, 21,'Tarnów','Polska','2021-05-10 13:07:12.000000', 1, 'domowy', '30-398', 'Lwowska', '2021-05-10 13:07:12.000000', 300);
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat)
-VALUES (400, 53,'Warszawa','Polska','2021-05-10 13:07:12.000000', 5, 'Firmowy', '30-398', 'Kondratowicza', '2021-05-10 13:07:12.000000');
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
+VALUES (400, 53,'Warszawa','Polska','2021-05-10 13:07:12.000000', 5, 'Firmowy', '30-398', 'Kondratowicza', '2021-05-10 13:07:12.000000', 100);
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat)
-VALUES (500, 2,'Gdańsk','Polska','2021-05-10 13:07:12.000000', 88, 'Mój', '30-398', 'Midowa', '2021-05-10 13:07:12.000000');
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
+VALUES (500, 2,'Gdańsk','Polska','2021-05-10 13:07:12.000000', 88, 'Mój', '30-398', 'Midowa', '2021-05-10 13:07:12.000000', 400);
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat)
-VALUES (600, 12,'Toruń','Polska','2021-05-10 13:07:12.000000', 1, 'Mój drugi', '30-398', 'Gronostajowa', '2021-05-10 13:07:12.000000');
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
+VALUES (600, 12,'Toruń','Polska','2021-05-10 13:07:12.000000', 1, 'Mój drugi', '30-398', 'Gronostajowa', '2021-05-10 13:07:12.000000',100);
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat)
-VALUES (700, 11,'Kołobrzeg','Polska','2021-05-10 13:07:12.000000', 33, 'domowy', '30-398', 'Gołębia', '2021-05-10 13:07:12.000000');
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
+VALUES (700, 11,'Kołobrzeg','Polska','2021-05-10 13:07:12.000000', 33, 'domowy', '30-398', 'Gołębia', '2021-05-10 13:07:12.000000', 200);
 
 -- invoices
 insert into invoice(id, createdat, invoicecreationdate, paydue, pricenet, seconddate, updatedat, vat, employee_id, employer_id)
@@ -119,13 +119,13 @@ VALUES (100, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', '2021-0
 
 ---- Maps
 -- empolyee_address_map
-insert into employee_address_map(address_id, employee_id) VALUES (100,100);
-insert into employee_address_map(address_id, employee_id) VALUES (300,200);
+-- insert into employee_address_map(address_id, employee_id) VALUES (100,100);
+-- insert into employee_address_map(address_id, employee_id) VALUES (300,200);
 -- empolyer_address_map
-insert into employer_address_map(address_id, employer_id) VALUES (200,100);
-insert into employer_address_map(address_id, employer_id) VALUES (400,200);
-insert into employer_address_map(address_id, employer_id)VALUES (500,300);
-insert into employer_address_map(address_id, employer_id) VALUES (600,400);
+-- insert into employer_address_map(address_id, employer_id) VALUES (200,100);
+-- insert into employer_address_map(address_id, employer_id) VALUES (400,200);
+-- insert into employer_address_map(address_id, employer_id)VALUES (500,300);
+-- insert into employer_address_map(address_id, employer_id) VALUES (600,400);
 --employee-employer-map
 insert into employer_employee_map(employer_id, employee_id) VALUES (100,100);
 insert into employer_employee_map(employer_id, employee_id) VALUES (200,200);

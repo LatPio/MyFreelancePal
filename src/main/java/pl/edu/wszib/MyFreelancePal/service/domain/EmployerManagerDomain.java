@@ -1,7 +1,6 @@
 package pl.edu.wszib.MyFreelancePal.service.domain;
 
 import lombok.*;
-import pl.edu.wszib.MyFreelancePal.model.Employee;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class EmployerDomain {
+public class EmployerManagerDomain {
 
     private Integer id;
     private String name;

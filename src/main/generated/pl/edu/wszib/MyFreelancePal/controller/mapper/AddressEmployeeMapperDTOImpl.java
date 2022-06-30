@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-22T15:17:53+0200",
+    date = "2022-06-30T22:27:19+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
@@ -23,7 +23,6 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
 
         AddressEmployeeDTO.AddressEmployeeDTOBuilder addressEmployeeDTO = AddressEmployeeDTO.builder();
 
-        addressEmployeeDTO.employeeDTO( employeeDomainListToEmployeeDTOList( addressEmployeeDomain.getEmployeeDomain() ) );
         addressEmployeeDTO.id( addressEmployeeDomain.getId() );
         addressEmployeeDTO.name( addressEmployeeDomain.getName() );
         addressEmployeeDTO.street( addressEmployeeDomain.getStreet() );
@@ -32,6 +31,7 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
         addressEmployeeDTO.flatNumber( addressEmployeeDomain.getFlatNumber() );
         addressEmployeeDTO.city( addressEmployeeDomain.getCity() );
         addressEmployeeDTO.country( addressEmployeeDomain.getCountry() );
+        addressEmployeeDTO.employee( employeeDomainToEmployeeDTO( addressEmployeeDomain.getEmployee() ) );
 
         return addressEmployeeDTO.build();
     }
@@ -44,7 +44,6 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
 
         AddressEmployeeDomain.AddressEmployeeDomainBuilder addressEmployeeDomain = AddressEmployeeDomain.builder();
 
-        addressEmployeeDomain.employeeDomain( employeeDTOListToEmployeeDomainList( addressEmployeeDTO.getEmployeeDTO() ) );
         addressEmployeeDomain.id( addressEmployeeDTO.getId() );
         addressEmployeeDomain.name( addressEmployeeDTO.getName() );
         addressEmployeeDomain.street( addressEmployeeDTO.getStreet() );
@@ -53,6 +52,7 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
         addressEmployeeDomain.flatNumber( addressEmployeeDTO.getFlatNumber() );
         addressEmployeeDomain.city( addressEmployeeDTO.getCity() );
         addressEmployeeDomain.country( addressEmployeeDTO.getCountry() );
+        addressEmployeeDomain.employee( employeeDTOToEmployeeDomain( addressEmployeeDTO.getEmployee() ) );
 
         return addressEmployeeDomain.build();
     }
@@ -85,19 +85,6 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
         return employeeDTO.build();
     }
 
-    protected List<EmployeeDTO> employeeDomainListToEmployeeDTOList(List<EmployeeDomain> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<EmployeeDTO> list1 = new ArrayList<EmployeeDTO>( list.size() );
-        for ( EmployeeDomain employeeDomain : list ) {
-            list1.add( employeeDomainToEmployeeDTO( employeeDomain ) );
-        }
-
-        return list1;
-    }
-
     protected EmployeeDomain employeeDTOToEmployeeDomain(EmployeeDTO employeeDTO) {
         if ( employeeDTO == null ) {
             return null;
@@ -110,18 +97,5 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
         employeeDomain.nip( employeeDTO.getNip() );
 
         return employeeDomain.build();
-    }
-
-    protected List<EmployeeDomain> employeeDTOListToEmployeeDomainList(List<EmployeeDTO> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<EmployeeDomain> list1 = new ArrayList<EmployeeDomain>( list.size() );
-        for ( EmployeeDTO employeeDTO : list ) {
-            list1.add( employeeDTOToEmployeeDomain( employeeDTO ) );
-        }
-
-        return list1;
     }
 }

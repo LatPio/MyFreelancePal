@@ -20,9 +20,9 @@ public class AddressEmployeeService implements CrudService<AddressEmployeeDomain
     private AddressEmployeeMapper mapper = Mappers.getMapper(AddressEmployeeMapper.class);
 
 
-    public List<AddressEmployeeDomain> list2(Integer id) {
-        return mapper.mapToDomain(addressRepository.findByEmployee_id(id));
-    }
+//    public List<AddressEmployeeDomain> list2(Integer id) {
+//        return mapper.mapToDomain(addressRepository.findByEmployee_id(id));
+//    }
 
 
     @Override

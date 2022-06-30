@@ -12,7 +12,7 @@ import java.util.List;
 public interface AddressRepository extends JpaRepository<Address, Integer> {
 
 
-    List<Address> findByEmployee_id(Integer id);
+//    List<Address> findByEmployee_id(Integer id);
     List<Address> findByEmployer_id(Integer id);
 
 

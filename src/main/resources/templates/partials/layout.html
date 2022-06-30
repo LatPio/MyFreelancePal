@@ -61,14 +61,14 @@
         }
     </style>
     <link rel="stylesheet" th:href="@{/dashboard.css}" >
-    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}">
     <script th:src="@{/js/fontawesome.min.js}"></script>
 
 </head>
 <body>
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"><i class="fa-solid fa-clock-rotate-left"></i>MyFreelancePal</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"><i class="fa-solid fa-clock-rotate-left fa-2x"></i>MyFreelancePal</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -81,7 +81,7 @@
 </header>
 
 <div class="container-fluid">
-    < class="row">
+
 <nav th:replace="~{partials/navigation :: nav}"></nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div th:replace="${content}"></div>

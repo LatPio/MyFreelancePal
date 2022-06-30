@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import pl.edu.wszib.MyFreelancePal.controller.dto.AddressEmployerDTO;
-import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerDTO;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
-import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-22T15:17:52+0200",
+    date = "2022-06-30T22:27:19+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
@@ -23,7 +21,6 @@ public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
 
         AddressEmployerDTO.AddressEmployerDTOBuilder addressEmployerDTO = AddressEmployerDTO.builder();
 
-        addressEmployerDTO.employerDTO( employerDomainListToEmployerDTOList( addressEmployerDomain.getEmployerDomain() ) );
         addressEmployerDTO.id( addressEmployerDomain.getId() );
         addressEmployerDTO.name( addressEmployerDomain.getName() );
         addressEmployerDTO.street( addressEmployerDomain.getStreet() );
@@ -44,7 +41,6 @@ public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
 
         AddressEmployerDomain.AddressEmployerDomainBuilder addressEmployerDomain = AddressEmployerDomain.builder();
 
-        addressEmployerDomain.employerDomain( employerDTOListToEmployerDomainList( addressEmployerDTO.getEmployerDTO() ) );
         addressEmployerDomain.id( addressEmployerDTO.getId() );
         addressEmployerDomain.name( addressEmployerDTO.getName() );
         addressEmployerDomain.street( addressEmployerDTO.getStreet() );
@@ -69,59 +65,5 @@ public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
         }
 
         return list;
-    }
-
-    protected EmployerDTO employerDomainToEmployerDTO(EmployerDomain employerDomain) {
-        if ( employerDomain == null ) {
-            return null;
-        }
-
-        EmployerDTO.EmployerDTOBuilder employerDTO = EmployerDTO.builder();
-
-        employerDTO.id( employerDomain.getId() );
-        employerDTO.name( employerDomain.getName() );
-        employerDTO.nip( employerDomain.getNip() );
-
-        return employerDTO.build();
-    }
-
-    protected List<EmployerDTO> employerDomainListToEmployerDTOList(List<EmployerDomain> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<EmployerDTO> list1 = new ArrayList<EmployerDTO>( list.size() );
-        for ( EmployerDomain employerDomain : list ) {
-            list1.add( employerDomainToEmployerDTO( employerDomain ) );
-        }
-
-        return list1;
-    }
-
-    protected EmployerDomain employerDTOToEmployerDomain(EmployerDTO employerDTO) {
-        if ( employerDTO == null ) {
-            return null;
-        }
-
-        EmployerDomain.EmployerDomainBuilder employerDomain = EmployerDomain.builder();
-
-        employerDomain.id( employerDTO.getId() );
-        employerDomain.name( employerDTO.getName() );
-        employerDomain.nip( employerDTO.getNip() );
-
-        return employerDomain.build();
-    }
-
-    protected List<EmployerDomain> employerDTOListToEmployerDomainList(List<EmployerDTO> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<EmployerDomain> list1 = new ArrayList<EmployerDomain>( list.size() );
-        for ( EmployerDTO employerDTO : list ) {
-            list1.add( employerDTOToEmployerDomain( employerDTO ) );
-        }
-
-        return list1;
     }
 }

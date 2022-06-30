@@ -2,8 +2,6 @@ package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 
 import lombok.*;
-import pl.edu.wszib.MyFreelancePal.model.Address;
-import pl.edu.wszib.MyFreelancePal.model.Project;
 
 import java.util.List;
 
@@ -15,7 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class EmployerDTO {
+public class EmployerManagerDTO {
 
     private Integer id;
     private String name;

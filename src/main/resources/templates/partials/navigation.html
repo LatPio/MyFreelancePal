@@ -13,45 +13,67 @@
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">
-                        <span data-feather="home" class="align-text-bottom"></span>
+                    <a class="nav-link" aria-current="page" href="#">
+                        <i class="fa-solid fa-house"></i>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span data-feather="file" class="align-text-bottom"></span>
-                        Orders
+                        <i class="fa-solid fa-list-check"></i>
+                        Active Tasks
+
                     </a>
+
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                        Products
+                        <i class="fa-regular fa-calendar-days"></i>
+                        Calendar
+                    </a>
+                </li>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                    <span>Employers</span>
+                    <a class="link-secondary" th:href="@{/employer/create}" aria-label="Add a employer">
+                        <i class="fa-solid fa-person-circle-plus"></i>
+                    </a>
+                </h6>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/employer}">
+                        <i class="fa-solid fa-briefcase"></i>
+                        List with Tasks
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span data-feather="users" class="align-text-bottom"></span>
-                        Customers
+                    <a class="nav-link" th:href="@{/employer-manager/list}">
+                        <i class="fa-solid fa-user-tie"></i>
+                        Manage Employers
                     </a>
                 </li>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+
+                    Billings
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </a>
+                </h6>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                        <i class="fa-solid fa-file-pen"></i>
                         Reports
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span data-feather="layers" class="align-text-bottom"></span>
-                        Integrations
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        Invoices
                     </a>
                 </li>
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-                <span>Saved reports</span>
+                <span>Settings</span>
                 <a class="link-secondary" href="#" aria-label="Add a new report">
                     <span data-feather="plus-circle" class="align-text-bottom"></span>
                 </a>
@@ -59,28 +81,18 @@
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span data-feather="file-text" class="align-text-bottom"></span>
-                        Current month
+                        <i class="fa-solid fa-gears"></i>
+                        My Settings
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span data-feather="file-text" class="align-text-bottom"></span>
-                        Last quarter
+                        <i class="fa-solid fa-circle-user"></i>
+                        Personal Information
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span data-feather="file-text" class="align-text-bottom"></span>
-                        Social engagement
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span data-feather="file-text" class="align-text-bottom"></span>
-                        Year-end sale
-                    </a>
-                </li>
+
+
             </ul>
         </div>
     </nav>
