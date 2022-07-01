@@ -34,11 +34,12 @@ public class Employer {
     private String phone;
     @Email
     private String email;
-    private Color badgeColor;
+    @Column(nullable = true)
+    private String badgeColor;
     @Column(nullable = true)
     private Boolean active;
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> address;
 
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

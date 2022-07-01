@@ -25,11 +25,13 @@ public class    Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    private Color color;
+    @Column(nullable = true)
+    private String color;
     private String description;
     @Column(nullable = true)
-    private Boolean active;
-//    private BigDecimal hourPrice;
+    private Boolean activeProject;
+    @Column(nullable = true)
+    private BigDecimal hourPrice;
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;

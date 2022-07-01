@@ -34,7 +34,7 @@ public class Task {
 //    @DateTimeFormat(pattern = "HH:mm:ss dd-MM-yyyy")
     private LocalDateTime dateEnd;
     private Duration time;
-    private boolean invoiceCreated;
+    private Boolean invoiceCreated;
     private Instant timeOfInvoiceCreation;
 
     @CreationTimestamp
