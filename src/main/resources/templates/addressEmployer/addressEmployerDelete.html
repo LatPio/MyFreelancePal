@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
+
+<div class="container1">
+
+    <body>
+    <div class="container">
+        <h2>Produkt:</h2>
+        <form th:method="POST" th:action="@{/addressEr/delete}" th:object="${deleteAddressEmployer}">
+            <div>
+                Czy jesteś chcesz usunąć Adres ?
+            </div>
+            <div class="form-group">
+                <input type="number" th:field="*{id}" hidden>
+                <input type="submit" class="form-control btn btn-danger" value="Tak">
+                <input onclick='javascript:window.history.back()' value='Nie' type='button' class="form-control btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+    </body>
+</div>
+
 
 </body>
 </html>

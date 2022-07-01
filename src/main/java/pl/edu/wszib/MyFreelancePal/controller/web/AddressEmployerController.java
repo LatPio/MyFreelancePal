@@ -69,7 +69,7 @@ public class AddressEmployerController {
     @PostMapping("/delete")
     public String deleteAction(AddressEmployerDTO addressEmployerDTO, Model model) {
         addressEmployerService.delete(addressEmployerDTO.getId());
-        return "redirect:/";
+        return "redirect:/employer-manager";
     }
 
 }
