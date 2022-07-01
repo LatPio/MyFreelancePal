@@ -17,8 +17,13 @@ public class EmployerManagerDTO {
 
     private Integer id;
     private String name;
+    private String description;
+    private String notes;
+    private String phone;
+    private String email;
     private String nip;
-    private List<EmployeeDTO> employeeDTO;
+    private Boolean active;
+    private List<EmployeeDTO> employee;
     private List<AddressEmployerDTO> address;
 //    private List<ProjectDTO> projects;
 }

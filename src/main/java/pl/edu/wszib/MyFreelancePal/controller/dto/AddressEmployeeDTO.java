@@ -20,7 +20,7 @@ public class AddressEmployeeDTO {
     private String flatNumber;
     private String city;
     private String country;
-    private EmployeeDTO employee;
+//    private EmployeeDTO employee;
 
 
 }

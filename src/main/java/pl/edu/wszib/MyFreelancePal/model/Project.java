@@ -29,7 +29,7 @@ public class    Project {
     private String description;
     @Column(nullable = true)
     private Boolean active;
-    private BigDecimal hourPrice;
+//    private BigDecimal hourPrice;
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;
