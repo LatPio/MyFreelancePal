@@ -12,9 +12,9 @@ import java.util.List;
 @Mapper(uses = {ProjectMapperDTO.class})
 public interface EmployerManagerMapperDTO {
 
-    @Mapping(source = "employeeDomain", target = "employeeDTO")
+
     EmployerManagerDTO map(EmployerManagerDomain employerManagerDomain);
-    @Mapping(source = "employeeDTO", target = "employeeDomain")
+
     EmployerManagerDomain map(EmployerManagerDTO employerManagerDTO);
 
     List<EmployerManagerDTO> mapToDTO(List<EmployerManagerDomain> employerManagerDomains);

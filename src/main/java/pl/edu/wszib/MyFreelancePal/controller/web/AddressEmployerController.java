@@ -36,8 +36,9 @@ public class AddressEmployerController {
 
 
     @GetMapping("/create")
-    public String create(Model model) {
+    public String create(Model model, @RequestParam Integer id) {
         model.addAttribute("newAddress", new AddressEmployerDTO());
+        model.addAttribute("idOfEmployer", id);
         return "addressEmployer/addressEmployerCreate";
     }
 
@@ -45,11 +46,11 @@ public class AddressEmployerController {
     public String createAction(AddressEmployerDTO addressEmployerDTO, Model model) {
         AddressEmployerDomain addressEmployerDomain = addressEmployerService.create(addressEmployerMapperDTO.map(addressEmployerDTO));
 
-        return "redirect:/";
+        return "redirect:/employer-manager/list";
     }
     @GetMapping("/update")
-    public String update(@RequestParam Integer id, Model model) {
-        model.addAttribute("updateAddressEmployer", addressEmployerMapperDTO.map(addressEmployerService.get(id)));
+    public String update(@RequestParam Integer idOfAddress, Model model) {
+        model.addAttribute("updateAddressEmployer", addressEmployerMapperDTO.map(addressEmployerService.get(idOfAddress)));
         return "addressEmployer/addressEmployerUpdate";
     }
 

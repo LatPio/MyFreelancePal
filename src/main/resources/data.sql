@@ -1,57 +1,34 @@
 -- Employee dataset
 
 insert into employee (id, bankiban, banknumber, name, nip, createdat, updatedat)
-values (100, 'PL AA BBBB CCCD 8888 7777 5555 3333', '90 8888 7777 5555 3333', 'Reafał', '123-456-7890', '2020-02-19 11:47:57.000000', '2021-06-19 14:47:57.000000');
-
-insert into employee (id, bankiban, banknumber, name, nip, createdat, updatedat)
-values (200, 'PL AA BBBB CCCD 1111 2222 3333 4444', '99 1111 2222 3333 4444', 'Piotrek', '344-443-3333', '2020-01-19 10:29:27.000000', '2021-06-19 14:47:57.000000');
+values
+    (100, 'PL AA BBBB CCCD 8888 7777 5555 3333', '90 8888 7777 5555 3333', 'Reafał', '123-456-7890', '2020-02-19 11:47:57.000000', '2021-06-19 14:47:57.000000'),
+    (200, 'PL AA BBBB CCCD 1111 2222 3333 4444', '99 1111 2222 3333 4444', 'Piotrek', '344-443-3333', '2020-01-19 10:29:27.000000', '2021-06-19 14:47:57.000000');
 
 
 -- Employer dataset
 
-insert into employer (id, createdat, email, name, nip, phone, updatedat)
-VALUES (100, '2021-01-25 04:30:17.000000', '123@aa.com', 'Google', '12-1111-1234','14-12301222', '2021-06-19 14:47:57.000000');
-
-insert into employer (id, createdat, email, name, nip, phone, updatedat)
-VALUES (200, '2021-03-19 19:40:40.000000', '345@bb.com', 'Franek Kolega', '12-2222-1234','12-12301222', '2021-06-19 14:47:57.000000');
-
-insert into employer (id, createdat, email, name, nip, phone, updatedat)
-VALUES (300, '2021-05-10 13:07:12.000000', '456@ccc.com', 'UJ', '12-4444-1234','19-12301222', '2021-06-19 14:47:57.000000');
-
-insert into employer (id, createdat, email, name, nip, phone, updatedat)
-VALUES (400, '2021-10-02 23:12:38.000000', '5678@dddd.com', 'Amazon', '12-8888-1234','12-12301222', '2021-06-19 14:47:57.000000');
+insert into employer (id, createdat, email, name, nip, phone, updatedat, active)
+VALUES
+    (100, '2021-01-25 04:30:17.000000', '123@aa.com', 'Google', '12-1111-1234','14-12301222', '2021-06-19 14:47:57.000000', true),
+    (200, '2021-03-19 19:40:40.000000', '345@bb.com', 'Franek Kolega', '12-2222-1234','12-12301222', '2021-06-19 14:47:57.000000', true),
+    (300, '2021-05-10 13:07:12.000000', '456@ccc.com', 'UJ', '12-4444-1234','19-12301222', '2021-06-19 14:47:57.000000', true),
+    (400, '2021-10-02 23:12:38.000000', '5678@dddd.com', 'Amazon', '12-8888-1234','12-12301222', '2021-06-19 14:47:57.000000', true);
 
 -- Projekty
 
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (100, 'red', '2021-05-10 13:07:12.000000', 'Projekt - JAVA test',  '2021-06-19 14:47:57.000000', 100);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (200, 'blue', '2021-05-10 13:07:12.000000', 'Projekt - Angular test',  '2021-06-19 14:47:57.000000', 100);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (300, 'green', '2021-05-10 13:07:12.000000', 'Projekt - Python test',  '2021-06-19 14:47:57.000000', 200);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (400, 'purple', '2021-05-10 13:07:12.000000', 'SQL dla JAVA-site',  '2021-06-19 14:47:57.000000', 300);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (500, 'grey', '2021-05-10 13:07:12.000000', 'SQL Python',  '2021-06-19 14:47:57.000000', 200);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (600, 'yellow', '2021-05-10 13:07:12.000000', 'SQL test',  '2021-06-19 14:47:57.000000', 100);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (700, 'red', '2021-05-10 13:07:12.000000', 'JAVA test',  '2021-06-19 14:47:57.000000', 300);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (800, 'red', '2021-05-10 13:07:12.000000', 'Python',  '2021-06-19 14:47:57.000000', 400);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (900, 'red', '2021-05-10 13:07:12.000000', 'Angular',  '2021-06-19 14:47:57.000000', 400);
-
-insert into project (id, color, createdat, name, updatedat, employer_id)
-VALUES (1000, 'red', '2021-05-10 13:07:12.000000', 'Site FullStack-AngularSpringBOOT',  '2021-06-19 14:47:57.000000', 300);
+insert into project (id, color, createdat, name, updatedat, employer_id, activeproject )
+VALUES
+    (100, 'red', '2021-05-10 13:07:12.000000', 'Projekt - JAVA test',  '2021-06-19 14:47:57.000000', 100, true),
+    (200, 'blue', '2021-05-10 13:07:12.000000', 'Projekt - Angular test',  '2021-06-19 14:47:57.000000', 100, true),
+    (300, 'green', '2021-05-10 13:07:12.000000', 'Projekt - Python test',  '2021-06-19 14:47:57.000000', 200, true),
+    (400, 'purple', '2021-05-10 13:07:12.000000', 'SQL dla JAVA-site',  '2021-06-19 14:47:57.000000', 300, true),
+    (500, 'grey', '2021-05-10 13:07:12.000000', 'SQL Python',  '2021-06-19 14:47:57.000000', 200, true),
+    (600, 'yellow', '2021-05-10 13:07:12.000000', 'SQL test',  '2021-06-19 14:47:57.000000', 100, false),
+    (700, 'red', '2021-05-10 13:07:12.000000', 'JAVA test',  '2021-06-19 14:47:57.000000', 300, false),
+    (800, 'red', '2021-05-10 13:07:12.000000', 'Python',  '2021-06-19 14:47:57.000000', 400, false),
+    (900, 'red', '2021-05-10 13:07:12.000000', 'Angular',  '2021-06-19 14:47:57.000000', 400, false),
+    (1000, 'red', '2021-05-10 13:07:12.000000', 'Site FullStack-AngularSpringBOOT',  '2021-06-19 14:47:57.000000', 300, false);
 
 --  tasks
 

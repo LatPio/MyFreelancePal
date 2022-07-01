@@ -28,7 +28,7 @@ import java.util.List;
 public class EmployerManagerController {
     @Autowired
     private EmployerManagerService employerManagerService;
- 
+
 
     private EmployerManagerMapperDTO employerManagerMapperDTO = Mappers.getMapper(EmployerManagerMapperDTO.class);
 
@@ -36,7 +36,7 @@ public class EmployerManagerController {
 
     @GetMapping
     public String defaultView() {
-        return "redirect:/employer/list";
+        return "redirect:/employer-manager/list";
     }
 
     @GetMapping("/list")
@@ -48,25 +48,27 @@ public class EmployerManagerController {
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("newEmployer", new EmployerManagerDTO());
+
         return "employerManager/employerManagerCreate";
     }
 
     @PostMapping("/create")
     public String createAction(EmployerManagerDTO employerManagerDTO, Model model){
         EmployerManagerDomain employerManagerDomain = employerManagerService.create(employerManagerMapperDTO.map(employerManagerDTO));
-        return "redirect:/employerManager";
+        return "redirect:/employer-manager";
     }
 
     @GetMapping("/update")
     public String update(@RequestParam Integer id, Model model){
-        model.addAttribute("updateEmployer", employerManagerMapperDTO.map(employerManagerService.get(id)));
+        model.addAttribute("updateManagerEmployer", employerManagerMapperDTO.map(employerManagerService.get(id)));
+
         return "employerManager/employerManagerUpdate";
     }
 
     @PostMapping("/update")
     public String updateAction(EmployerManagerDTO employerManagerDTO, Model model){
         EmployerManagerDomain employerManagerDomain = employerManagerService.update(employerManagerMapperDTO.map(employerManagerDTO));
-        return "redirect:/employerManager";
+        return "redirect:/employer-manager";
     }
 
     @GetMapping("/delete")

@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import pl.edu.wszib.MyFreelancePal.controller.dto.AddressEmployeeDTO;
-import pl.edu.wszib.MyFreelancePal.controller.dto.EmployeeDTO;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
-import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-30T22:27:19+0200",
+    date = "2022-07-01T19:26:51+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
@@ -31,7 +29,6 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
         addressEmployeeDTO.flatNumber( addressEmployeeDomain.getFlatNumber() );
         addressEmployeeDTO.city( addressEmployeeDomain.getCity() );
         addressEmployeeDTO.country( addressEmployeeDomain.getCountry() );
-        addressEmployeeDTO.employee( employeeDomainToEmployeeDTO( addressEmployeeDomain.getEmployee() ) );
 
         return addressEmployeeDTO.build();
     }
@@ -52,7 +49,6 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
         addressEmployeeDomain.flatNumber( addressEmployeeDTO.getFlatNumber() );
         addressEmployeeDomain.city( addressEmployeeDTO.getCity() );
         addressEmployeeDomain.country( addressEmployeeDTO.getCountry() );
-        addressEmployeeDomain.employee( employeeDTOToEmployeeDomain( addressEmployeeDTO.getEmployee() ) );
 
         return addressEmployeeDomain.build();
     }
@@ -69,33 +65,5 @@ public class AddressEmployeeMapperDTOImpl implements AddressEmployeeMapperDTO {
         }
 
         return list;
-    }
-
-    protected EmployeeDTO employeeDomainToEmployeeDTO(EmployeeDomain employeeDomain) {
-        if ( employeeDomain == null ) {
-            return null;
-        }
-
-        EmployeeDTO.EmployeeDTOBuilder employeeDTO = EmployeeDTO.builder();
-
-        employeeDTO.id( employeeDomain.getId() );
-        employeeDTO.name( employeeDomain.getName() );
-        employeeDTO.nip( employeeDomain.getNip() );
-
-        return employeeDTO.build();
-    }
-
-    protected EmployeeDomain employeeDTOToEmployeeDomain(EmployeeDTO employeeDTO) {
-        if ( employeeDTO == null ) {
-            return null;
-        }
-
-        EmployeeDomain.EmployeeDomainBuilder employeeDomain = EmployeeDomain.builder();
-
-        employeeDomain.id( employeeDTO.getId() );
-        employeeDomain.name( employeeDTO.getName() );
-        employeeDomain.nip( employeeDTO.getNip() );
-
-        return employeeDomain.build();
     }
 }

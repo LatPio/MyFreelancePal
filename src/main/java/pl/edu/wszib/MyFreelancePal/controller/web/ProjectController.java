@@ -50,7 +50,7 @@ public class ProjectController {
     @PostMapping("/create")
     public String createAction(ProjectDTO projectDTO, Model model, @RequestParam Integer id){
         ProjectDomain projectDomain  = projectService.create(projectMapperDTO.map(projectDTO));
-        return "redirect:/projects/list/?id=" + id;
+        return "redirect:/projects/list?id=" + id;
     }
 
     @GetMapping("/update")
