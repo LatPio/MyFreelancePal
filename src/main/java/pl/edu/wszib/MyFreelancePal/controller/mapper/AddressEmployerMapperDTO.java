@@ -11,9 +11,9 @@ import java.util.List;
 public interface AddressEmployerMapperDTO {
 
 
-//    @Mapping(source = "employerDomain", target = "employerDTO")
+    @Mapping(source = "employerDomain", target = "employerDTO")
     AddressEmployerDTO map(AddressEmployerDomain addressEmployerDomain);
-//    @Mapping(source = "employerDTO", target = "employerDomain")
+    @Mapping(source = "employerDTO", target = "employerDomain")
     AddressEmployerDomain map(AddressEmployerDTO addressEmployerDTO);
     List<AddressEmployerDTO> mapToDTO(List<AddressEmployerDomain> addressEmployerDomains);
 }

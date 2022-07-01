@@ -21,6 +21,6 @@ public class EmployerDTO {
     private String name;
     private String nip;
     private List<EmployeeDTO> employeeDTO;
-    private List<AddressEmployerDTO> address;
+//    private List<AddressEmployerDTO> address;
 //    private List<ProjectDTO> projects;
 }

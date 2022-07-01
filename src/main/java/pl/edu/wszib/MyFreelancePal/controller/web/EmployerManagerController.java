@@ -79,6 +79,6 @@ public class EmployerManagerController {
     @PostMapping("/delete")
     public String deleteAction(EmployerManagerDTO employerManagerDTO, Model model){
         employerManagerService.delete(employerManagerDTO.getId());
-        return "redirect:/employerManager";
+        return "redirect:/employer-manager";
     }
 }

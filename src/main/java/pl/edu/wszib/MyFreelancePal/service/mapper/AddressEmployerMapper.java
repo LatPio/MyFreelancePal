@@ -11,10 +11,10 @@ import java.util.List;
 public interface AddressEmployerMapper {
 
 
-//    @Mapping(source = "employer", target = "employerDomain")
+    @Mapping(source = "employer", target = "employerDomain")
     AddressEmployerDomain map(Address address);
 
-//    @Mapping(source = "employerDomain", target = "employer")
+    @Mapping(source = "employerDomain", target = "employer")
     Address map(AddressEmployerDomain addressEmployerDomain);
 
     List<AddressEmployerDomain> mapToDomain(List<Address> addresses);
