@@ -49,8 +49,9 @@ public class AddressEmployerController {
         return "redirect:/employer-manager/list";
     }
     @GetMapping("/update")
-    public String update(@RequestParam Integer idOfAddress, Model model) {
-        model.addAttribute("updateAddressEmployer", addressEmployerMapperDTO.map(addressEmployerService.get(idOfAddress)));
+    public String update(@RequestParam Integer id, Model model) {
+        model.addAttribute("updateAddressEmployer", addressEmployerMapperDTO.map(addressEmployerService.get(id)));
+
         return "addressEmployer/addressEmployerUpdate";
     }
 
@@ -58,7 +59,7 @@ public class AddressEmployerController {
     public String updateAction(AddressEmployerDTO addressEmployerDTO, Model model) {
         AddressEmployerDomain addressEmployerDomain = addressEmployerService.update(addressEmployerMapperDTO.map(addressEmployerDTO));
 
-        return "redirect:/";
+        return "redirect:/employer-manager";
     }
     @GetMapping("/delete")
     public String delete(@RequestParam Integer id, Model model) {

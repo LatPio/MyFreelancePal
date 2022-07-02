@@ -45,6 +45,12 @@ public class EmployerManagerController {
         model.addAttribute("employers", allEmployers);
         return "employerManager/employerManagerList";
     }
+    @GetMapping("/get")
+    public String get(Model model, @RequestParam Integer id){
+        model.addAttribute("EmployerManagerGet", employerManagerMapperDTO.map(employerManagerService.get(id)));
+        return "employerManager/employerManagerGet";
+    }
+
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("newEmployer", new EmployerManagerDTO());
