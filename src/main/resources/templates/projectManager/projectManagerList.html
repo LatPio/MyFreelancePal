@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
+<head>
+</head>
+<body>
+
+<div class="container1">
+
+   <div class="card my-2" >
+      <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
+         <h5 th:text="${EmployerManagerGet.name}" ></h5>
+         <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+               <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/employer-manager/update(id=*{EmployerManagerGet.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
+               <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/create(id=*{EmployerManagerGet.id})}"><i class="fa-solid fa-square-plus"></i>Add Project</a>
+            </div>
+            <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/employer-manager/delete(id=${EmployerManagerGet.id})}">
+                        <span style="color: red" >
+                            <i class="fa-solid fa-trash-can"></i>
+                        </span>
+               Delete
+            </a>
+         </div>
+      </div>
+
+
+
+      <div class="card my-2 mx-2" th:each="projectfromlist : ${ProjectsList}">
+         <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
+            <h5 th:text="*{projectfromlist.name}" ></h5>
+            <div class="btn-toolbar mb-2 mb-md-0">
+               <div class="btn-group me-2">
+                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/update(id=*{projectfromlist.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
+                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/task-manager/create(id=*{projectfromlist.id})}"><i class="fa-solid fa-square-plus"></i>Add Task</a>
+               </div>
+               <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/delete(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}">
+                        <span style="color: red" >
+                            <i class="fa-solid fa-trash-can"></i>
+                        </span>
+                  Delete
+               </a>
+            </div>
+         </div>
+
+         <div class="card-body">
+            <div class="row">
+               <div class="col">
+
+                  <div th:text="|Description: *{projectfromlist.description}|"></div>
+                  <div th:text="|Color: *{projectfromlist.color}|"></div>
+                  <div th:text="|Active? *{projectfromlist.activeProject}|"></div>
+                  <div th:text="|Hour Price: *{projectfromlist.hourPrice}|"></div>
+               </div>
+               <div class="col">
+                  <div >
+
+                     <div th:each="tasksfromlist : ${projectfromlist.tasks}">
+                        <div>
+                           <a type="button" th:href="@{/task-manager/update(id=*{tasksfromlist.id},idOfProject=*{projectfromlist.id})}">
+                              <span><i class="fa-solid fa-file-pen"></i></span>
+                           </a>
+                           <a type="button" th:href="@{/task-manager/delete(id=*{tasksfromlist.id},idOfProject=*{projectfromlist.id})}">
+                              <span style="color: red" >
+                            <i class="fa-solid fa-trash-can"></i>
+                              </span>
+                           </a>
+                           <div th:text="|*{tasksfromlist.name}, START: *{#temporals.format(tasksfromlist.dateEnd, 'dd-MM-yyyy    HH:mm:ss')}, END: *{#temporals.format(tasksfromlist.dateEnd, 'dd-MM-yyyy    HH:mm:ss')}. |"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="card-footer text-muted">
+
+         </div>
+      </div>
+   </div>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

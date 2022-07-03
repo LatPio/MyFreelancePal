@@ -14,7 +14,7 @@
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
                         <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/employer-manager/update(id=*{employer.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
-                        <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/employer-manager/get(id=*{employer.id})}"><i class="fa-solid fa-circle-info"></i>Detailed Information</a>
+                        <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/list(id=*{employer.id})}"><i class="fa-solid fa-circle-info"></i>Detailed Information</a>
                     </div>
                     <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/employer-manager/delete(id=${employer.id})}">
                         <span style="color: red" >

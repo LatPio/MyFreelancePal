@@ -14,9 +14,11 @@ import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerManagerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.AddressEmployerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.EmployerManagerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.EmployerMapperDTO;
+import pl.edu.wszib.MyFreelancePal.controller.mapper.ProjectManagerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.AddressEmployerService;
 import pl.edu.wszib.MyFreelancePal.service.EmployerManagerService;
 import pl.edu.wszib.MyFreelancePal.service.EmployerService;
+import pl.edu.wszib.MyFreelancePal.service.ProjectManagerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerManagerDomain;
 
@@ -33,7 +35,6 @@ public class EmployerManagerController {
     private EmployerManagerMapperDTO employerManagerMapperDTO = Mappers.getMapper(EmployerManagerMapperDTO.class);
 
 
-
     @GetMapping
     public String defaultView() {
         return "redirect:/employer-manager/list";
@@ -44,11 +45,6 @@ public class EmployerManagerController {
         List<EmployerManagerDTO> allEmployers = employerManagerMapperDTO.mapToDTO(employerManagerService.list());
         model.addAttribute("employers", allEmployers);
         return "employerManager/employerManagerList";
-    }
-    @GetMapping("/get")
-    public String get(Model model, @RequestParam Integer id){
-        model.addAttribute("EmployerManagerGet", employerManagerMapperDTO.map(employerManagerService.get(id)));
-        return "employerManager/employerManagerGet";
     }
 
     @GetMapping("/create")
