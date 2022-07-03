@@ -8,18 +8,18 @@
 
     <div class="container">
 
-        <h2>Project:</h2>
+        <h2>Task:</h2>
         <form th:method="POST" th:action="@{/tasks/create(id=${idToPas})}" th:object="${newTask}">
             <div class="form-group">
                 <label for="name">Nazwa</label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label th:for="projectDTO.id">ProjectDTO ID</label>
                 <input class="form-control" type="number"
                        th:id="projectDTO.id"
                        th:name="projectDTO.id"
-                       th:value="${idToPas.intValue()}" hidden>
+                       th:value="${idToPas.intValue()}" >
             </div>
 
             <div class="form-group">

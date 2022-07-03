@@ -8,7 +8,7 @@
 
     <div class="container">
 
-        <h2>Project:</h2>
+        <h2>Task:</h2>
         <form th:method="POST" th:action="@{/tasks/update(id=${updateTask.id})}" th:object="${updateTask}">
             <div class="form-group">
                 <label for="id">Id</label>
@@ -26,9 +26,9 @@
                 <label for="dateEnd">dateEnd</label>
                 <input id="dateEnd" class="form-control" type="datetime-local" th:field="*{dateEnd}">
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label for="projectDTO.id">projectDTO_id</label>
-                <input id="projectDTO.id" class="form-control" type="number" th:field="*{projectDTO.id}" hidden>
+                <input id="projectDTO.id" class="form-control" type="number" th:field="*{projectDTO.id}" >
             </div>
 
             <div class="form-group">

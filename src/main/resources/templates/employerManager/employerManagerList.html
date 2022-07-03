@@ -27,7 +27,7 @@
 
             <div class="card-body" >
                 <div class="row">
-                    <div class="col">
+                    <div class="col border-end">
                         <h7 class="card-title" > Address: </h7>
                         <a th:href="@{/addressEr/create(id=*{employer.id})}">
                             <i class="fa-solid fa-square-plus"></i>
@@ -50,15 +50,59 @@
                                  </div>
                             </p>
                     </div>
-                    <div class="col">Pozostałe dane i ustawienia dodać, dodać rozszrzony widok z projektami i taskmai generator faktur, spróbować dodać zakres datowy do dodawania tasków</div>
-                    <div class="col">Statystyki : ilość tasków, średniczas na taski, ilośc nie wykonanych taksóe(rozpoczetych), kwota za robotę, ilosc wystawioncyh faktur  </div>
+                        <div class="col">
+                            <div class="py-1">
+                                <span class="fw-bold pt-2" th:text="|NIP: |"></span><span th:text="*{employer.nip}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pt-2" th:text="|E-mail: |"></span><span th:text="*{employer.email}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pt-2" th:text="|Description: |"></span><span th:text="*{employer.description}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pt-2" th:text="|Notes: |"></span><span th:text="*{employer.notes}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pt-2" th:text="|Badge Color: |"></span><span th:text="*{employer.badgeColor}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pt-2" th:text="|Work in progres: |"></span><span th:text="*{employer.active}"></span>
+                            </div>
+
+
+                        </div>
+                    <div class="col">
+                        <div class="col">
+                            <div class="py-1">
+                                <span class="fw-bold pe-2" th:text="|All Task count: |"></span><span th:text="*{employer.nip}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pe-2" th:text="|Average Time Per Task: |"></span><span th:text="*{employer.email}"></span>
+                            </div >
+                            <div class="py-1">
+                                <span class="fw-bold pe-2" th:text="|Tasks in progres: |"></span><span th:text="*{employer.description}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pe-2" th:text="|Project count: |"></span><span th:text="*{employer.notes}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pe-2" th:text="|Invoices: |"></span><span th:text="*{employer.badgeColor}"></span>
+                            </div>
+                            <div class="py-1">
+                                <span class="fw-bold pe-2" th:text="|Compensation with all Projects: |"></span><span th:text="*{employer.active}"></span>
+                            </div>
+
+
+                        </div>
+
                 </div>
             </div>
         </div>
     </div>
 
 </div>
-
+</div>
 
 </body>
 </html>

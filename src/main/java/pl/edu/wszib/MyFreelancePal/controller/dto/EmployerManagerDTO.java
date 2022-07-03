@@ -21,9 +21,10 @@ public class EmployerManagerDTO {
     private String notes;
     private String phone;
     private String email;
+    private String badgeColor;
     private String nip;
     private Boolean active;
-    private List<EmployeeDTO> employee;
+//    private List<EmployeeDTO> employee;
     private List<AddressEmployerDTO> address;
-//    private List<ProjectDTO> projects;
+    private List<ProjectDTO> projects;
 }

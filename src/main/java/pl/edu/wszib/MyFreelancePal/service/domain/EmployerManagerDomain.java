@@ -18,11 +18,12 @@ public class EmployerManagerDomain {
     private String description;
     private String notes;
     private String phone;
+    private String badgeColor;
     private String email;
     private String nip;
     private Boolean active;
-    private List<EmployeeDomain> employee;
+//    private List<EmployeeDomain> employee;
     private List<AddressEmployerDomain> address;
-//    private List<ProjectDomain> projects;
+    private List<ProjectDomain> projects;
 
 }
