@@ -9,7 +9,7 @@
     <body>
     <div class="container">
         <h2>Produkt:</h2>
-        <form th:method="POST" th:action="@{/project-manager/delete(id2=${idOfEmployer})}" th:object="${deleteProject}">
+        <form th:method="POST" th:action="@{/project-manager/delete(idOfEmployer=${idOfEmployer})}" th:object="${deleteProject}">
             <div>
                 Czy jesteś chcesz usunąć Projekt ?
             </div>

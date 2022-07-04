@@ -10,9 +10,9 @@ import pl.edu.wszib.MyFreelancePal.controller.dto.TaskDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.TaskMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.TaskService;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
+import pl.edu.wszib.MyFreelancePal.util.Utilities;
 
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Controller
@@ -21,7 +21,8 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
-
+    @Autowired
+    private Utilities utils;
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
 
     @GetMapping
@@ -34,6 +35,8 @@ public class TaskController {
     public String listView(Model model) {
         List<TaskDTO> allTasks = taskMapperDTO.mapToDTO(taskService.list());
         model.addAttribute("tasks", allTasks);
+
+
         return "task/taskList";
     }
 
@@ -67,10 +70,15 @@ public class TaskController {
 
     @PostMapping("/update")
     public String updateAction(TaskDTO taskDTO, Model model) {
+
+        taskDTO.setTimeOfWorkInMin(utils.workTimeInMinutes(taskDTO.getDateStart(), taskDTO.getDateEnd()));
+
         TaskDomain taskDomain = taskService.update(taskMapperDTO.map(taskDTO));
         TaskDomain idToPass = taskService.get(taskDTO.getId());
         return "redirect:/tasks/list2/?id=" + idToPass.getProjectDomain().getId();
     }
+
+
 
     @GetMapping("/delete")
     public String delete(@RequestParam Integer id, Model model) {
@@ -84,5 +92,14 @@ public class TaskController {
         taskService.delete(taskDTO.getId());
             return "redirect:/tasks/list2/?id=" + idToPass.getProjectDomain().getId();
     }
-
+//    private Long workTimeInMinutes(LocalDateTime startTime, LocalDateTime endTime) throws NullPointerException{
+//
+//        LocalDateTime firstDate= startTime;
+//        LocalDateTime secondDate = endTime;
+//        Duration diffTimeMilliseconds = Duration.between(firstDate, secondDate);
+//
+//        Long time = Math.abs(diffTimeMilliseconds.toMinutes());
+//
+//        return time;
+//    }
 }

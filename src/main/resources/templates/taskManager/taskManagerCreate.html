@@ -9,7 +9,7 @@
     <div class="container">
 
         <h2>Task:</h2>
-        <form th:method="POST" th:action="@{/task-manager/create(id=${idToPas})}" th:object="${newTask}">
+        <form th:method="POST" th:action="@{/task-manager/create(idOfEmployer=${idOfEmployer})}" th:object="${newTask}">
             <div class="form-group">
                 <label for="name">Nazwa</label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">

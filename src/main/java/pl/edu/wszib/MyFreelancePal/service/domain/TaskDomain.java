@@ -18,7 +18,7 @@ public class TaskDomain {
 
     private Integer id;
     private String name;
-//    private Duration time;
+    private Long timeOfWorkInMin;
     private LocalDateTime dateStart;
     private LocalDateTime dateEnd;
     private ProjectDomain projectDomain;

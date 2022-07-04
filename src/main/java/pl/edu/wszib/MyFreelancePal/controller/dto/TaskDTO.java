@@ -23,6 +23,7 @@ public class TaskDTO {
     private LocalDateTime dateStart;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateEnd;
+    private Long timeOfWorkInMin;;
     private ProjectDTO projectDTO;
 
 

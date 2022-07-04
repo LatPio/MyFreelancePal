@@ -29,11 +29,9 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-//    @DateTimeFormat(pattern = "HH:mm:ss dd-MM-yyyy")
     private LocalDateTime dateStart;
-//    @DateTimeFormat(pattern = "HH:mm:ss dd-MM-yyyy")
     private LocalDateTime dateEnd;
-    private Duration time;
+    private Long timeOfWorkInMin;
     private Boolean invoiceCreated;
     private Instant timeOfInvoiceCreation;
 

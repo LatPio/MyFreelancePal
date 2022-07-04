@@ -42,23 +42,24 @@ public class TaskManagerController {
 //    }
 
     @GetMapping("/create")
-    public String create(Model model, @RequestParam Integer id) {
+    public String create(Model model, @RequestParam Integer id, @RequestParam Integer idOfEmployer) {
         model.addAttribute("newTask", new TaskDTO());
         model.addAttribute("idToPas", id);
+        model.addAttribute("idOfEmployer", idOfEmployer);
         return "taskManager/taskManagerCreate";
     }
 
     @PostMapping("/create")
-    public String createAction(TaskDTO taskDTO, Model model, @RequestParam Integer id) {
+    public String createAction(TaskDTO taskDTO, Model model, @RequestParam Integer idOfEmployer) {
         TaskDomain taskDomain = taskService.create(taskMapperDTO.map(taskDTO));
 
-        return "redirect:/project-manager/list?id=" + id;
+        return "redirect:/project-manager/list?id=" + idOfEmployer;
     }
 
     @GetMapping("/update")
-    public String update(@RequestParam Integer id, Model model, @RequestParam Integer idOfProject) {
+    public String update(@RequestParam Integer id, Model model, @RequestParam Integer idOfEmployer) {
         model.addAttribute("updateTask", taskMapperDTO.map(taskService.get(id)));
-        model.addAttribute("idOfProject", idOfProject);
+        model.addAttribute("idOfEmployer", idOfEmployer);
         return "taskManager/taskManagerUpdate";
     }
 
@@ -69,17 +70,17 @@ public class TaskManagerController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam Integer id, Model model, @RequestParam Integer idOfProject) {
+    public String delete(@RequestParam Integer id, Model model, @RequestParam Integer idOfEmployer) {
         model.addAttribute("deleteTask", taskService.get(id));
-        model.addAttribute("idOfProject", idOfProject);
+        model.addAttribute("idOfEmployer", idOfEmployer);
         return "taskManager/taskManagerDelete";
     }
 
     @PostMapping("/delete")
-    public String deleteAction(TaskDTO taskDTO, Model model, @RequestParam Integer idOfProject) {
+    public String deleteAction(TaskDTO taskDTO, Model model, @RequestParam Integer idOfEmployer) {
 
         taskService.delete(taskDTO.getId());
-        return "redirect:/project-manager/list?id=" + idOfProject;
+        return "redirect:/project-manager/list?id=" + idOfEmployer;
     }
 
 }

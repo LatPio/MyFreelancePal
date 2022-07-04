@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-03T17:22:26+0200",
+    date = "2022-07-04T11:04:39+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class TaskMapperImpl implements TaskMapper {
@@ -26,6 +26,7 @@ public class TaskMapperImpl implements TaskMapper {
         taskDomain.projectDomain( projectToProjectDomain( task.getProject() ) );
         taskDomain.id( task.getId() );
         taskDomain.name( task.getName() );
+        taskDomain.timeOfWorkInMin( task.getTimeOfWorkInMin() );
         taskDomain.dateStart( task.getDateStart() );
         taskDomain.dateEnd( task.getDateEnd() );
 
@@ -45,6 +46,7 @@ public class TaskMapperImpl implements TaskMapper {
         task.name( taskDomain.getName() );
         task.dateStart( taskDomain.getDateStart() );
         task.dateEnd( taskDomain.getDateEnd() );
+        task.timeOfWorkInMin( taskDomain.getTimeOfWorkInMin() );
 
         return task.build();
     }

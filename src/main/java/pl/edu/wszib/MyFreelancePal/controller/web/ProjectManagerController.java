@@ -34,7 +34,6 @@ public class ProjectManagerController {
     @GetMapping("/list")
     public String get(Model model, @RequestParam Integer id){
         model.addAttribute("EmployerManagerGet", employerManagerMapperDTO.map(employerManagerService.get(id)));
-
         model.addAttribute("ProjectsList", projectManagerMapperDTO.mapToDTO(projectManagerService.list2(id)));
         return "projectManager/projectManagerList";
     }
@@ -53,16 +52,16 @@ public class ProjectManagerController {
     }
 
     @GetMapping("/update")
-    public String update(@RequestParam Integer id, Model model){
-        model.addAttribute("idOfEmployer", id);
+    public String update(@RequestParam Integer id, Model model, @RequestParam Integer idOfEmployer){
+        model.addAttribute("idOfEmployer", idOfEmployer);
         model.addAttribute("updateManagerProject", projectManagerMapperDTO.map(projectManagerService.get(id)));
         return "projectManager/projectManagerUpdate";
     }
 
     @PostMapping("/update")
-    public String updateAction(ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer id){
+    public String updateAction(ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer idOfEmployer){
         ProjectManagerDomain projectManagerDomain = projectManagerService.update(projectManagerMapperDTO.map(projectManagerDTO));
-        return "redirect:/project-manager/list?id=" + id;
+        return "redirect:/project-manager/list?id=" + idOfEmployer;
     }
 
     @GetMapping("/delete")
@@ -73,10 +72,10 @@ public class ProjectManagerController {
     }
 
     @PostMapping("/delete")
-    public String deleteAction (ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer id2){
+    public String deleteAction (ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer idOfEmployer){
 
         projectManagerService.delete(projectManagerDTO.getId());
-        return "redirect:/project-manager/list?id=" + id2;
+        return "redirect:/project-manager/list?id=" + idOfEmployer;
     }
 
 

@@ -30,8 +30,8 @@
             <h5 th:text="*{projectfromlist.name}" ></h5>
             <div class="btn-toolbar mb-2 mb-md-0">
                <div class="btn-group me-2">
-                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/update(id=*{projectfromlist.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
-                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/task-manager/create(id=*{projectfromlist.id})}"><i class="fa-solid fa-square-plus"></i>Add Task</a>
+                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/update(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
+                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/task-manager/create(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}"><i class="fa-solid fa-square-plus"></i>Add Task</a>
                </div>
                <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/delete(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}">
                         <span style="color: red" >
@@ -56,10 +56,10 @@
 
                      <div th:each="tasksfromlist : ${projectfromlist.tasks}">
                         <div>
-                           <a type="button" th:href="@{/task-manager/update(id=*{tasksfromlist.id},idOfProject=*{projectfromlist.id})}">
+                           <a type="button" th:href="@{/task-manager/update(id=*{tasksfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}">
                               <span><i class="fa-solid fa-file-pen"></i></span>
                            </a>
-                           <a type="button" th:href="@{/task-manager/delete(id=*{tasksfromlist.id},idOfProject=*{projectfromlist.id})}">
+                           <a type="button" th:href="@{/task-manager/delete(id=*{tasksfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}">
                               <span style="color: red" >
                             <i class="fa-solid fa-trash-can"></i>
                               </span>

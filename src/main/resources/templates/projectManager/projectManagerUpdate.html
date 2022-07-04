@@ -9,7 +9,11 @@
     <div class="container">
 
         <h2>Employer:</h2>
-        <form th:method="POST" th:action="@{/project-manager/update(id=${idOfEmployer.intValue()})}" th:object="${updateManagerProject}">
+        <form th:method="POST" th:action="@{/project-manager/update(idOfEmployer=${idOfEmployer})}" th:object="${updateManagerProject}">
+            <div class="form-group" hidden>
+                <label for="id">Name:</label>
+                <input id="id" class="form-control" type="text" th:field="*{id}">
+            </div>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
@@ -26,7 +30,7 @@
                 <label for="hourPrice">hourPrice:</label>
                 <input id="hourPrice" class="form-control" type="number" th:field="*{hourPrice}">
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label for="employer.id">employer.id:</label>
                 <input id="employer.id" class="form-control" type="number" th:field="*{employer.id}">
             </div>
