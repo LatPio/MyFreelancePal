@@ -7,10 +7,8 @@ import org.springframework.stereotype.Service;
 import pl.edu.wszib.MyFreelancePal.model.Project;
 import pl.edu.wszib.MyFreelancePal.repository.ProjectRepository;
 import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
-import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectManagerDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.ProjectManagerMapper;
-import pl.edu.wszib.MyFreelancePal.service.mapper.ProjectMapper;
 
 import java.util.List;
 
@@ -28,7 +26,7 @@ public class ProjectManagerService implements CrudService<ProjectManagerDomain, 
     }
 
     public List<ProjectManagerDomain> list2(Integer id){ return mapper.mapToDomain(projectRepository.findByEmployer_Id(id));}
-
+    public List<ProjectManagerDomain> listActiveProject(boolean b){ return mapper.mapToDomain(projectRepository.findByActiveProject(b));}
     @Override
     public ProjectManagerDomain get(Integer integer) {
         return projectRepository.findById(integer)

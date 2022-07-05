@@ -11,5 +11,6 @@ import java.util.List;
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
     List<Project> findByEmployer_Id(Integer id);
+    List<Project> findByActiveProject(boolean b);
 
 }

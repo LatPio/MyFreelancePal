@@ -13,6 +13,10 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
 
 }
 
@@ -34,6 +38,8 @@ dependencies {
 
 	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.1.Final'
 	annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.5.1.Final'
+//	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.7.0'
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 
 }
@@ -41,6 +47,15 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task reload(type: Copy) {
+	from 'src/main/resources'
+	into 'build/resources/main'
+	include 'static/**'
+	include 'templates/**'
+	include 'custom/**'
+}
+
 
 
 
