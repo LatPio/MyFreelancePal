@@ -52,8 +52,9 @@
 
                     </div>
                     </div>
+<!--                    <div class="col" th:each="tasks : ${activeProject.tasks}">-->
 
-                    <div class="col" th:each="tasks : ${activeProject.tasks}">
+                    <div class="col" th:each="tasks : ${#lists.sort(activeProject.tasks, byIdSort)}">
                         <div class="card px-2 shadow-lg" style="height: 12rem; width: 12rem;">
                             <img th:src="@{/image/done.png}" class="card-img " style="opacity: 0"
                             th:style="${tasks.doneTask} ? 'opacity: 0.4' : 'opacity: 0'">

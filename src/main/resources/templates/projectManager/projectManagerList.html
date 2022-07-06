@@ -64,7 +64,7 @@
                             <i class="fa-solid fa-trash-can"></i>
                               </span>
                            </a>
-                           <div th:text="|*{tasksfromlist.name}, START: *{#temporals.format(tasksfromlist.dateEnd, 'dd-MM-yyyy    HH:mm:ss')}, END: *{#temporals.format(tasksfromlist.dateEnd, 'dd-MM-yyyy    HH:mm:ss')}. |"></div>
+                           <div>Task: [[*{tasksfromlist.name}]], <b>Start:</b> [[*{tasksfromlist.dateStart} ? ${#temporals.format(tasksfromlist.dateStart, 'dd MMM yyyy HH:mm')}  : '-- --- ---- --:--' ]], <b>End:</b> [[*{tasksfromlist.dateEnd} ? ${#temporals.format(tasksfromlist.dateEnd, 'dd MMM yyyy HH:mm')}  : '-- --- ---- --:--' ]] </div>
                         </div>
                      </div>
                   </div>

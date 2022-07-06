@@ -17,7 +17,10 @@ import pl.edu.wszib.MyFreelancePal.service.TaskService;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 import pl.edu.wszib.MyFreelancePal.util.Utilities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Comparator;
 
 @Controller
 @RequestMapping("/active-task")
@@ -40,6 +43,7 @@ public class ActiveTaskController {
     public String get(Model model){
         model.addAttribute("ProjectsList", projectManagerMapperDTO.mapToDTO(projectManagerService.listActiveProject(true)));
         model.addAttribute("newTask", new TaskDTO());
+        model.addAttribute("byIdSort", Comparator.comparing(TaskDTO::getId).reversed());
         return "activeTasks/activeTaskList";
     }
 
@@ -56,8 +60,9 @@ public class ActiveTaskController {
     @GetMapping("/updateStartDate")
     public String updateStartAction(@RequestParam Integer id){
         TaskDTO task = taskMapperDTO.map(taskService.get(id));
-        task.setDateStart(LocalDateTime.now());
+        task.setDateStart(LocalDateTime.of(LocalDate.now(), LocalTime.now()));
         TaskDomain taskDomain = taskService.update(taskMapperDTO.map(task));
+
         return "redirect:/active-task";
     }
 
