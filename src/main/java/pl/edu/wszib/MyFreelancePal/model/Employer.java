@@ -37,7 +37,7 @@ public class Employer {
     @Column(nullable = true)
     private String badgeColor;
     @Column(nullable = true)
-    private Boolean active;
+    private Boolean active = true;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> address;

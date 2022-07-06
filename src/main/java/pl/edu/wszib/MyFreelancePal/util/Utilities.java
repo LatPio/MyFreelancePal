@@ -13,7 +13,7 @@ public class Utilities {
     public Long workTimeInMinutes(LocalDateTime startTime, LocalDateTime endTime) throws NullPointerException{
 
 
-        Long time = null;
+        Long time = Long.valueOf(0);
         if (startTime != null & endTime != null) {
             Duration diffTimeMilliseconds = Duration.between(startTime, endTime);
             time = Math.abs(diffTimeMilliseconds.toMinutes());

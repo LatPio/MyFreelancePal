@@ -22,5 +22,7 @@ public class TaskDomain {
     private LocalDateTime dateStart;
     private LocalDateTime dateEnd;
     private ProjectDomain projectDomain;
+    private Boolean doneTask;
+    private Boolean invoiceCreated;
 
     }

@@ -2,6 +2,7 @@ package pl.edu.wszib.MyFreelancePal.model;
 
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,6 +35,8 @@ public class Task {
     private Long timeOfWorkInMin;
     private Boolean invoiceCreated;
     private Instant timeOfInvoiceCreation;
+    @ColumnDefault(value = "false")
+    private Boolean doneTask;
 
     @CreationTimestamp
     @Column(updatable = false)

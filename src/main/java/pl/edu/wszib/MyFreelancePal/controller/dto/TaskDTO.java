@@ -23,8 +23,10 @@ public class TaskDTO {
     private LocalDateTime dateStart;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateEnd;
-    private Long timeOfWorkInMin;;
+    private Boolean invoiceCreated = false;
+    private Long timeOfWorkInMin = Long.valueOf(0);;
     private ProjectDTO projectDTO;
+    private Boolean doneTask = false;
 
 
 }

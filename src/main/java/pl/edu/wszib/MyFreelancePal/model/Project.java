@@ -29,9 +29,9 @@ public class    Project {
     private String color;
     private String description;
     @Column(nullable = true)
-    private Boolean activeProject;
+    private Boolean activeProject = true;
     @Column(nullable = true)
-    private BigDecimal hourPrice;
+    private BigDecimal hourPrice = BigDecimal.valueOf(0);
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;
