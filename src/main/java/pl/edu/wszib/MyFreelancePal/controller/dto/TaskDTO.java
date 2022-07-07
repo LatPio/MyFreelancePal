@@ -19,9 +19,9 @@ public class TaskDTO {
 
     private Integer id;
     private String name;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateStart;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateEnd;
     private Boolean invoiceCreated = false;
     private Long timeOfWorkInMin = Long.valueOf(0);;
