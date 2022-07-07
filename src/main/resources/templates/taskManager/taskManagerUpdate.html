@@ -9,7 +9,7 @@
     <div class="container">
 
         <h2>Task:</h2>
-        <form th:method="POST" th:action="@{/task-manager/update(id=${idOfEmployer})}" th:object="${updateTask}">
+        <form th:method="POST" th:action="@{/task-manager/update(id=${updateTask.id},idOfEmployer=${idOfEmployer})}" th:object="${updateTask}">
             <div class="form-group">
                 <label for="id">Id</label>
                 <input id="id" class="form-control" type="text" th:field="*{id}" disabled>

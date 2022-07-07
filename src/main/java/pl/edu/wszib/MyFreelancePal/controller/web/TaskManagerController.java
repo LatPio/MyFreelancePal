@@ -10,6 +10,7 @@ import pl.edu.wszib.MyFreelancePal.controller.dto.TaskDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.TaskMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.TaskService;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
+import pl.edu.wszib.MyFreelancePal.util.Utilities;
 
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -21,7 +22,8 @@ public class TaskManagerController {
 
     @Autowired
     private TaskService taskService;
-
+    @Autowired
+    private Utilities utils;
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
 
 
@@ -64,9 +66,11 @@ public class TaskManagerController {
     }
 
     @PostMapping("/update")
-    public String updateAction(TaskDTO taskDTO, Model model, @RequestParam Integer id) {
+    public String updateAction(TaskDTO taskDTO, Model model, @RequestParam Integer idOfEmployer) {
+        taskDTO.setTimeOfWorkInMin(utils.workTimeInMinutes(taskDTO.getDateStart(), taskDTO.getDateEnd()));
+
         TaskDomain taskDomain = taskService.update(taskMapperDTO.map(taskDTO));
-        return "redirect:/project-manager/list?id=" + id;
+        return "redirect:/project-manager/list?id=" + idOfEmployer;
     }
 
     @GetMapping("/delete")
