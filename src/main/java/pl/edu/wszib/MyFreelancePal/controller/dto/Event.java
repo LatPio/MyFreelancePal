@@ -1,4 +1,4 @@
-package pl.edu.wszib.MyFreelancePal.model;
+package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +14,8 @@ public class Event {
     private LocalDateTime start;
 
     private LocalDateTime end;
+
+    private String color;
 
 
 }

@@ -16,6 +16,8 @@ public class ProjectDomain {
     private Integer id;
     private String name;
     private EmployerDomain employerDomain;
+    private String color;
+
 
 
 
