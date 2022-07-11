@@ -12,4 +12,6 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
     List<Task> findByProject_Id(Integer id);
+
+    Integer countAllByDoneTask(boolean b);
 }

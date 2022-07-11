@@ -27,6 +27,9 @@ public class ProjectManagerService implements CrudService<ProjectManagerDomain, 
 
     public List<ProjectManagerDomain> list2(Integer id){ return mapper.mapToDomain(projectRepository.findByEmployer_Id(id));}
     public List<ProjectManagerDomain> listActiveProject(boolean b){ return mapper.mapToDomain(projectRepository.findByActiveProject(b));}
+
+    public Integer countActiveProject(boolean b){ return projectRepository.countAllByActiveProject(b);}
+    public Long countProject(){ return projectRepository.count();}
     @Override
     public ProjectManagerDomain get(Integer integer) {
         return projectRepository.findById(integer)

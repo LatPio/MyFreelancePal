@@ -27,6 +27,9 @@ public class TaskService implements CrudService<TaskDomain, Integer> {
     public List<TaskDomain> list2(Integer id){
         return mapper.mapToDomain(taskRepository.findByProject_Id(id));
     }
+    public Integer countPendingTasks(boolean b){return taskRepository.countAllByDoneTask(b);}
+
+    public Long countTask(){ return taskRepository.count();}
 
     @Override
     public TaskDomain get(Integer integer) {
