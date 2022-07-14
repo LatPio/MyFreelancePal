@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Builder
+@ToString
 public class AddressEmployerDTO {
 
     private Integer id;
@@ -20,7 +21,7 @@ public class AddressEmployerDTO {
     private String flatNumber;
     private String city;
     private String country;
-    private EmployerDTO employerDTO;
+    private EmployerDTO employer;
 
 
 }

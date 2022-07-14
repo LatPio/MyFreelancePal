@@ -6,6 +6,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
@@ -26,30 +28,29 @@ public class Invoice {
     private Integer id;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date invoiceCreationDate;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date secondDate;
-
-
-    @OneToOne
+    private String invoiceNumber;
+    private String placeOfInvoiceCreation;
+    @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "employer_id")
     private Employer employer;
-
-    @ManyToMany
-    @JoinTable(name = "project_invoice_map", joinColumns = @JoinColumn(name = "invoice_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "project_id", referencedColumnName = "id"))
-    private List<Project> projects;
-
-    private Integer priceNet;
-
+    @OneToMany(mappedBy = "invoice", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<InvoiceServiceEntry> invoiceServiceEntries;
+    @ManyToOne
+    @JoinColumn(name = "EmployeeAddress_id")
+    private Address employeeAddress;
+    @ManyToOne
+    @JoinColumn(name = "EmployerAddress_id")
+    private Address employerAddress;
+    private BigDecimal priceNet;
+    private BigDecimal priceGross;
     private Integer vat;
-
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date payDue;
-
-
-
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;

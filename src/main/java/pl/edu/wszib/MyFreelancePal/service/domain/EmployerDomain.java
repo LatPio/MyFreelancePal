@@ -17,8 +17,7 @@ public class EmployerDomain {
     private Integer id;
     private String name;
     private String nip;
-    private List<EmployeeDomain> employeeDomain;
-//    private List<AddressEmployerDomain> address;
-//    private List<ProjectDomain> projects;
+
+
 
 }

@@ -4,6 +4,7 @@ package pl.edu.wszib.MyFreelancePal.service.domain;
 
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -24,5 +25,6 @@ public class TaskDomain {
     private ProjectDomain projectDomain;
     private Boolean doneTask;
     private Boolean invoiceCreated;
+    private BigDecimal hourPrice;
 
     }

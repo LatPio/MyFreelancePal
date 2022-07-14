@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
 @Table(name = "Address")
 @Entity
@@ -36,6 +37,10 @@ public class Address {
     @UpdateTimestamp
     private Instant updatedAt;
 
+    @OneToMany(mappedBy = "employerAddress")
+    private List<Invoice> invoiceAddressEmployer;
+    @OneToMany(mappedBy = "employeeAddress")
+    private List<Invoice> invoiceAddressEmployee;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employer_id")
@@ -43,8 +48,9 @@ public class Address {
 //    inverseJoinColumns = @JoinColumn(name = "employer_id", referencedColumnName = "id"))
     private Employer employer;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id")
 //    @JoinTable (name = "employee_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
 //            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
-//    private Employee employee;
+    private Employee employee;
 }

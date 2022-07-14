@@ -8,11 +8,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 
 @Builder
@@ -37,6 +39,7 @@ public class Task {
     private Instant timeOfInvoiceCreation;
     @ColumnDefault(value = "false")
     private Boolean doneTask;
+    private BigDecimal hourPrice;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -47,6 +50,9 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
+    @ManyToOne
+    @JoinColumn(name = "invoiceServiceEntry_id")
+    private InvoiceServiceEntry invoiceServiceEntry;
 
 
 }

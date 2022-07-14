@@ -3,14 +3,12 @@ package pl.edu.wszib.MyFreelancePal.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import pl.edu.wszib.MyFreelancePal.model.Employee;
 import pl.edu.wszib.MyFreelancePal.model.Employer;
-import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-08T12:13:30+0200",
+    date = "2022-07-14T21:36:42+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployerMapperImpl implements EmployerMapper {
@@ -23,7 +21,6 @@ public class EmployerMapperImpl implements EmployerMapper {
 
         EmployerDomain.EmployerDomainBuilder employerDomain = EmployerDomain.builder();
 
-        employerDomain.employeeDomain( employeeListToEmployeeDomainList( employer.getEmployee() ) );
         employerDomain.id( employer.getId() );
         employerDomain.name( employer.getName() );
         employerDomain.nip( employer.getNip() );
@@ -39,7 +36,6 @@ public class EmployerMapperImpl implements EmployerMapper {
 
         Employer.EmployerBuilder employer = Employer.builder();
 
-        employer.employee( employeeDomainListToEmployeeList( employerDomain.getEmployeeDomain() ) );
         employer.id( employerDomain.getId() );
         employer.name( employerDomain.getName() );
         employer.nip( employerDomain.getNip() );
@@ -59,59 +55,5 @@ public class EmployerMapperImpl implements EmployerMapper {
         }
 
         return list;
-    }
-
-    protected EmployeeDomain employeeToEmployeeDomain(Employee employee) {
-        if ( employee == null ) {
-            return null;
-        }
-
-        EmployeeDomain.EmployeeDomainBuilder employeeDomain = EmployeeDomain.builder();
-
-        employeeDomain.id( employee.getId() );
-        employeeDomain.name( employee.getName() );
-        employeeDomain.nip( employee.getNip() );
-
-        return employeeDomain.build();
-    }
-
-    protected List<EmployeeDomain> employeeListToEmployeeDomainList(List<Employee> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<EmployeeDomain> list1 = new ArrayList<EmployeeDomain>( list.size() );
-        for ( Employee employee : list ) {
-            list1.add( employeeToEmployeeDomain( employee ) );
-        }
-
-        return list1;
-    }
-
-    protected Employee employeeDomainToEmployee(EmployeeDomain employeeDomain) {
-        if ( employeeDomain == null ) {
-            return null;
-        }
-
-        Employee.EmployeeBuilder employee = Employee.builder();
-
-        employee.id( employeeDomain.getId() );
-        employee.name( employeeDomain.getName() );
-        employee.nip( employeeDomain.getNip() );
-
-        return employee.build();
-    }
-
-    protected List<Employee> employeeDomainListToEmployeeList(List<EmployeeDomain> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<Employee> list1 = new ArrayList<Employee>( list.size() );
-        for ( EmployeeDomain employeeDomain : list ) {
-            list1.add( employeeDomainToEmployee( employeeDomain ) );
-        }
-
-        return list1;
     }
 }

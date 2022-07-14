@@ -1,16 +1,8 @@
 package pl.edu.wszib.MyFreelancePal.service.domain;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
-import pl.edu.wszib.MyFreelancePal.model.Employee;
-import pl.edu.wszib.MyFreelancePal.model.Employer;
-import pl.edu.wszib.MyFreelancePal.model.Project;
-
-import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.Instant;
 import java.util.List;
 
 @Builder
@@ -24,20 +16,18 @@ public class InvoiceDomain {
 
 
     private Integer id;
-
     private Date invoiceCreationDate;
     private Date secondDate;
-
+    private String invoiceNumber;
+    private String placeOfInvoiceCreation;
     private EmployeeDomain employee;
-
-    private EmployerDomain employer;
-
-    private List<ProjectDomain> projects;
-
-    private Integer priceNet;
-
+    private EmployerManagerDomain employer;
+    private AddressEmployerDomain employerAddress;
+    private AddressEmployeeDomain employeeAddress;
+    private List<TaskDomain> tasks;
+    private BigDecimal priceNet;
+    private BigDecimal priceGross;
     private Integer vat;
-
     private Date payDue;
 
 

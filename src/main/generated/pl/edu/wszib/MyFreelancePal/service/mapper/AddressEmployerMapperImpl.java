@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-08T12:13:30+0200",
+    date = "2022-07-14T21:36:42+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployerMapperImpl implements AddressEmployerMapper {
@@ -23,7 +23,6 @@ public class AddressEmployerMapperImpl implements AddressEmployerMapper {
 
         AddressEmployerDomain.AddressEmployerDomainBuilder addressEmployerDomain = AddressEmployerDomain.builder();
 
-        addressEmployerDomain.employerDomain( employerToEmployerDomain( address.getEmployer() ) );
         addressEmployerDomain.id( address.getId() );
         addressEmployerDomain.name( address.getName() );
         addressEmployerDomain.street( address.getStreet() );
@@ -32,6 +31,7 @@ public class AddressEmployerMapperImpl implements AddressEmployerMapper {
         addressEmployerDomain.flatNumber( address.getFlatNumber() );
         addressEmployerDomain.city( address.getCity() );
         addressEmployerDomain.country( address.getCountry() );
+        addressEmployerDomain.employer( employerToEmployerDomain( address.getEmployer() ) );
 
         return addressEmployerDomain.build();
     }
@@ -44,7 +44,6 @@ public class AddressEmployerMapperImpl implements AddressEmployerMapper {
 
         Address.AddressBuilder address = Address.builder();
 
-        address.employer( employerDomainToEmployer( addressEmployerDomain.getEmployerDomain() ) );
         address.id( addressEmployerDomain.getId() );
         address.name( addressEmployerDomain.getName() );
         address.street( addressEmployerDomain.getStreet() );
@@ -53,6 +52,7 @@ public class AddressEmployerMapperImpl implements AddressEmployerMapper {
         address.flatNumber( addressEmployerDomain.getFlatNumber() );
         address.city( addressEmployerDomain.getCity() );
         address.country( addressEmployerDomain.getCountry() );
+        address.employer( employerDomainToEmployer( addressEmployerDomain.getEmployer() ) );
 
         return address.build();
     }

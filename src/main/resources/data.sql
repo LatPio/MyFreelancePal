@@ -17,18 +17,18 @@ VALUES
 
 -- Projekty
 
-insert into project (id, color, createdat, name, updatedat, employer_id, activeproject )
+insert into project (id, color, createdat, name, updatedat, employer_id, activeproject, hourpricedefault)
 VALUES
-    (100, 'red', '2021-05-10 13:07:12.000000', 'Projekt - JAVA test',  '2021-06-19 14:47:57.000000', 100, true),
-    (200, 'blue', '2021-05-10 13:07:12.000000', 'Projekt - Angular test',  '2021-06-19 14:47:57.000000', 100, true),
-    (300, 'green', '2021-05-10 13:07:12.000000', 'Projekt - Python test',  '2021-06-19 14:47:57.000000', 200, true),
-    (400, 'purple', '2021-05-10 13:07:12.000000', 'SQL dla JAVA-site',  '2021-06-19 14:47:57.000000', 300, true),
-    (500, 'grey', '2021-05-10 13:07:12.000000', 'SQL Python',  '2021-06-19 14:47:57.000000', 200, true),
-    (600, 'yellow', '2021-05-10 13:07:12.000000', 'SQL test',  '2021-06-19 14:47:57.000000', 100, false),
-    (700, 'red', '2021-05-10 13:07:12.000000', 'JAVA test',  '2021-06-19 14:47:57.000000', 300, false),
-    (800, 'red', '2021-05-10 13:07:12.000000', 'Python',  '2021-06-19 14:47:57.000000', 400, false),
-    (900, 'red', '2021-05-10 13:07:12.000000', 'Angular',  '2021-06-19 14:47:57.000000', 400, false),
-    (1000, 'red', '2021-05-10 13:07:12.000000', 'Site FullStack-AngularSpringBOOT',  '2021-06-19 14:47:57.000000', 300, false);
+    (100, 'red', '2021-05-10 13:07:12.000000', 'Projekt - JAVA test',  '2021-06-19 14:47:57.000000', 100, true, 23),
+    (200, 'blue', '2021-05-10 13:07:12.000000', 'Projekt - Angular test',  '2021-06-19 14:47:57.000000', 100, true,43),
+    (300, 'green', '2021-05-10 13:07:12.000000', 'Projekt - Python test',  '2021-06-19 14:47:57.000000', 200, true, 21),
+    (400, 'purple', '2021-05-10 13:07:12.000000', 'SQL dla JAVA-site',  '2021-06-19 14:47:57.000000', 300, true, 44),
+    (500, 'grey', '2021-05-10 13:07:12.000000', 'SQL Python',  '2021-06-19 14:47:57.000000', 200, true, 56),
+    (600, 'yellow', '2021-05-10 13:07:12.000000', 'SQL test',  '2021-06-19 14:47:57.000000', 100, false, 10),
+    (700, 'red', '2021-05-10 13:07:12.000000', 'JAVA test',  '2021-06-19 14:47:57.000000', 300, false, 100),
+    (800, 'red', '2021-05-10 13:07:12.000000', 'Python',  '2021-06-19 14:47:57.000000', 400, false,132),
+    (900, 'red', '2021-05-10 13:07:12.000000', 'Angular',  '2021-06-19 14:47:57.000000', 400, false, 78),
+    (1000, 'red', '2021-05-10 13:07:12.000000', 'Site FullStack-AngularSpringBOOT',  '2021-06-19 14:47:57.000000', 300, false, 99);
 
 --  tasks
 
@@ -51,25 +51,24 @@ VALUES
 -- adresses
 
 insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
-VALUES (100, 24,'Kraków','Polska','2021-05-10 13:07:12.000000', 12, 'domowy', '30-398', 'Narutowicza', '2021-05-10 13:07:12.000000', 100);
+VALUES
+    (100, 24,'Kraków','Polska','2021-05-10 13:07:12.000000', 12, 'domowy', '30-398', 'Narutowicza', '2021-05-10 13:07:12.000000', 100),
+    (200, 46,'Bydgoszcz','Polska','2021-05-10 13:07:12.000000', 15, 'Firmowy', '30-398', 'Krakowska', '2021-05-10 13:07:12.000000', 200),
+    (300, 21,'Tarnów','Polska','2021-05-10 13:07:12.000000', 1, 'domowy', '30-398', 'Lwowska', '2021-05-10 13:07:12.000000', 300),
+    (400, 53,'Warszawa','Polska','2021-05-10 13:07:12.000000', 5, 'Firmowy', '30-398', 'Kondratowicza', '2021-05-10 13:07:12.000000', 100),
+    (500, 2,'Gdańsk','Polska','2021-05-10 13:07:12.000000', 88, 'Mój', '30-398', 'Midowa', '2021-05-10 13:07:12.000000', 400),
+    (600, 12,'Toruń','Polska','2021-05-10 13:07:12.000000', 1, 'Mój drugi', '30-398', 'Gronostajowa', '2021-05-10 13:07:12.000000',100),
+    (700, 11,'Kołobrzeg','Polska','2021-05-10 13:07:12.000000', 33, 'domowy', '30-398', 'Gołębia', '2021-05-10 13:07:12.000000', 200);
 
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
-VALUES (200, 46,'Bydgoszcz','Polska','2021-05-10 13:07:12.000000', 15, 'Firmowy', '30-398', 'Krakowska', '2021-05-10 13:07:12.000000', 200);
-
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat,employer_id)
-VALUES (300, 21,'Tarnów','Polska','2021-05-10 13:07:12.000000', 1, 'domowy', '30-398', 'Lwowska', '2021-05-10 13:07:12.000000', 300);
-
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
-VALUES (400, 53,'Warszawa','Polska','2021-05-10 13:07:12.000000', 5, 'Firmowy', '30-398', 'Kondratowicza', '2021-05-10 13:07:12.000000', 100);
-
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
-VALUES (500, 2,'Gdańsk','Polska','2021-05-10 13:07:12.000000', 88, 'Mój', '30-398', 'Midowa', '2021-05-10 13:07:12.000000', 400);
-
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
-VALUES (600, 12,'Toruń','Polska','2021-05-10 13:07:12.000000', 1, 'Mój drugi', '30-398', 'Gronostajowa', '2021-05-10 13:07:12.000000',100);
-
-insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
-VALUES (700, 11,'Kołobrzeg','Polska','2021-05-10 13:07:12.000000', 33, 'domowy', '30-398', 'Gołębia', '2021-05-10 13:07:12.000000', 200);
+insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employee_id)
+VALUES
+    (800, 24,'Kraków','Polska','2021-05-10 13:07:12.000000', 12, 'domowy', '30-398', 'Narutowicza', '2021-05-10 13:07:12.000000', 100),
+    (900, 46,'Bydgoszcz','Polska','2021-05-10 13:07:12.000000', 15, 'Firmowy', '30-398', 'Krakowska', '2021-05-10 13:07:12.000000', 200),
+    (1000, 21,'Tarnów','Polska','2021-05-10 13:07:12.000000', 1, 'domowy', '30-398', 'Lwowska', '2021-05-10 13:07:12.000000', 100),
+    (1100, 53,'Warszawa','Polska','2021-05-10 13:07:12.000000', 5, 'Firmowy', '30-398', 'Kondratowicza', '2021-05-10 13:07:12.000000', 100),
+    (1200, 2,'Gdańsk','Polska','2021-05-10 13:07:12.000000', 88, 'Mój', '30-398', 'Midowa', '2021-05-10 13:07:12.000000', 200),
+    (1300, 12,'Toruń','Polska','2021-05-10 13:07:12.000000', 1, 'Mój drugi', '30-398', 'Gronostajowa', '2021-05-10 13:07:12.000000',100),
+    (1400, 11,'Kołobrzeg','Polska','2021-05-10 13:07:12.000000', 33, 'domowy', '30-398', 'Gołębia', '2021-05-10 13:07:12.000000', 100);
 
 -- invoices
 insert into invoice(id, createdat, invoicecreationdate, paydue, pricenet, seconddate, updatedat, vat, employee_id, employer_id)
@@ -85,8 +84,8 @@ VALUES (100, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', '2021-0
 -- insert into employer_address_map(address_id, employer_id)VALUES (500,300);
 -- insert into employer_address_map(address_id, employer_id) VALUES (600,400);
 --employee-employer-map
-insert into employer_employee_map(employer_id, employee_id) VALUES (100,100);
-insert into employer_employee_map(employer_id, employee_id) VALUES (200,200);
-insert into employer_employee_map(employer_id, employee_id) VALUES (300,200);
-insert into employer_employee_map(employer_id, employee_id) VALUES (400,200);
+-- insert into employer_employee_map(employer_id, employee_id) VALUES (100,100);
+-- insert into employer_employee_map(employer_id, employee_id) VALUES (200,200);
+-- insert into employer_employee_map(employer_id, employee_id) VALUES (300,200);
+-- insert into employer_employee_map(employer_id, employee_id) VALUES (400,200);
 

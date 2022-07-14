@@ -1,0 +1,245 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
+<head>
+</head>
+<body>
+
+<div class="container1">
+
+  <div class="container">
+    <form th:method="POST" th:action="@{/invoice/update(id=${updateInvoice.id})}" th:object="${updateInvoice}">
+
+      <div class="form-group">
+        <input id="id" class="form-control" type="text" th:field="*{id}" hidden>
+      </div>
+<!--      <div class="form-group">-->
+<!--        <input id="invoiceCreationDate" class="form-control" type="date" th:field="*{invoiceCreationDate}" hidden>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <input id="secondDate" class="form-control" type="date" th:field="*{secondDate}" hidden>-->
+<!--      </div>-->
+      <div class="form-group">
+        <input id="invoiceNumber" class="form-control" type="text" th:field="*{invoiceNumber}" hidden>
+      </div>
+      <div class="form-group">
+        <input id="placeOfInvoiceCreation" class="form-control" type="text" th:field="*{placeOfInvoiceCreation}" hidden>
+      </div>
+      <div class="form-group">
+        <input id="employee" class="form-control" type="number" th:field="*{employee.id}" hidden>
+      </div>
+      <div class="form-group">
+        <input id="employer" class="form-control" type="number" th:field="*{employer.id}" hidden>
+      </div>
+<!--      <div class="form-group">-->
+<!--        <input id="employerAddress" class="form-control" type="number" th:field="*{employerAddress}" hidden>-->
+<!--      </div>-->
+      <div class="form-group">
+        <input id="priceNet" class="form-control" type="number" th:field="*{priceNet}" hidden>
+      </div>
+      <div class="form-group">
+        <input id="priceGross" class="form-control" type="number" th:field="*{priceGross}" hidden>
+      </div>
+      <div class="form-group">
+        <input id="vat" class="form-control" type="number" th:field="*{vat}" hidden>
+      </div>
+<!--      <div class="form-group">-->
+<!--        <input id="payDue" class="form-control" type="date" th:field="*{payDue}" hidden>-->
+<!--      </div>-->
+
+
+
+
+    <div class="card my-4">
+      <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
+        <h5 th:text="|Invoice number: ${updateInvoice.invoiceNumber}|" ></h5>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <a type="button" class="btn btn-sm btn-outline-secondary" onclick='javascript:window.history.back()'><i class="fa-solid fa-file-pen"></i>Go Back</a>
+            <button type="submit" class="btn btn-sm btn-outline-secondary "><i class="fa-solid fa-floppy-disk"></i>Save</button>
+          </div>
+          <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/invoice/delete(id=${updateInvoice.id})}">
+                        <span style="color: red" >
+                            <i class="fa-solid fa-trash-can"></i>
+                        </span>
+            Delete
+          </a>
+        </div>
+      </div>
+        <div class="card-body">
+
+          <div class="row g-2 justify-content-end my-2">
+            <div class="col-auto">
+              <label for="invoiceCreationDate" class="col-form-label">Creation Date: </label>
+            </div>
+            <div class="col-auto">
+              <input id="invoiceCreationDate" class="form-control" type="date" th:field="*{invoiceCreationDate}">
+            </div>
+          </div>
+
+          <div class="row g-2 justify-content-end my-2">
+            <div class="col-auto">
+              <label for="secondDate" class="col-form-label">Date of excluding the service/work: </label>
+            </div>
+            <div class="col-auto">
+              <input id="secondDate" class="form-control" type="date" th:field="*{secondDate}">
+            </div>
+          </div>
+
+
+
+        <h4 class="text-start border-top  border-bottom border-2 bg-light border-dark py-2 mt-3" th:text="|Invoice No. of: ${updateInvoice.invoiceNumber}|"> </h4>
+        <div class="row">
+          <div class="col mt-2">
+
+            <h5 class="border-bottom border-2 border-dark">Seller</h5>
+            <h6 th:text="${updateInvoice.employee.name}"></h6>
+
+            <div>
+              <label for="employeeAddress">Employee Address</label>
+              <select id="employeeAddress" class="form-control" type="text" th:id="employeeAddress.id" th:name="employeeAddress.id">
+                <option th:each="employeeAddresslist: ${updateInvoice.employee.address}" th:value="${employeeAddresslist.id.intValue()}" th:text="${employeeAddresslist.name}"></option>
+              </select>
+            </div>
+            <div th:text="|NIP: ${updateInvoice.employee.nip}|"></div>
+
+            <div class="mt-1" th:text="|Bank number: ${updateInvoice.employee.bankNumber}|"></div>
+            <div th:text="|IBAN: ${updateInvoice.employee.bankIban}|"></div>
+
+
+
+          </div>
+
+          <div class="col mt-2">
+            <h5 class="border-bottom border-2 border-dark">Buyer</h5>
+            <h6 th:text="${updateInvoice.employer.name}"></h6>
+            <div>
+              <label for="employerAddress">Employer Address</label>
+              <select id="employerAddress" class="form-control" type="text" th:id="employerAddress.id" th:name="employerAddress.id">
+                <option th:each="employerAddresslist: ${updateInvoice.employer.address}" th:value="${employerAddresslist.id.intValue()}" th:text="${employerAddresslist.name}"></option>
+              </select>
+            </div>
+            <div th:text="|NIP: ${updateInvoice.employer.nip}|"></div>
+            <div th:text="|Phone: ${updateInvoice.employer.phone}|"></div>
+            <div th:text="|Email: ${updateInvoice.employer.email}|"></div>
+
+          </div>
+
+
+          <div></div>
+        </div>
+        <div class="my-2">
+          <table class="table table-bordered">
+            <thead class="bg-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name of Work</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Net Price</th>
+              <th scope="col">VAT</th>
+              <th scope="col">Net Amount</th>
+              <th scope="col">Vat Amount</th>
+              <th scope="col">Pre Tax Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1.</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col py-2">
+
+              <table class="table table-bordered">
+                <thead class="bg-light">
+                <tr>
+                  <th scope="col">VAT rate</th>
+                  <th scope="col">Net </th>
+                  <th scope="col">Vat </th>
+                  <th scope="col">Pre Tax </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class="bg-light">
+                  <td>Total</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+
+                </tbody>
+              </table>
+
+              <div th:text="|Paymen method: wire transfer|"></div>
+              <div class="row g-2 my-2">
+                <div class="col-auto">
+                  <label for="invoiceCreationDate" class="col-form-label">Payment date 14 days:  </label>
+                </div>
+                <div class="col-auto">
+                  <input id="payDue" class="form-control" type="date" th:field="*{payDue}">
+                </div>
+              </div>
+
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="py-1">
+          <div class="row bg-light py-1">
+            <div class="col"></div>
+            <div class="col">
+              <h5 th:text="|To pay: ___ PLN|"></h5>
+            </div>
+          </div>
+          <div class="row py-1">
+            <div class="col"></div>
+            <div class="col" th:text="|Amount in words: ___ PLN|"></div>
+          </div>
+        </div>
+        <div style="height: 5rem"></div>
+        <div class="row justify-content-evenly">
+          <div class="col-4 text-center">
+            <div>................................................................</div>
+            <div>Person Authorized to receive</div>
+          </div>
+          <div class="col-4 text-center">
+            <div>................................................................</div>
+            <div>Person Authorized to issue</div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

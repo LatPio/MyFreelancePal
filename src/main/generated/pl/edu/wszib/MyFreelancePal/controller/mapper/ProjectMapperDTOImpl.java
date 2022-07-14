@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-08T12:13:31+0200",
+    date = "2022-07-14T21:36:42+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class ProjectMapperDTOImpl implements ProjectMapperDTO {

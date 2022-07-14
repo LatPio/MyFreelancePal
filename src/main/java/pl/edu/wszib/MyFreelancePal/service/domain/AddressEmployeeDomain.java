@@ -22,7 +22,7 @@ public class AddressEmployeeDomain {
     private String flatNumber;
     private String city;
     private String country;
-    private EmployeeDomain employee;
+//    private EmployeeDomain employee;
 
 
 

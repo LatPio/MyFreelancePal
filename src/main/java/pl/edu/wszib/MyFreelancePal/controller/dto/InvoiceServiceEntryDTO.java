@@ -1,6 +1,5 @@
 package pl.edu.wszib.MyFreelancePal.controller.dto;
 
-
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -13,15 +12,17 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class ProjectManagerDTO {
+public class InvoiceServiceEntryDTO {
 
     private Integer id;
     private String name;
-    private String color;
-    private String description;
-    private Boolean activeProject;
-    private BigDecimal hourPriceDefault;
     private List<TaskDTO> tasks;
-    private EmployerManagerDTO employer;
+    private Integer amount;
+    private String unit;
+    private BigDecimal netPrice;
+    private Integer vat;
+    private BigDecimal netAmount;
+    private BigDecimal vatAmount;
+    private BigDecimal preTaxAmount;
 
 }

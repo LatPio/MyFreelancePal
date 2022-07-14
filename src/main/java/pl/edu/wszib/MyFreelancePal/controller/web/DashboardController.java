@@ -40,6 +40,7 @@ public class DashboardController {
 
         model.addAttribute("countPendingTasks", taskService.countPendingTasks(false));
         model.addAttribute("allTaskCount", taskService.countTask());
+        model.addAttribute("sumTime", taskService.totalMinutes());
 
 
         return "dashboard/dashboardView";

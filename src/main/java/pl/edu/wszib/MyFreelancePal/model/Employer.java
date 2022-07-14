@@ -29,14 +29,14 @@ public class Employer {
     private String name;
     private String description;
     private String notes;
-    @Column(name = "NIP", nullable = false)
+    @Column(name = "NIP")
     private String nip;
     private String phone;
     @Email
     private String email;
-    @Column(nullable = true)
+    @Column
     private String badgeColor;
-    @Column(nullable = true)
+    @Column
     private Boolean active = true;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -45,17 +45,17 @@ public class Employer {
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Project> projects;
 
-    @ManyToMany
-    @JoinTable(name = "employer_employee_map",
-               joinColumns = @JoinColumn(name = "employer_id",
-                                        referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "employee_id",
-                                        referencedColumnName = "id"))
-    private List<Employee> employee;
+//    @ManyToMany
+//    @JoinTable(name = "employer_employee_map",
+//               joinColumns = @JoinColumn(name = "employer_id",
+//                                        referencedColumnName = "id"),
+//               inverseJoinColumns = @JoinColumn(name = "employee_id",
+//                                        referencedColumnName = "id"))
+//    private List<Employee> employee;
 
 
-    @OneToOne(mappedBy = "employer", cascade = CascadeType.ALL)
-    private Invoice invoice;
+    @OneToMany(mappedBy = "employer", cascade = CascadeType.ALL)
+    private List<Invoice> invoice;
 
     @CreationTimestamp
     @Column(updatable = false)

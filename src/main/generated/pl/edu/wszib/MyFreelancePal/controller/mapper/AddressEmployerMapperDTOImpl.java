@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-08T12:13:30+0200",
+    date = "2022-07-14T21:36:42+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
@@ -23,7 +23,6 @@ public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
 
         AddressEmployerDTO.AddressEmployerDTOBuilder addressEmployerDTO = AddressEmployerDTO.builder();
 
-        addressEmployerDTO.employerDTO( employerDomainToEmployerDTO( addressEmployerDomain.getEmployerDomain() ) );
         addressEmployerDTO.id( addressEmployerDomain.getId() );
         addressEmployerDTO.name( addressEmployerDomain.getName() );
         addressEmployerDTO.street( addressEmployerDomain.getStreet() );
@@ -32,6 +31,7 @@ public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
         addressEmployerDTO.flatNumber( addressEmployerDomain.getFlatNumber() );
         addressEmployerDTO.city( addressEmployerDomain.getCity() );
         addressEmployerDTO.country( addressEmployerDomain.getCountry() );
+        addressEmployerDTO.employer( employerDomainToEmployerDTO( addressEmployerDomain.getEmployer() ) );
 
         return addressEmployerDTO.build();
     }
@@ -44,7 +44,6 @@ public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
 
         AddressEmployerDomain.AddressEmployerDomainBuilder addressEmployerDomain = AddressEmployerDomain.builder();
 
-        addressEmployerDomain.employerDomain( employerDTOToEmployerDomain( addressEmployerDTO.getEmployerDTO() ) );
         addressEmployerDomain.id( addressEmployerDTO.getId() );
         addressEmployerDomain.name( addressEmployerDTO.getName() );
         addressEmployerDomain.street( addressEmployerDTO.getStreet() );
@@ -53,6 +52,7 @@ public class AddressEmployerMapperDTOImpl implements AddressEmployerMapperDTO {
         addressEmployerDomain.flatNumber( addressEmployerDTO.getFlatNumber() );
         addressEmployerDomain.city( addressEmployerDTO.getCity() );
         addressEmployerDomain.country( addressEmployerDTO.getCountry() );
+        addressEmployerDomain.employer( employerDTOToEmployerDomain( addressEmployerDTO.getEmployer() ) );
 
         return addressEmployerDomain.build();
     }

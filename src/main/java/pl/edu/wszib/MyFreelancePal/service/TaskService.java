@@ -31,6 +31,8 @@ public class TaskService implements CrudService<TaskDomain, Integer> {
 
     public Long countTask(){ return taskRepository.count();}
 
+    public Long totalMinutes(){return taskRepository.totalMinutes();}
+
     @Override
     public TaskDomain get(Integer integer) {
         return taskRepository.findById(integer)

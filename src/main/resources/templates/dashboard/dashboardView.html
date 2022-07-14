@@ -25,7 +25,7 @@
                 </div>
               </div>
             </div>
-            <h1 class="display-5 mt-1 mb-3">$25.300</h1>
+            <h1 class="display-5 mt-1 mb-3" th:text="| in last month|"></h1>
             <div class="mb-0">
               <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.65% </span>
               Less sales than usual
@@ -51,9 +51,9 @@
             </div>
             <h1 class="display-5 mt-1 mb-3 " th:text="|${countActiveProject} / ${allProjectCount}|"></h1>
             <div class="mb-0">
-              <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 5.50% </span>
-              More visitors than usual
+              <span class="text-success"> Project in progress </span> / All Projects
             </div>
+
           </div>
         </div>
       </div>
@@ -76,8 +76,7 @@
             </div>
             <h1 class="display-5 mt-1 mb-3" th:text="|${countPendingTasks} / ${allTaskCount}|">29.232</h1>
             <div class="mb-0">
-              <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -4.25% </span>
-              More earnings than usual
+              <span class="text-danger"> Tasks in progres </span> / All Tasks
             </div>
           </div>
         </div>
@@ -129,7 +128,7 @@
             <h5 class="card-title mb-0">Add new Work</h5>
           </div>
           <div class="card-body px-4">
-            fdfsdas
+            <div th:text="${sumTime}"></div>
           </div>
         </div>
       </div>

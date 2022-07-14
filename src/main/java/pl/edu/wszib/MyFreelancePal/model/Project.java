@@ -31,7 +31,7 @@ public class    Project {
     @Column(nullable = true)
     private Boolean activeProject = true;
     @Column(nullable = true)
-    private BigDecimal hourPrice = BigDecimal.valueOf(0);
+    private BigDecimal hourPriceDefault = BigDecimal.valueOf(0);
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;
@@ -47,7 +47,6 @@ public class    Project {
     private Employer employer;
 
 
-    @ManyToMany(mappedBy = "projects")
-    private List<Invoice> invoice;
+
 
 }

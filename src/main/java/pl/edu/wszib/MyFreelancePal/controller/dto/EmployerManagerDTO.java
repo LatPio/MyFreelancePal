@@ -1,10 +1,8 @@
 package pl.edu.wszib.MyFreelancePal.controller.dto;
 
-
 import lombok.*;
 
 import java.util.List;
-
 
 @Builder
 @AllArgsConstructor

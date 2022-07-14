@@ -1,7 +1,10 @@
 package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
+import pl.edu.wszib.MyFreelancePal.model.Address;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.List;
 
@@ -18,10 +21,15 @@ public class InvoiceDTO {
     private Integer id;
     private Date invoiceCreationDate;
     private Date secondDate;
+    private String invoiceNumber;
+    private String placeOfInvoiceCreation;
     private EmployeeDTO employee;
-    private EmployerDTO employer;
-    private List<ProjectDTO> projects;
-    private Integer priceNet;
+    private EmployerManagerDTO employer;
+    private AddressEmployerDTO employerAddress;
+    private AddressEmployeeDTO employeeAddress;
+    private List<TaskDTO> tasks;
+    private BigDecimal priceNet;
+    private BigDecimal priceGross;
     private Integer vat;
     private Date payDue;
 

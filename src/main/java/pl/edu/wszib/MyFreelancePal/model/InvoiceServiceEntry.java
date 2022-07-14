@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
@@ -14,33 +15,30 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@Table()
+@EqualsAndHashCode
+@Table
 @Entity
-public class Employee {
-
+public class InvoiceServiceEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
     private Integer id;
     private String name;
-    private String nip;
-    private String bankNumber;
-    private String bankIban;
-
-
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private List<Address> address;
-
-//    @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-//    private List<Employer> employer;
-
-
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Invoice> invoice;
-
+    @OneToMany(mappedBy = "invoiceServiceEntry")
+    private List<Task> tasks;
+    private Integer amount;
+    private String unit;
+    private BigDecimal netPrice;
+    private Integer vat;
+    private BigDecimal netAmount;
+    private BigDecimal vatAmount;
+    private BigDecimal preTaxAmount;
+    @ManyToOne
+    @JoinColumn(name = "invoice_id")
+    private Invoice invoice;
 
     @CreationTimestamp
+    @Column(updatable = false)
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
