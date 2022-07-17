@@ -26,4 +26,6 @@ public class InvoiceServiceEntryDomain {
     private BigDecimal preTaxAmount;
     private InvoiceDomain invoice;
     private List<TaskDomain> tasks;
+    private String idsOfTasks;
+
 }

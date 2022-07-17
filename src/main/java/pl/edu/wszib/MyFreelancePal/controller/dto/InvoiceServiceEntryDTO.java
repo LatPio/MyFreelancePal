@@ -26,5 +26,7 @@ public class InvoiceServiceEntryDTO {
     private BigDecimal preTaxAmount;
     private InvoiceDTO invoice;
     private List<TaskDTO> tasks;
+    private String idsOfTasks;
+
 
 }

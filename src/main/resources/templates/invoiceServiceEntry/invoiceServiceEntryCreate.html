@@ -31,9 +31,9 @@
         </div>
 
 
-        <select  th:field="${newInvoiceEntry.tasks}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" multiple>
+        <select  th:field="${newInvoiceEntry.idsOfTasks}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" multiple>
             <th:block  th:each="listProj: ${listOfProjectWithTasks}">
-                <option  th:each = "tasks: ${listProj.tasks}" th:value="${tasks}" th:text="|${tasks.name} in  ${tasks.projectDTO.name} |"></option>
+                <option  th:each = "tasks: ${listProj.tasks}" th:value="${tasks.id}" th:text="|${tasks.name} in  ${tasks.projectDTO.name} |"></option>
             </th:block>
         </select>
 

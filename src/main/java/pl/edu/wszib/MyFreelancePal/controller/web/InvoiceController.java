@@ -27,7 +27,7 @@ public class InvoiceController {
     private EmployeeService employeeService;
 
     @Autowired
-    private TaskService taskService;
+    private TaskInvoiceService taskInvoiceService;
 
     @Autowired
     private InvoiceServiceEntryService invoiceServiceEntryService;

@@ -25,7 +25,7 @@ public class InvoiceServiceEntry {
     private Integer id;
     private String name;
     @OneToMany(mappedBy = "invoiceServiceEntry")
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
     private Integer amount;
     private String unit;
     private BigDecimal netPrice;
@@ -33,6 +33,7 @@ public class InvoiceServiceEntry {
     private BigDecimal netAmount;
     private BigDecimal vatAmount;
     private BigDecimal preTaxAmount;
+    private String idsOfTasks;
     @ManyToOne
     @JoinColumn(name = "invoice_id")
     private Invoice invoice;
@@ -42,4 +43,11 @@ public class InvoiceServiceEntry {
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
+
+    public InvoiceServiceEntry addTask(Task task){
+        tasks.add(task);
+        task.setInvoiceServiceEntry(this);
+        return this;
+
+    };
 }
