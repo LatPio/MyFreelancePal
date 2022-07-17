@@ -18,4 +18,6 @@ public interface TaskMapper {
 
     List<TaskDomain> mapToDomain(List<Task> tasks);
 
+    List<Task> mapToTasks(List<TaskDomain> taskDomains);
+
 }

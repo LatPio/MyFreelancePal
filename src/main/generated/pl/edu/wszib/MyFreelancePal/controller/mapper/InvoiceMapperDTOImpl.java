@@ -10,7 +10,6 @@ import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerManagerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.InvoiceDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.ProjectDTO;
-import pl.edu.wszib.MyFreelancePal.controller.dto.TaskDTO;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
@@ -18,11 +17,10 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerManagerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
-import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-14T21:36:42+0200",
+    date = "2022-07-17T10:51:38+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
@@ -44,7 +42,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDTO.employer( employerManagerDomainToEmployerManagerDTO( invoiceDomain.getEmployer() ) );
         invoiceDTO.employerAddress( addressEmployerDomainToAddressEmployerDTO( invoiceDomain.getEmployerAddress() ) );
         invoiceDTO.employeeAddress( addressEmployeeDomainToAddressEmployeeDTO( invoiceDomain.getEmployeeAddress() ) );
-        invoiceDTO.tasks( taskDomainListToTaskDTOList( invoiceDomain.getTasks() ) );
         invoiceDTO.priceNet( invoiceDomain.getPriceNet() );
         invoiceDTO.priceGross( invoiceDomain.getPriceGross() );
         invoiceDTO.vat( invoiceDomain.getVat() );
@@ -70,7 +67,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDomain.employer( employerManagerDTOToEmployerManagerDomain( invoiceDTO.getEmployer() ) );
         invoiceDomain.employerAddress( addressEmployerDTOToAddressEmployerDomain( invoiceDTO.getEmployerAddress() ) );
         invoiceDomain.employeeAddress( addressEmployeeDTOToAddressEmployeeDomain( invoiceDTO.getEmployeeAddress() ) );
-        invoiceDomain.tasks( taskDTOListToTaskDomainList( invoiceDTO.getTasks() ) );
         invoiceDomain.priceNet( invoiceDTO.getPriceNet() );
         invoiceDomain.priceGross( invoiceDTO.getPriceGross() );
         invoiceDomain.vat( invoiceDTO.getVat() );
@@ -237,38 +233,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         return employerManagerDTO.build();
     }
 
-    protected TaskDTO taskDomainToTaskDTO(TaskDomain taskDomain) {
-        if ( taskDomain == null ) {
-            return null;
-        }
-
-        TaskDTO.TaskDTOBuilder taskDTO = TaskDTO.builder();
-
-        taskDTO.id( taskDomain.getId() );
-        taskDTO.name( taskDomain.getName() );
-        taskDTO.dateStart( taskDomain.getDateStart() );
-        taskDTO.dateEnd( taskDomain.getDateEnd() );
-        taskDTO.invoiceCreated( taskDomain.getInvoiceCreated() );
-        taskDTO.hourPrice( taskDomain.getHourPrice() );
-        taskDTO.timeOfWorkInMin( taskDomain.getTimeOfWorkInMin() );
-        taskDTO.doneTask( taskDomain.getDoneTask() );
-
-        return taskDTO.build();
-    }
-
-    protected List<TaskDTO> taskDomainListToTaskDTOList(List<TaskDomain> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<TaskDTO> list1 = new ArrayList<TaskDTO>( list.size() );
-        for ( TaskDomain taskDomain : list ) {
-            list1.add( taskDomainToTaskDTO( taskDomain ) );
-        }
-
-        return list1;
-    }
-
     protected AddressEmployeeDomain addressEmployeeDTOToAddressEmployeeDomain(AddressEmployeeDTO addressEmployeeDTO) {
         if ( addressEmployeeDTO == null ) {
             return null;
@@ -411,37 +375,5 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         employerManagerDomain.projects( projectDTOListToProjectDomainList( employerManagerDTO.getProjects() ) );
 
         return employerManagerDomain.build();
-    }
-
-    protected TaskDomain taskDTOToTaskDomain(TaskDTO taskDTO) {
-        if ( taskDTO == null ) {
-            return null;
-        }
-
-        TaskDomain.TaskDomainBuilder taskDomain = TaskDomain.builder();
-
-        taskDomain.id( taskDTO.getId() );
-        taskDomain.name( taskDTO.getName() );
-        taskDomain.timeOfWorkInMin( taskDTO.getTimeOfWorkInMin() );
-        taskDomain.dateStart( taskDTO.getDateStart() );
-        taskDomain.dateEnd( taskDTO.getDateEnd() );
-        taskDomain.doneTask( taskDTO.getDoneTask() );
-        taskDomain.invoiceCreated( taskDTO.getInvoiceCreated() );
-        taskDomain.hourPrice( taskDTO.getHourPrice() );
-
-        return taskDomain.build();
-    }
-
-    protected List<TaskDomain> taskDTOListToTaskDomainList(List<TaskDTO> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<TaskDomain> list1 = new ArrayList<TaskDomain>( list.size() );
-        for ( TaskDTO taskDTO : list ) {
-            list1.add( taskDTOToTaskDomain( taskDTO ) );
-        }
-
-        return list1;
     }
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
+<head>
+</head>
+<body>
+
+<div class="container1">
+
+    <div class="container">
+<div class="my-3">
+    <a type="button" class="btn btn-sm btn-outline-secondary" onclick='javascript:window.history.back()'><i class="fa-solid fa-file-pen"></i>Go Back</a>
+
+</div>
+    </div>
+
+    <form th:action="@{/invoice-entry/create(idOfInvoice=${idOfInvoice})}" th:method="POST"
+          th:object="${newInvoiceEntry}">
+        <button type="submit" class="btn btn-sm btn-outline-secondary "><i class="fa-solid fa-floppy-disk"></i>Save</button>
+
+        <div class="form-group">
+            <label for="name" class="col-form-label">Name of Entry: </label>
+            <input id="name" class="form-control" type="text" th:field="*{name}">
+        </div>
+
+        <div class="form-group" hidden>
+            <label th:for="invoice.id">invoice ID</label>
+            <input class="form-control" type="number"
+                   th:id="invoice.id"
+                   th:name="invoice.id"
+            th:value="${idOfInvoice.intValue()}" >
+        </div>
+
+
+        <select  th:field="${newInvoiceEntry.tasks}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" multiple>
+            <th:block  th:each="listProj: ${listOfProjectWithTasks}">
+                <option  th:each = "tasks: ${listProj.tasks}" th:value="${tasks}" th:text="|${tasks.name} in  ${tasks.projectDTO.name} |"></option>
+            </th:block>
+        </select>
+
+
+    </form>
+
+</div>
+
+</div>
+
+</body>
+</html>

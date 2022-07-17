@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-14T21:36:41+0200",
+    date = "2022-07-17T10:51:38+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class TaskMapperImpl implements TaskMapper {
@@ -66,6 +66,20 @@ public class TaskMapperImpl implements TaskMapper {
         List<TaskDomain> list = new ArrayList<TaskDomain>( tasks.size() );
         for ( Task task : tasks ) {
             list.add( map( task ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Task> mapToTasks(List<TaskDomain> taskDomains) {
+        if ( taskDomains == null ) {
+            return null;
+        }
+
+        List<Task> list = new ArrayList<Task>( taskDomains.size() );
+        for ( TaskDomain taskDomain : taskDomains ) {
+            list.add( map( taskDomain ) );
         }
 
         return list;

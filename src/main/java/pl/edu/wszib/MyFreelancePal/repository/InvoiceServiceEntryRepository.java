@@ -4,6 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pl.edu.wszib.MyFreelancePal.model.InvoiceServiceEntry;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
+
 @Repository
 public interface InvoiceServiceEntryRepository extends JpaRepository<InvoiceServiceEntry, Integer> {
+
+    List<InvoiceServiceEntry> findAllByInvoice_Id(Integer id);
 }

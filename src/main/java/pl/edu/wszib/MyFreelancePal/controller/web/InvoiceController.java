@@ -29,10 +29,14 @@ public class InvoiceController {
     @Autowired
     private TaskService taskService;
 
+    @Autowired
+    private InvoiceServiceEntryService invoiceServiceEntryService;
+
     private InvoiceMapperDTO invoiceMapperDTO = Mappers.getMapper(InvoiceMapperDTO.class);
     private EmployerManagerMapperDTO employerManagerMapperDTO = Mappers.getMapper(EmployerManagerMapperDTO.class);
     private EmployeeMapperDTO employeeMapperDTO = Mappers.getMapper(EmployeeMapperDTO.class);
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
+    private InvoiceServiceEntryMapperDTO invoiceServiceEntryMapperDTO = Mappers.getMapper(InvoiceServiceEntryMapperDTO.class);
 
     @GetMapping("/list")
     public String list(Model model){
@@ -60,6 +64,8 @@ public class InvoiceController {
     @GetMapping("/get")
     public String get(Model model, @RequestParam Integer id){
         model.addAttribute("getInvoice", invoiceMapperDTO.map(invoiceService.get(id)));
+        model.addAttribute("listOfInvoiceEntries", invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id)));
+
         return "invoice/invoiceGet";
     }
 
@@ -68,7 +74,7 @@ public class InvoiceController {
     @GetMapping("/update")
     public String update(@RequestParam Integer id, Model model){
         model.addAttribute("updateInvoice", invoiceMapperDTO.map(invoiceService.get(id)));
-
+        model.addAttribute("listOfInvoiceEntries", invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id)));
         return "invoice/invoiceUpdate";
     }
 

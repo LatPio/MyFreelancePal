@@ -17,4 +17,9 @@ public interface TaskMapperDTO {
     TaskDomain map(TaskDTO taskDTO);
 
     List<TaskDTO> mapToDTO(List<TaskDomain> taskDomains);
+
+    List<TaskDomain> mapToDomain(List<TaskDTO> taskDTOS);
+
+
+
 }

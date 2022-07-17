@@ -24,6 +24,11 @@ public class InvoiceServiceEntryService implements CrudService<InvoiceServiceEnt
         return mapper.mapToDomain(invoiceServiceEntryRepository.findAll());
     }
 
+    public List<InvoiceServiceEntryDomain> listByInvoice(Integer id){
+        return mapper.mapToDomain(invoiceServiceEntryRepository.findAllByInvoice_Id(id));
+    }
+
+
     @Override
     public InvoiceServiceEntryDomain get(Integer integer) {
         return invoiceServiceEntryRepository.findById(integer).map(invoiceServiceEntry -> mapper.map(invoiceServiceEntry)).orElse(null);

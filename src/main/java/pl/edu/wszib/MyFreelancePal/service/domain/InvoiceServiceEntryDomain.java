@@ -1,6 +1,7 @@
 package pl.edu.wszib.MyFreelancePal.service.domain;
 
 import lombok.*;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class InvoiceServiceEntryDomain {
 
     private Integer id;
     private String name;
-    private List<TaskDomain> tasks;
     private Integer amount;
     private String unit;
     private BigDecimal netPrice;
@@ -24,4 +24,6 @@ public class InvoiceServiceEntryDomain {
     private BigDecimal netAmount;
     private BigDecimal vatAmount;
     private BigDecimal preTaxAmount;
+    private InvoiceDomain invoice;
+    private List<TaskDomain> tasks;
 }

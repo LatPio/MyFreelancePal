@@ -89,16 +89,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1.</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr th:each="listOfEntries, stat:  ${listOfInvoiceEntries}">
+                            <th th:text="${stat.index + 1}"></th>
+                            <td th:text="${listOfEntries.name}"> </td>
+                            <td th:text="${listOfEntries.amount}"></td>
+                            <td th:text="${listOfEntries.unit}"></td>
+                            <td th:text="${listOfEntries.netPrice}"></td>
+                            <td th:text="${listOfEntries.vat}"></td>
+                            <td th:text="${listOfEntries.netAmount}"></td>
+                            <td th:text="${listOfEntries.vatAmount}"></td>
+                            <td th:text="${listOfEntries.preTaxAmount}"></td>
+                            <td th:text="${listOfEntries.tasks}"></td>
                         </tr>
 
 

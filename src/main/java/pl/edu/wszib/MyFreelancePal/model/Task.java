@@ -22,7 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+
 @EqualsAndHashCode
 @Table(name = "Task")
 @Entity
@@ -51,7 +51,7 @@ public class Task {
     @JoinColumn(name = "project_id")
     private Project project;
     @ManyToOne
-    @JoinColumn(name = "invoiceServiceEntry_id")
+    @JoinColumn(name = "invoiceServiceEntryId")
     private InvoiceServiceEntry invoiceServiceEntry;
 
 

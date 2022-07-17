@@ -6,7 +6,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceServiceEntryDomain;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {TaskMapperDTO.class})
 public interface InvoiceServiceEntryMapperDTO {
 
     InvoiceServiceEntryDTO map(InvoiceServiceEntryDomain invoiceServiceEntryDomain);

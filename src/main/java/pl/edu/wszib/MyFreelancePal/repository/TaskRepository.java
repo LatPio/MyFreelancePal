@@ -21,6 +21,5 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     @Query(value = "SELECT sum(timeOfWorkInMin) from Task")
     public Long totalMinutes();
 
-
     List<Task> findTasksByDoneTaskAndInvoiceCreatedAndProjectId(boolean b, boolean a, Integer id);
 }

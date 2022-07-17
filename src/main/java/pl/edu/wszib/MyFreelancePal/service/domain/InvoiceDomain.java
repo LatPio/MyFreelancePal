@@ -1,6 +1,8 @@
 package pl.edu.wszib.MyFreelancePal.service.domain;
 
 import lombok.*;
+import pl.edu.wszib.MyFreelancePal.model.InvoiceServiceEntry;
+
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
@@ -24,7 +26,7 @@ public class InvoiceDomain {
     private EmployerManagerDomain employer;
     private AddressEmployerDomain employerAddress;
     private AddressEmployeeDomain employeeAddress;
-    private List<TaskDomain> tasks;
+//    private List<InvoiceServiceEntryDomain> invoiceServiceEntries;
     private BigDecimal priceNet;
     private BigDecimal priceGross;
     private Integer vat;

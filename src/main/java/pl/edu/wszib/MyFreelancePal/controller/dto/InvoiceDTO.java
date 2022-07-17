@@ -2,6 +2,7 @@ package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
 import pl.edu.wszib.MyFreelancePal.model.Address;
+import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceServiceEntryDomain;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -27,7 +28,7 @@ public class InvoiceDTO {
     private EmployerManagerDTO employer;
     private AddressEmployerDTO employerAddress;
     private AddressEmployeeDTO employeeAddress;
-    private List<TaskDTO> tasks;
+//    private List<InvoiceServiceEntryDTO> invoiceServiceEntries;
     private BigDecimal priceNet;
     private BigDecimal priceGross;
     private Integer vat;

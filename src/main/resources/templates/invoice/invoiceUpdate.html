@@ -143,22 +143,30 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">1.</th>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr th:each="listOfEntries, stat:  ${listOfInvoiceEntries}">
+              <th th:text="${stat.index + 1}"></th>
+              <td th:text="${listOfEntries.name}"> </td>
+              <td th:text="${listOfEntries.amount}"></td>
+              <td th:text="${listOfEntries.unit}"></td>
+              <td th:text="${listOfEntries.netPrice}"></td>
+              <td th:text="${listOfEntries.vat}"></td>
+              <td th:text="${listOfEntries.netAmount}"></td>
+              <td th:text="${listOfEntries.vatAmount}"></td>
+              <td th:text="${listOfEntries.preTaxAmount}"></td>
             </tr>
 
 
             </tbody>
           </table>
         </div>
+          <div>
+            <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/invoice-entry/create(idOfEmployer=${updateInvoice.employer.id.intValue()}, idOfInvoice=${updateInvoice.id.intValue()})}">
+                        <span style="color: darkgreen" >
+                            <i class="fa-solid fa-square-plus"></i>
+                        </span>
+              Add Entry
+            </a>
+          </div>
         <div>
           <div class="row">
             <div class="col"></div>
