@@ -71,8 +71,8 @@ VALUES
     (1400, 11,'Kołobrzeg','Polska','2021-05-10 13:07:12.000000', 33, 'domowy', '30-398', 'Gołębia', '2021-05-10 13:07:12.000000', 100);
 
 -- invoices
-insert into invoice(id, createdat, invoicecreationdate, paydue, pricenet, seconddate, updatedat, vat, employee_id, employer_id)
-VALUES (100, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', 23,'2021-05-10 13:07:12.000000','2021-05-10 13:07:12.000000',23,100,100);
+insert into invoice(id, createdat, invoicecreationdate, paydue, seconddate, updatedat, vat, employee_id, employer_id)
+VALUES (100, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000','2021-05-10 13:07:12.000000','2021-05-10 13:07:12.000000',23,100,100);
 
 ---- Maps
 -- empolyee_address_map

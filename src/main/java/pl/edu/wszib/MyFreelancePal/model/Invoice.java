@@ -46,11 +46,13 @@ public class Invoice {
     @ManyToOne
     @JoinColumn(name = "EmployerAddress_id")
     private Address employerAddress;
-    private BigDecimal priceNet;
-    private BigDecimal priceGross;
     private Integer vat;
+    private BigDecimal amountNet;
+    private BigDecimal amountVat;
+    private BigDecimal amountPreTax;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date payDue;
+    private Integer daysToPay;
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;

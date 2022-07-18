@@ -18,7 +18,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-17T17:03:15+0200",
+    date = "2022-07-18T20:36:36+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -40,10 +40,12 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoiceDomain.employer( employerToEmployerManagerDomain( invoice.getEmployer() ) );
         invoiceDomain.employerAddress( addressToAddressEmployerDomain( invoice.getEmployerAddress() ) );
         invoiceDomain.employeeAddress( addressToAddressEmployeeDomain( invoice.getEmployeeAddress() ) );
-        invoiceDomain.priceNet( invoice.getPriceNet() );
-        invoiceDomain.priceGross( invoice.getPriceGross() );
+        invoiceDomain.amountNet( invoice.getAmountNet() );
+        invoiceDomain.amountVat( invoice.getAmountVat() );
+        invoiceDomain.amountPreTax( invoice.getAmountPreTax() );
         invoiceDomain.vat( invoice.getVat() );
         invoiceDomain.payDue( invoice.getPayDue() );
+        invoiceDomain.daysToPay( invoice.getDaysToPay() );
 
         return invoiceDomain.build();
     }
@@ -65,10 +67,12 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoice.employer( employerManagerDomainToEmployer( invoiceDomain.getEmployer() ) );
         invoice.employeeAddress( addressEmployeeDomainToAddress( invoiceDomain.getEmployeeAddress() ) );
         invoice.employerAddress( addressEmployerDomainToAddress( invoiceDomain.getEmployerAddress() ) );
-        invoice.priceNet( invoiceDomain.getPriceNet() );
-        invoice.priceGross( invoiceDomain.getPriceGross() );
         invoice.vat( invoiceDomain.getVat() );
+        invoice.amountNet( invoiceDomain.getAmountNet() );
+        invoice.amountVat( invoiceDomain.getAmountVat() );
+        invoice.amountPreTax( invoiceDomain.getAmountPreTax() );
         invoice.payDue( invoiceDomain.getPayDue() );
+        invoice.daysToPay( invoiceDomain.getDaysToPay() );
 
         return invoice.build();
     }

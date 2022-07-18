@@ -9,6 +9,7 @@ import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.InvoiceMapper;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -22,6 +23,7 @@ public class InvoiceService implements CrudService<InvoiceDomain, Integer> {
     public List<InvoiceDomain> list() {
         return mapper.mapToDomain(invoiceRepository.findAll());
     }
+
 
     @Override
     public InvoiceDomain get(Integer integer) {

@@ -99,7 +99,6 @@
                             <td th:text="${listOfEntries.netAmount}"></td>
                             <td th:text="${listOfEntries.vatAmount}"></td>
                             <td th:text="${listOfEntries.preTaxAmount}"></td>
-                            <td th:text="${listOfEntries.tasks}"></td>
                         </tr>
 
 
@@ -122,16 +121,18 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td th:text="|${getInvoice.vat} %|"></td>
+                                    <td th:text="|${getInvoice.amountNet}|"></td>
+                                    <td th:text="|${getInvoice.amountVat}|"></td>
+                                    <td th:text="|${getInvoice.amountPreTax}|"></td>
+
+
                                 </tr>
                                 <tr class="bg-light">
                                     <td>Total</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td th:text="|${getInvoice.amountNet}|"></td>
+                                    <td th:text="|${getInvoice.amountVat}|"></td>
+                                    <td th:text="|${getInvoice.amountPreTax}|"></td>
                                 </tr>
 
 
@@ -139,7 +140,7 @@
                             </table>
 
                             <div th:text="|Paymen method: wire transfer|"></div>
-                            <div th:text="|Paymnet date 14 days: *{getInvoice.payDue}|"></div>
+                            <div th:text="|Paymnet date *{getInvoice.daysToPay} days: *{getInvoice.payDue}|"></div>
                         </div>
 
                     </div>
@@ -147,7 +148,8 @@
                 <div class="py-1">
                     <div class="row bg-light py-1">
                         <div class="col"></div>
-                        <div class="col" th:text="|To pay: ___ PLN|"></div>
+                        <div class="col" th:if="${getInvoice.amountPreTax} == null" th:text="|To pay: ___ PLN|"></div>
+                        <div class="col" th:unless="${getInvoice.amountPreTax} == null" th:text="|To pay: ${getInvoice.amountPreTax} PLN|"></div>
                     </div>
                     <div class="row py-1">
                         <div class="col"></div>

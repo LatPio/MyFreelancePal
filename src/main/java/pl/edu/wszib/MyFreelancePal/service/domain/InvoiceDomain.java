@@ -27,10 +27,12 @@ public class InvoiceDomain {
     private AddressEmployerDomain employerAddress;
     private AddressEmployeeDomain employeeAddress;
 //    private List<InvoiceServiceEntryDomain> invoiceServiceEntries;
-    private BigDecimal priceNet;
-    private BigDecimal priceGross;
+    private BigDecimal amountNet;
+    private BigDecimal amountVat;
+    private BigDecimal amountPreTax;
     private Integer vat;
     private Date payDue;
+    private Integer daysToPay;
 
 
 }

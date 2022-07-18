@@ -13,7 +13,7 @@
 
             <div class="form-group">
                 <label for="invoiceCreationDate">invoiceCreationDate</label>
-                <input id="invoiceCreationDate" class="form-control" type="date" th:field="*{invoiceCreationDate}">
+                <input id="invoiceCreationDate" class="form-control" type="date"  th:id="invoiceCreationDate" th:name="invoiceCreationDate" th:value="${today}">
             </div>
 
 

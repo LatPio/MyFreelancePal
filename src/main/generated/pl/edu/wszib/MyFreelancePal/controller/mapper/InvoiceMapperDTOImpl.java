@@ -20,7 +20,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-17T17:03:15+0200",
+    date = "2022-07-18T20:36:35+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
@@ -42,10 +42,12 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDTO.employer( employerManagerDomainToEmployerManagerDTO( invoiceDomain.getEmployer() ) );
         invoiceDTO.employerAddress( addressEmployerDomainToAddressEmployerDTO( invoiceDomain.getEmployerAddress() ) );
         invoiceDTO.employeeAddress( addressEmployeeDomainToAddressEmployeeDTO( invoiceDomain.getEmployeeAddress() ) );
-        invoiceDTO.priceNet( invoiceDomain.getPriceNet() );
-        invoiceDTO.priceGross( invoiceDomain.getPriceGross() );
+        invoiceDTO.amountNet( invoiceDomain.getAmountNet() );
+        invoiceDTO.amountVat( invoiceDomain.getAmountVat() );
+        invoiceDTO.amountPreTax( invoiceDomain.getAmountPreTax() );
         invoiceDTO.vat( invoiceDomain.getVat() );
         invoiceDTO.payDue( invoiceDomain.getPayDue() );
+        invoiceDTO.daysToPay( invoiceDomain.getDaysToPay() );
 
         return invoiceDTO.build();
     }
@@ -67,10 +69,12 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDomain.employer( employerManagerDTOToEmployerManagerDomain( invoiceDTO.getEmployer() ) );
         invoiceDomain.employerAddress( addressEmployerDTOToAddressEmployerDomain( invoiceDTO.getEmployerAddress() ) );
         invoiceDomain.employeeAddress( addressEmployeeDTOToAddressEmployeeDomain( invoiceDTO.getEmployeeAddress() ) );
-        invoiceDomain.priceNet( invoiceDTO.getPriceNet() );
-        invoiceDomain.priceGross( invoiceDTO.getPriceGross() );
+        invoiceDomain.amountNet( invoiceDTO.getAmountNet() );
+        invoiceDomain.amountVat( invoiceDTO.getAmountVat() );
+        invoiceDomain.amountPreTax( invoiceDTO.getAmountPreTax() );
         invoiceDomain.vat( invoiceDTO.getVat() );
         invoiceDomain.payDue( invoiceDTO.getPayDue() );
+        invoiceDomain.daysToPay( invoiceDTO.getDaysToPay() );
 
         return invoiceDomain.build();
     }

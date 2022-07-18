@@ -34,10 +34,13 @@
 <!--        <input id="employerAddress" class="form-control" type="number" th:field="*{employerAddress}" hidden>-->
 <!--      </div>-->
       <div class="form-group">
-        <input id="priceNet" class="form-control" type="number" th:field="*{priceNet}" hidden>
+        <input id="priceNet" class="form-control" type="number" th:field="*{amountNet}" hidden>
       </div>
       <div class="form-group">
-        <input id="priceGross" class="form-control" type="number" th:field="*{priceGross}" hidden>
+        <input id="amountPreTax" class="form-control" type="number" th:field="*{amountPreTax}" hidden>
+      </div>
+      <div class="form-group">
+        <input id="amountVat" class="form-control" type="number" th:field="*{amountVat}" hidden>
       </div>
       <div class="form-group">
         <input id="vat" class="form-control" type="number" th:field="*{vat}" hidden>
@@ -183,7 +186,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td></td>
+                  <td th:text="${updateInvoice.vat}"></td>
                   <td></td>
                   <td></td>
                   <td></td>

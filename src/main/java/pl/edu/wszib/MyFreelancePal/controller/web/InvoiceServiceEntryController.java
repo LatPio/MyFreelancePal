@@ -57,24 +57,17 @@ public class InvoiceServiceEntryController {
 
         List<TaskInvoiceDTO> tasks = new ArrayList<>();
         List<Integer> listOfIds = Arrays.asList(invoiceServiceEntryDTO.getIdsOfTasks().split(",")).stream().map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
-
         listOfIds.forEach(integer -> tasks.add(taskInvoiceMapperDTO.map(taskInvoiceService.get(integer))));
 
         tasks.forEach(taskInvoiceDTO -> taskInvoiceDTO.setInvoiceCreated(true));
         tasks.forEach(taskInvoiceDTO -> taskInvoiceDTO.setTimeOfInvoiceCreation(Instant.now()));
 
-
-
-
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------v");
-
         List<Long> time = new ArrayList<>();
         tasks.forEach(taskInvoiceDTO -> time.add(taskInvoiceDTO.getTimeOfWorkInMin().longValue()));
         Long sum = time.stream().mapToLong(value -> value).sum();
-        System.out.println(sum);
         invoiceServiceEntryDTO.setAmount(sum.intValue());
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------v");
-        List<BigDecimal> eachNetAmount =new ArrayList<>();
+        List<BigDecimal> eachNetAmount =  new ArrayList<>();
+
         tasks.forEach(taskInvoiceDTO -> {
             BigDecimal a = taskInvoiceDTO.getHourPrice();
             BigDecimal b = BigDecimal.valueOf(taskInvoiceDTO.getTimeOfWorkInMin().longValue());
@@ -89,11 +82,12 @@ public class InvoiceServiceEntryController {
         tasks.forEach(taskDTO -> taskInvoiceService.update(taskInvoiceMapperDTO.map(taskDTO)));
         InvoiceServiceEntryDTO toUpdate = invoiceServiceEntryMapperDTO.map(invoiceServiceEntryService.get(invoiceServiceEntryDomain.getId()));
         toUpdate.setUnit("min");
-        toUpdate.setNetAmount(sumResult);
-        toUpdate.setNetPrice(sumResult.divide(BigDecimal.valueOf(sum)));
-        toUpdate.setPreTaxAmount(sumResult.multiply(new BigDecimal(1.23)));
-        toUpdate.setVatAmount(sumResult.multiply(new BigDecimal(0.23)));
+        toUpdate.setNetPrice(sumResult.divide(BigDecimal.valueOf(sum), 2 , RoundingMode.HALF_UP));
         toUpdate.setVat(23);
+        toUpdate.setNetAmount( toUpdate.getNetPrice().multiply(BigDecimal.valueOf(toUpdate.getAmount())) );
+
+        toUpdate.setVatAmount(sumResult.multiply(new BigDecimal(0.23)));
+        toUpdate.setPreTaxAmount(sumResult.multiply(new BigDecimal(1.23)));
 
         InvoiceServiceEntryDomain invoiceServiceEntryDomainToReUpdate = invoiceServiceEntryService.update(invoiceServiceEntryMapperDTO.map(toUpdate));
 //        InvoiceServiceEntryDomain update = invoiceServiceEntryService.update(invoiceServiceEntryMapperDTO.map());

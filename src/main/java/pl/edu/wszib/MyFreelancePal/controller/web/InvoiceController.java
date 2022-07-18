@@ -13,6 +13,12 @@ import pl.edu.wszib.MyFreelancePal.controller.mapper.*;
 import pl.edu.wszib.MyFreelancePal.service.*;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -51,11 +57,20 @@ public class InvoiceController {
         model.addAttribute("ListOfEmployers", allEmployers);
         List<EmployeeDTO> allEmployee = employeeMapperDTO.mapToDTO(employeeService.list());
         model.addAttribute("ListOfEmployees", allEmployee);
+        model.addAttribute("today", LocalDate.now() );
 
         return "invoice/invoiceCreate";
     }
     @PostMapping("/create")
     public String createAction(Model model, InvoiceDTO invoiceDTO){
+        invoiceDTO.setSecondDate(invoiceDTO.getInvoiceCreationDate());
+        LocalDate datePlus14days = invoiceDTO.getInvoiceCreationDate().toLocalDate().plusDays(14);
+        invoiceDTO.setPayDue(Date.valueOf(datePlus14days));
+        invoiceDTO.setDaysToPay(14);
+        invoiceDTO.setVat(23);
+        invoiceDTO.setAmountNet(BigDecimal.valueOf(0));
+        invoiceDTO.setAmountVat(BigDecimal.valueOf(0));
+        invoiceDTO.setAmountPreTax(BigDecimal.valueOf(0));
         InvoiceDomain invoiceDomain = invoiceService.create(invoiceMapperDTO.map(invoiceDTO));
         return "redirect:/invoice/list";
     }
@@ -65,7 +80,6 @@ public class InvoiceController {
     public String get(Model model, @RequestParam Integer id){
         model.addAttribute("getInvoice", invoiceMapperDTO.map(invoiceService.get(id)));
         model.addAttribute("listOfInvoiceEntries", invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id)));
-
         return "invoice/invoiceGet";
     }
 
@@ -80,6 +94,24 @@ public class InvoiceController {
 
     @PostMapping("/update")
     public String updateAction(InvoiceDTO invoiceDTO, Model model, @RequestParam Integer id){
+        List<InvoiceServiceEntryDTO> listOfInvoiceEntries = invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id));
+//        invoiceDTO.setVat(23);
+        List<BigDecimal> amountNet = new ArrayList<>();
+        List<BigDecimal> amountVat = new ArrayList<>();
+        List<BigDecimal> amountPreTax = new ArrayList<>();
+        if (listOfInvoiceEntries.isEmpty()) {
+            amountNet.add(0, BigDecimal.valueOf(0));
+        } else {
+            listOfInvoiceEntries.forEach(invoiceServiceEntryDTO -> amountNet.add(invoiceServiceEntryDTO.getNetAmount()));
+            listOfInvoiceEntries.forEach(invoiceServiceEntryDTO -> amountPreTax.add(invoiceServiceEntryDTO.getPreTaxAmount()));
+            listOfInvoiceEntries.forEach(invoiceServiceEntryDTO -> amountVat.add(invoiceServiceEntryDTO.getVatAmount()));
+        }
+        invoiceDTO.setAmountNet(amountNet.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
+        invoiceDTO.setAmountVat(amountVat.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
+        invoiceDTO.setAmountPreTax(amountPreTax.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
+
+        Integer days = Math.toIntExact(ChronoUnit.DAYS.between(invoiceDTO.getInvoiceCreationDate().toLocalDate(), invoiceDTO.getPayDue().toLocalDate() ));
+        invoiceDTO.setDaysToPay(days);
         InvoiceDomain invoiceDomain = invoiceService.update(invoiceMapperDTO.map(invoiceDTO));
         return "redirect:/invoice/get?id=" + id;
     }

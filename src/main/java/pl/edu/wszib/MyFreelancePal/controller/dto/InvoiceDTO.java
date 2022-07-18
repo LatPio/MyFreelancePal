@@ -29,10 +29,12 @@ public class InvoiceDTO {
     private AddressEmployerDTO employerAddress;
     private AddressEmployeeDTO employeeAddress;
 //    private List<InvoiceServiceEntryDTO> invoiceServiceEntries;
-    private BigDecimal priceNet;
-    private BigDecimal priceGross;
+    private BigDecimal amountNet;
+    private BigDecimal amountVat;
+    private BigDecimal amountPreTax;
     private Integer vat;
     private Date payDue;
+    private Integer daysToPay;
 
 
 }
