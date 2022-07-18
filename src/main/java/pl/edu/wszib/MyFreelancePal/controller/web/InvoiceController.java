@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.allegro.finance.tradukisto.MoneyConverters;
 import pl.edu.wszib.MyFreelancePal.controller.dto.*;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.*;
 import pl.edu.wszib.MyFreelancePal.service.*;
@@ -109,6 +110,9 @@ public class InvoiceController {
         invoiceDTO.setAmountNet(amountNet.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
         invoiceDTO.setAmountVat(amountVat.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
         invoiceDTO.setAmountPreTax(amountPreTax.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
+        MoneyConverters converters = MoneyConverters.ENGLISH_BANKING_MONEY_VALUE;
+        converters.asWords(invoiceDTO.getAmountPreTax(), "PLN");
+        invoiceDTO.setAmountInWords(converters.asWords(invoiceDTO.getAmountPreTax(), "PLN"));
 
         Integer days = Math.toIntExact(ChronoUnit.DAYS.between(invoiceDTO.getInvoiceCreationDate().toLocalDate(), invoiceDTO.getPayDue().toLocalDate() ));
         invoiceDTO.setDaysToPay(days);

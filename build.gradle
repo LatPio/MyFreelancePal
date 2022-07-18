@@ -40,6 +40,8 @@ dependencies {
 	annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.5.2.Final'
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
+	implementation 'pl.allegro.finance:tradukisto:1.10.6'
+
 
 
 

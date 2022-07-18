@@ -45,6 +45,7 @@
       <div class="form-group">
         <input id="vat" class="form-control" type="number" th:field="*{vat}" hidden>
       </div>
+
 <!--      <div class="form-group">-->
 <!--        <input id="payDue" class="form-control" type="date" th:field="*{payDue}" hidden>-->
 <!--      </div>-->
@@ -174,6 +175,7 @@
           <div class="row">
             <div class="col"></div>
             <div class="col py-2">
+              <div class="text-danger py-2" th:text="|Values will update after saving|"></div>
 
               <table class="table table-bordered">
                 <thead class="bg-light">
@@ -186,16 +188,19 @@
                 </thead>
                 <tbody>
                 <tr>
+
+                </tr>
+                <tr>
                   <td th:text="${updateInvoice.vat}"></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td th:text="|${updateInvoice.amountNet}|"></td>
+                  <td th:text="|${updateInvoice.amountVat}|"></td>
+                  <td th:text="|${updateInvoice.amountPreTax}|"></td>
                 </tr>
                 <tr class="bg-light">
                   <td>Total</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td th:text="|${updateInvoice.amountNet}|"></td>
+                  <td th:text="|${updateInvoice.amountVat}|"></td>
+                  <td th:text="|${updateInvoice.amountPreTax}|"></td>
                 </tr>
 
 
@@ -212,9 +217,6 @@
                 </div>
               </div>
 
-
-
-
               </div>
             </div>
 
@@ -224,12 +226,15 @@
           <div class="row bg-light py-1">
             <div class="col"></div>
             <div class="col">
-              <h5 th:text="|To pay: ___ PLN|"></h5>
+              <h5 class="col" th:if="${updateInvoice.amountPreTax} == null" th:text="|To pay: ___ PLN|"></h5>
+              <h5 class="col" th:unless="${updateInvoice.amountPreTax} == null" th:text="|To pay: ${updateInvoice.amountPreTax} PLN|"></h5>
             </div>
           </div>
           <div class="row py-1">
             <div class="col"></div>
-            <div class="col" th:text="|Amount in words: ___ PLN|"></div>
+            <div class="col"  th:if="${updateInvoice.amountInWords} == null" th:text="|Amount in words: ___ PLN|"></div>
+            <div class="col"  th:unless="${updateInvoice.amountInWords} == null" th:text="|Amount in words: ${updateInvoice.amountInWords}|"></div>
+
           </div>
         </div>
         <div style="height: 5rem"></div>

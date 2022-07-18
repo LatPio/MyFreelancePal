@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-18T20:36:36+0200",
+    date = "2022-07-18T22:22:15+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployerMapperImpl implements AddressEmployerMapper {

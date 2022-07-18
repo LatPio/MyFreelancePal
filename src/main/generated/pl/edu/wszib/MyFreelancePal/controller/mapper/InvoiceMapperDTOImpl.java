@@ -20,7 +20,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-18T20:36:35+0200",
+    date = "2022-07-18T22:22:15+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
@@ -45,6 +45,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDTO.amountNet( invoiceDomain.getAmountNet() );
         invoiceDTO.amountVat( invoiceDomain.getAmountVat() );
         invoiceDTO.amountPreTax( invoiceDomain.getAmountPreTax() );
+        invoiceDTO.amountInWords( invoiceDomain.getAmountInWords() );
         invoiceDTO.vat( invoiceDomain.getVat() );
         invoiceDTO.payDue( invoiceDomain.getPayDue() );
         invoiceDTO.daysToPay( invoiceDomain.getDaysToPay() );
@@ -72,6 +73,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDomain.amountNet( invoiceDTO.getAmountNet() );
         invoiceDomain.amountVat( invoiceDTO.getAmountVat() );
         invoiceDomain.amountPreTax( invoiceDTO.getAmountPreTax() );
+        invoiceDomain.amountInWords( invoiceDTO.getAmountInWords() );
         invoiceDomain.vat( invoiceDTO.getVat() );
         invoiceDomain.payDue( invoiceDTO.getPayDue() );
         invoiceDomain.daysToPay( invoiceDTO.getDaysToPay() );

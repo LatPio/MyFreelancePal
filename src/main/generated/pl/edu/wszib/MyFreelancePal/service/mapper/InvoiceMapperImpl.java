@@ -18,7 +18,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-18T20:36:36+0200",
+    date = "2022-07-18T22:22:15+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -43,6 +43,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoiceDomain.amountNet( invoice.getAmountNet() );
         invoiceDomain.amountVat( invoice.getAmountVat() );
         invoiceDomain.amountPreTax( invoice.getAmountPreTax() );
+        invoiceDomain.amountInWords( invoice.getAmountInWords() );
         invoiceDomain.vat( invoice.getVat() );
         invoiceDomain.payDue( invoice.getPayDue() );
         invoiceDomain.daysToPay( invoice.getDaysToPay() );
@@ -71,6 +72,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoice.amountNet( invoiceDomain.getAmountNet() );
         invoice.amountVat( invoiceDomain.getAmountVat() );
         invoice.amountPreTax( invoiceDomain.getAmountPreTax() );
+        invoice.amountInWords( invoiceDomain.getAmountInWords() );
         invoice.payDue( invoiceDomain.getPayDue() );
         invoice.daysToPay( invoiceDomain.getDaysToPay() );
 

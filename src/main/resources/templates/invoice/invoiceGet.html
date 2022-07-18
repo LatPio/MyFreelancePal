@@ -148,12 +148,14 @@
                 <div class="py-1">
                     <div class="row bg-light py-1">
                         <div class="col"></div>
-                        <div class="col" th:if="${getInvoice.amountPreTax} == null" th:text="|To pay: ___ PLN|"></div>
-                        <div class="col" th:unless="${getInvoice.amountPreTax} == null" th:text="|To pay: ${getInvoice.amountPreTax} PLN|"></div>
+                        <h5 class="col" th:if="${getInvoice.amountPreTax} == null" th:text="|To pay: ___ PLN|"></h5>
+                        <h5 class="col" th:unless="${getInvoice.amountPreTax} == null" th:text="|To pay: ${getInvoice.amountPreTax} PLN|"></h5>
                     </div>
                     <div class="row py-1">
                         <div class="col"></div>
-                        <div class="col" th:text="|Amount in words: ___ PLN|"></div>
+                        <div class="col"  th:if="${getInvoice.amountInWords} == null" th:text="|Amount in words: ___ PLN|"></div>
+                        <div class="col"  th:unless="${getInvoice.amountInWords} == null" th:text="|Amount in words: ${getInvoice.amountInWords}|"></div>
+
                     </div>
                 </div>
                 <div style="height: 5rem"></div>

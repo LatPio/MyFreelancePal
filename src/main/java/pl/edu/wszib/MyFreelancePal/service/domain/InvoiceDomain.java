@@ -30,6 +30,7 @@ public class InvoiceDomain {
     private BigDecimal amountNet;
     private BigDecimal amountVat;
     private BigDecimal amountPreTax;
+    private String amountInWords;
     private Integer vat;
     private Date payDue;
     private Integer daysToPay;

@@ -50,6 +50,7 @@ public class Invoice {
     private BigDecimal amountNet;
     private BigDecimal amountVat;
     private BigDecimal amountPreTax;
+    private String amountInWords;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date payDue;
     private Integer daysToPay;
