@@ -25,7 +25,7 @@ public class InvoiceRestController {
     }
 
     @GetMapping
-    public InvoiceDTO get(@RequestParam Integer id){
+    public InvoiceDTO get(@RequestParam String id){
         return invoiceMapperDTO.map(invoiceService.get(id));
     }
 
@@ -44,7 +44,7 @@ public class InvoiceRestController {
         return invoiceMapperDTO.map(output);
     }
     @DeleteMapping
-    public void delete(@RequestParam Integer id){
+    public void delete(@RequestParam String id){
         invoiceService.delete(id);
     }
 }

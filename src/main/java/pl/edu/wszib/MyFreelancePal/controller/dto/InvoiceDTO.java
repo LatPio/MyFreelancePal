@@ -19,7 +19,7 @@ import java.util.List;
 public class InvoiceDTO {
 
 
-    private Integer id;
+    private String id;
     private Date invoiceCreationDate;
     private Date secondDate;
     private String invoiceNumber;

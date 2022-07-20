@@ -17,7 +17,7 @@ import java.util.List;
 public class InvoiceDomain {
 
 
-    private Integer id;
+    private String id;
     private Date invoiceCreationDate;
     private Date secondDate;
     private String invoiceNumber;

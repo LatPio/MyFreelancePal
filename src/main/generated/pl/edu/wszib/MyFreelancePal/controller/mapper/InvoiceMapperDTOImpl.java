@@ -20,7 +20,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-18T22:22:15+0200",
+    date = "2022-07-20T22:49:30+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
@@ -200,6 +200,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
 
         projectDTO.id( projectDomain.getId() );
         projectDTO.name( projectDomain.getName() );
+        projectDTO.hourPriceDefault( projectDomain.getHourPriceDefault() );
 
         return projectDTO.build();
     }
@@ -344,6 +345,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
 
         projectDomain.id( projectDTO.getId() );
         projectDomain.name( projectDTO.getName() );
+        projectDomain.hourPriceDefault( projectDTO.getHourPriceDefault() );
 
         return projectDomain.build();
     }

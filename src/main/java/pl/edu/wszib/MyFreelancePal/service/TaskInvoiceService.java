@@ -26,14 +26,12 @@ public class TaskInvoiceService implements CrudService<TaskInvoiceDomain, Intege
         return mapper.mapToDomain(taskRepository.findAll());
     }
 
-    public List<TaskInvoiceDomain> list2(Integer id){
+    public List<TaskInvoiceDomain> listByProjectID(Integer id){
         return mapper.mapToDomain(taskRepository.findByProject_Id(id));
     }
-    public Integer countPendingTasks(boolean b){return taskRepository.countAllByDoneTask(b);}
-
-    public Long countTask(){ return taskRepository.count();}
-
-    public Long totalMinutesByID(Integer idOfInvoiceEntry){return taskRepository.totalMinutesByID(idOfInvoiceEntry);}
+    public List<TaskInvoiceDomain> findTaskTestingForGrandparent(Integer idOFEmployer, Boolean doneTask, Boolean invoiceCreated){
+        return mapper.mapToDomain(taskRepository.findTaskTestingForGrandparent(idOFEmployer, doneTask, invoiceCreated));
+    }
 
     @Override
     public TaskInvoiceDomain get(Integer integer) {

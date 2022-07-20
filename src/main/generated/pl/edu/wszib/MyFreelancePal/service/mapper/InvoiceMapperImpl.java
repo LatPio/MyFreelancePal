@@ -18,7 +18,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-18T22:22:15+0200",
+    date = "2022-07-20T22:49:32+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -199,6 +199,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         projectDomain.id( project.getId() );
         projectDomain.name( project.getName() );
         projectDomain.color( project.getColor() );
+        projectDomain.hourPriceDefault( project.getHourPriceDefault() );
 
         return projectDomain.build();
     }
@@ -344,6 +345,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         project.id( projectDomain.getId() );
         project.name( projectDomain.getName() );
         project.color( projectDomain.getColor() );
+        project.hourPriceDefault( projectDomain.getHourPriceDefault() );
 
         return project.build();
     }

@@ -10,7 +10,7 @@
 
         <div class="card my-4">
             <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
-                <h5 th:text="|Invoice number: ${getInvoice.invoiceNumber}|" ></h5>
+                <h5 th:text="|Invoice number: ${getInvoice.id}|" ></h5>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
                         <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/invoice/update(id=*{getInvoice.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
@@ -31,7 +31,7 @@
 
 
                 </div>
-                <h4 class="text-start border-top  border-bottom border-2 bg-light border-dark py-2 mt-3" th:text="|Invoice No. of: ${getInvoice.invoiceNumber}|"> </h4>
+                <h4 class="text-start border-top  border-bottom border-2 bg-light border-dark py-2 mt-3" th:text="|Invoice No. of: ${getInvoice.id}|"> </h4>
                 <div class="row">
                     <div class="col mt-2">
                         <h5 class="border-bottom border-2 border-dark">Seller</h5>

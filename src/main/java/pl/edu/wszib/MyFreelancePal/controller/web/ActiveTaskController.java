@@ -17,6 +17,7 @@ import pl.edu.wszib.MyFreelancePal.service.TaskService;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 import pl.edu.wszib.MyFreelancePal.util.Utilities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -52,7 +53,10 @@ public class ActiveTaskController {
 
     @PostMapping("/create")
     public String createAction(TaskDTO taskDTO, Model model){
+        BigDecimal price = projectManagerService.get(taskDTO.getProjectDTO().getId()).getHourPriceDefault();
+        taskDTO.setHourPrice(price);
         TaskDomain taskDomain = taskService.create(taskMapperDTO.map(taskDTO));
+
         taskDomain.setDoneTask(Boolean.FALSE);
         return "redirect:/active-task";
     }

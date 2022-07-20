@@ -13,7 +13,7 @@ import java.util.Map;
 @Repository
 public interface InvoiceServiceEntryRepository extends JpaRepository<InvoiceServiceEntry, Integer> {
 
-    List<InvoiceServiceEntry> findAllByInvoice_Id(Integer id);
+    List<InvoiceServiceEntry> findAllByInvoice_Id(String id);
 
 //    @Nullable
 //    @Query(value = "SELECT invoice.id, sum(preTaxAmount) from InvoiceServiceEntry group by invoice.id")

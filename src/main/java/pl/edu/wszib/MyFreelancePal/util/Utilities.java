@@ -17,7 +17,7 @@ public class Utilities {
         if (startTime != null & endTime != null) {
             Duration diffTimeMilliseconds = Duration.between(startTime, endTime);
             time = Math.abs(diffTimeMilliseconds.toMinutes());
-            return time;
+            return time + 1;
         } else {
             return time;
         }

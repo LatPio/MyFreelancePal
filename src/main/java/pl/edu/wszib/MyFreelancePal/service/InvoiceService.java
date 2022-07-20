@@ -13,7 +13,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @Service
-public class InvoiceService implements CrudService<InvoiceDomain, Integer> {
+public class InvoiceService implements CrudService<InvoiceDomain, String> {
 
     @Autowired
     private InvoiceRepository invoiceRepository;
@@ -26,8 +26,8 @@ public class InvoiceService implements CrudService<InvoiceDomain, Integer> {
 
 
     @Override
-    public InvoiceDomain get(Integer integer) {
-        return invoiceRepository.findById(integer)
+    public InvoiceDomain get(String string) {
+        return invoiceRepository.findById(string)
                 .map(invoice -> mapper.map(invoice))
                 .orElse(null);
     }
@@ -50,7 +50,7 @@ public class InvoiceService implements CrudService<InvoiceDomain, Integer> {
     }
 
     @Override
-    public void delete(Integer integer) {
-        invoiceRepository.deleteById(integer);
+    public void delete(String string) {
+        invoiceRepository.deleteById(string);
     }
 }

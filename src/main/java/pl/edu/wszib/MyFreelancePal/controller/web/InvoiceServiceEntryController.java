@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.wszib.MyFreelancePal.controller.dto.InvoiceServiceEntryDTO;
+import pl.edu.wszib.MyFreelancePal.controller.dto.ProjectManagerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.TaskDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.TaskInvoiceDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.InvoiceServiceEntryMapperDTO;
@@ -44,16 +45,16 @@ public class InvoiceServiceEntryController {
     private ProjectManagerMapperDTO projectManagerMapperDTO = Mappers.getMapper(ProjectManagerMapperDTO.class);
 
     @GetMapping("/create")
-    public String create(Model model, @RequestParam Integer idOfEmployer, @RequestParam Integer idOfInvoice){
+    public String create(Model model, @RequestParam Integer idOfEmployer, @RequestParam String idOfInvoice){
         model.addAttribute("newInvoiceEntry", new InvoiceServiceEntryDTO());
-        model.addAttribute("listOfProjectWithTasks", projectManagerMapperDTO.mapToDTO(projectManagerService.list2(idOfEmployer)));
+        model.addAttribute("listOfTasks",  taskInvoiceMapperDTO.mapToDTO(taskInvoiceService.findTaskTestingForGrandparent(idOfEmployer, true, false)));
         model.addAttribute("idOfInvoice", idOfInvoice);
         return "invoiceServiceEntry/invoiceServiceEntryCreate";
     }
 
 
     @PostMapping("create")
-    public String createAction(Model model, InvoiceServiceEntryDTO invoiceServiceEntryDTO, @RequestParam Integer idOfInvoice){
+    public String createAction(Model model, InvoiceServiceEntryDTO invoiceServiceEntryDTO, @RequestParam String idOfInvoice){
 
         List<TaskInvoiceDTO> tasks = new ArrayList<>();
         List<Integer> listOfIds = Arrays.asList(invoiceServiceEntryDTO.getIdsOfTasks().split(",")).stream().map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
@@ -94,5 +95,25 @@ public class InvoiceServiceEntryController {
         return "redirect:/invoice/update?id=" + idOfInvoice;
     }
 
+    @GetMapping("/delete")
+    public String delete(@RequestParam Integer id, Model model, @RequestParam String idOfInvoice){
+        model.addAttribute("idOfInvoice", idOfInvoice);
+        model.addAttribute("deleteInvoiceEntry", invoiceServiceEntryService.get(id));
+        return "invoiceServiceEntry/invoiceServiceEntryDelete";
+
+    }
+
+    @PostMapping("/delete")
+    public String deleteAction (InvoiceServiceEntryDTO invoiceServiceEntryDTO, Model model, @RequestParam String idOfInvoice){
+//        List<TaskInvoiceDTO> tasks = new ArrayList<>();
+//        List<Integer> listOfIds = Arrays.asList(invoiceServiceEntryDTO.getIdsOfTasks().split(",")).stream().map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
+//        listOfIds.forEach(integer -> tasks.add(taskInvoiceMapperDTO.map(taskInvoiceService.get(integer))));
+//
+//        tasks.forEach(taskInvoiceDTO -> taskInvoiceDTO.setInvoiceCreated(false));
+
+//        invoiceServiceEntryDTO.getTasks().forEach(taskDTO -> taskDTO.setInvoiceCreated(false));
+        invoiceServiceEntryService.delete(invoiceServiceEntryDTO.getId());
+        return "redirect:/invoice/update?id=" + idOfInvoice;
+    }
 
 }

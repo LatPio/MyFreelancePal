@@ -78,7 +78,7 @@ public class InvoiceController {
 
 
     @GetMapping("/get")
-    public String get(Model model, @RequestParam Integer id){
+    public String get(Model model, @RequestParam String id){
         model.addAttribute("getInvoice", invoiceMapperDTO.map(invoiceService.get(id)));
         model.addAttribute("listOfInvoiceEntries", invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id)));
         return "invoice/invoiceGet";
@@ -87,14 +87,14 @@ public class InvoiceController {
 
 
     @GetMapping("/update")
-    public String update(@RequestParam Integer id, Model model){
+    public String update(@RequestParam String id, Model model){
         model.addAttribute("updateInvoice", invoiceMapperDTO.map(invoiceService.get(id)));
         model.addAttribute("listOfInvoiceEntries", invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id)));
         return "invoice/invoiceUpdate";
     }
 
     @PostMapping("/update")
-    public String updateAction(InvoiceDTO invoiceDTO, Model model, @RequestParam Integer id){
+    public String updateAction(InvoiceDTO invoiceDTO, Model model, @RequestParam String id){
         List<InvoiceServiceEntryDTO> listOfInvoiceEntries = invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id));
 //        invoiceDTO.setVat(23);
         List<BigDecimal> amountNet = new ArrayList<>();
@@ -121,7 +121,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam Integer id, Model model){
+    public String delete(@RequestParam String id, Model model){
         model.addAttribute("deleteInvoice", invoiceService.get(id));
         return "invoice/invoiceDelete";
     }

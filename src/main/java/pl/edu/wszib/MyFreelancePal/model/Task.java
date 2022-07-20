@@ -2,12 +2,12 @@ package pl.edu.wszib.MyFreelancePal.model;
 
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.Duration;
@@ -52,6 +52,7 @@ public class Task {
     private Project project;
     @ManyToOne
     @JoinColumn(name = "invoiceServiceEntryId")
+
     private InvoiceServiceEntry invoiceServiceEntry;
 
 

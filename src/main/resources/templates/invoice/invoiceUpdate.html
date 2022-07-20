@@ -9,9 +9,9 @@
   <div class="container">
     <form th:method="POST" th:action="@{/invoice/update(id=${updateInvoice.id})}" th:object="${updateInvoice}">
 
-      <div class="form-group">
-        <input id="id" class="form-control" type="text" th:field="*{id}" hidden>
-      </div>
+<!--      <div class="form-group">-->
+<!--        <input id="id" class="form-control" type="text" th:field="*{id}">-->
+<!--      </div>-->
 <!--      <div class="form-group">-->
 <!--        <input id="invoiceCreationDate" class="form-control" type="date" th:field="*{invoiceCreationDate}" hidden>-->
 <!--      </div>-->
@@ -55,7 +55,7 @@
 
     <div class="card my-4">
       <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
-        <h5 th:text="|Invoice number: ${updateInvoice.invoiceNumber}|" ></h5>
+        <h5 th:text="|Invoice number: ${updateInvoice.id}|" ></h5>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <a type="button" class="btn btn-sm btn-outline-secondary" onclick='javascript:window.history.back()'><i class="fa-solid fa-file-pen"></i>Go Back</a>
@@ -91,7 +91,7 @@
 
 
 
-        <h4 class="text-start border-top  border-bottom border-2 bg-light border-dark py-2 mt-3" th:text="|Invoice No. of: ${updateInvoice.invoiceNumber}|"> </h4>
+        <h4 class="text-start border-top  border-bottom border-2 bg-light border-dark py-2 mt-3" th:text="|Invoice No. of: ${updateInvoice.id}|"> </h4>
         <div class="row">
           <div class="col mt-2">
 
@@ -101,7 +101,7 @@
             <div>
               <label for="employeeAddress">Employee Address</label>
               <select id="employeeAddress" class="form-control" type="text" th:id="employeeAddress.id" th:name="employeeAddress.id">
-                <option th:each="employeeAddresslist: ${updateInvoice.employee.address}" th:value="${employeeAddresslist.id.intValue()}" th:text="${employeeAddresslist.name}"></option>
+                <option th:each="employeeAddresslist: ${updateInvoice.employee.address}" th:value="${employeeAddresslist.id}" th:text="${employeeAddresslist.name}"></option>
               </select>
             </div>
             <div th:text="|NIP: ${updateInvoice.employee.nip}|"></div>
@@ -119,7 +119,7 @@
             <div>
               <label for="employerAddress">Employer Address</label>
               <select id="employerAddress" class="form-control" type="text" th:id="employerAddress.id" th:name="employerAddress.id">
-                <option th:each="employerAddresslist: ${updateInvoice.employer.address}" th:value="${employerAddresslist.id.intValue()}" th:text="${employerAddresslist.name}"></option>
+                <option th:each="employerAddresslist: ${updateInvoice.employer.address}" th:value="${employerAddresslist.id}" th:text="${employerAddresslist.name}"></option>
               </select>
             </div>
             <div th:text="|NIP: ${updateInvoice.employer.nip}|"></div>
@@ -148,7 +148,13 @@
             </thead>
             <tbody>
             <tr th:each="listOfEntries, stat:  ${listOfInvoiceEntries}">
-              <th th:text="${stat.index + 1}"></th>
+              <th>
+                <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/invoice-entry/delete(id=${listOfEntries.id} , idOfInvoice=${updateInvoice.id})}">
+                  <span style="color: red">
+                    <i class="fa-solid fa-circle-minus"></i>
+                  </span>
+                </a>
+              </th>
               <td th:text="${listOfEntries.name}"> </td>
               <td th:text="${listOfEntries.amount}"></td>
               <td th:text="${listOfEntries.unit}"></td>
@@ -164,7 +170,7 @@
           </table>
         </div>
           <div>
-            <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/invoice-entry/create(idOfEmployer=${updateInvoice.employer.id.intValue()}, idOfInvoice=${updateInvoice.id.intValue()})}">
+            <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/invoice-entry/create(idOfEmployer=${updateInvoice.employer.id}, idOfInvoice=${updateInvoice.id})}">
                         <span style="color: darkgreen" >
                             <i class="fa-solid fa-square-plus"></i>
                         </span>

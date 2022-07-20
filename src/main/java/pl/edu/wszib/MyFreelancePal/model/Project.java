@@ -30,8 +30,8 @@ public class    Project {
     private String description;
     @Column(nullable = true)
     private Boolean activeProject = true;
-    @Column(nullable = true)
-    private BigDecimal hourPriceDefault = BigDecimal.valueOf(0);
+    @Column(nullable = false)
+    private BigDecimal hourPriceDefault;
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;

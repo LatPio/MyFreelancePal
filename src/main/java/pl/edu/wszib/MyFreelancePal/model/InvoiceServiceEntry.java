@@ -2,6 +2,7 @@ package pl.edu.wszib.MyFreelancePal.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -35,7 +36,7 @@ public class InvoiceServiceEntry {
     private BigDecimal preTaxAmount;
     private String idsOfTasks;
     @ManyToOne
-    @JoinColumn(name = "invoice_id")
+    @JoinColumn(name = "invoiceId")
     private Invoice invoice;
 
     @CreationTimestamp
@@ -44,10 +45,9 @@ public class InvoiceServiceEntry {
     @UpdateTimestamp
     private Instant updatedAt;
 
-    public InvoiceServiceEntry addTask(Task task){
-        tasks.add(task);
-        task.setInvoiceServiceEntry(this);
-        return this;
-
-    };
+    @PreRemove
+    public void nullificationOfTask(){
+        tasks.forEach(task -> task.setInvoiceServiceEntry(null));
+        tasks.forEach(task -> task.setInvoiceCreated(false));
+    }
 }
