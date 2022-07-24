@@ -5,13 +5,11 @@
 <body>
 
 <div class="container1">
-
     <div class="container">
-
         <h2>Project:</h2>
         <form th:method="POST" th:action="@{/projects/create(id=${idToPas})}" th:object="${newProjekt}">
             <div class="form-group">
-                <label for="name">Nazwa</label>
+                <label for="name">Name: </label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
             </div>
             <div class="form-group" hidden>
@@ -20,23 +18,16 @@
                        th:id="employerDTO.id"
                        th:name="employerDTO.id"
                        th:value="${idToPas.intValue()}" >
-
-
             </div>
-
             <div class="form-group">
                 <input type="submit"
                        class="form-control btn btn-primary"
-                       value="Stwórz"
+                       value="Create"
                        th:href="@{/projects/list/(id=${idToPas.intValue()})}">
-                <input onclick='javascript:window.history.back()' value='Anuluj' type='button' class="form-control btn btn-secondary" />
+                <input onclick='javascript:window.history.back()' value='Cancel' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
-
     </div>
-
-
-
 </div>
 
 

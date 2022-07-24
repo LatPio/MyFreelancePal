@@ -8,15 +8,15 @@
 
   <body>
   <div class="container">
-    <h2>Invoice:</h2>
+    <h2>Invoice: [[${deleteInvoice.id}]]</h2>
     <form th:method="POST" th:action="@{/invoice/delete}" th:object="${deleteInvoice}">
       <div>
-        Czy jesteś chcesz usunąć Invoice ?
+        Do You want to Delete Invoice: [[${deleteInvoice.id}]]?
       </div>
       <div class="form-group">
         <input type="text" th:field="*{id}" hidden>
-        <input type="submit" class="form-control btn btn-danger" value="Tak">
-        <input onclick='javascript:window.history.back()' value='Nie' type='button' class="form-control btn btn-secondary" />
+        <input type="submit" class="form-control btn btn-danger" value="Yes">
+        <input onclick='javascript:window.history.back()' value='No' type='button' class="form-control btn btn-secondary" />
       </div>
     </form>
   </div>

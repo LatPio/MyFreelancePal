@@ -8,15 +8,15 @@
 
     <body>
     <div class="container">
-        <h2>Produkt:</h2>
+        <h2>Project: [[${deleteProject.name}]]</h2>
         <form th:method="POST" th:action="@{/project-manager/delete(idOfEmployer=${idOfEmployer})}" th:object="${deleteProject}">
             <div>
-                Czy jesteś chcesz usunąć Projekt ?
+                Do you want to delete Project?
             </div>
             <div class="form-group">
                 <input type="number" th:field="*{id}" hidden>
-                <input type="submit" class="form-control btn btn-danger" value="Tak">
-                <input onclick='javascript:window.history.back()' value='Nie' type='button' class="form-control btn btn-secondary" />
+                <input type="submit" class="form-control btn btn-danger" value="Yes">
+                <input onclick='javascript:window.history.back()' value='No' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
     </div>

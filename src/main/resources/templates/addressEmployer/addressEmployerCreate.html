@@ -15,42 +15,39 @@
                 <input id="name" class="form-control" type="text" th:field="*{name}">
             </div>
             <div class="form-group">
-                <label for="street">street:</label>
+                <label for="street">Street:</label>
                 <input id="street" class="form-control" type="text" th:field="*{street}">
             </div>
             <div class="form-group">
-                <label for="buildingNumber">buildingNumber:</label>
+                <label for="buildingNumber">Building Number:</label>
                 <input id="buildingNumber" class="form-control" type="text" th:field="*{buildingNumber}">
             </div>
             <div class="form-group">
-                <label for="flatNumber">flatNumber:</label>
+                <label for="flatNumber">Flat Number:</label>
                 <input id="flatNumber" class="form-control" type="text" th:field="*{flatNumber}">
             </div>
             <div class="form-group">
-                <label for="postalCode">postalCode:</label>
+                <label for="postalCode">Postal Code:</label>
                 <input id="postalCode" class="form-control" type="text" th:field="*{postalCode}">
             </div>
             <div class="form-group">
-                <label for="city">city:</label>
+                <label for="city">City:</label>
                 <input id="city" class="form-control" type="text" th:field="*{city}">
             </div>
             <div class="form-group">
-                <label for="country">country:</label>
+                <label for="country">Country:</label>
                 <input id="country" class="form-control" type="text" th:field="*{country}">
             </div>
-            <div class="form-group" hidden>
-                <label th:for="employerDTO.id">EmployerId</label>
+            <div class="form-group" >
+                <label th:for="employer">EmployerId</label>
                 <input class="form-control" type="number"
-                       th:id="employerDTO.id"
-                       th:name="employerDTO.id"
+                       th:id="employer.id"
+                       th:name="employer.id"
                        th:value="${idOfEmployer.intValue()}" >
             </div>
-
-
-
             <div class="form-group">
-                <input type="submit" class="form-control btn btn-primary" value="Stwórz">
-                <input onclick='javascript:window.history.back()' value='Anuluj' type='button' class="form-control btn btn-secondary" />
+                <input type="submit" class="form-control btn btn-primary" value="Create">
+                <input onclick='javascript:window.history.back()' value='Cancel' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
 

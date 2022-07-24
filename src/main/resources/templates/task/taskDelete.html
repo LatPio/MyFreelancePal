@@ -8,16 +8,16 @@
 
     <body>
     <div class="container">
-        <h2>Produkt:</h2>
+        <h2>Task: [[${deleteTask}.name]]</h2>
         <form th:method="POST" th:action="@{/tasks/delete}" th:object="${deleteTask}">
             <div>
-                Czy jesteś pewnien że chcesz usunąć Zadanie ?
+                Do you want to delete Task?
             </div>
             <div class="form-group">
                 <input type="number" th:field="*{id}" hidden>
 
-                <input type="submit" class="form-control btn btn-danger" value="Tak" th:href="@{/tasks/list2/(id=${deleteTask.projectDomain.id})}">
-                <input onclick='javascript:window.history.back()' value='Nie' type='button' class="form-control btn btn-secondary" />
+                <input type="submit" class="form-control btn btn-danger" value="Yes" th:href="@{/tasks/list2/(id=${deleteTask.projectDomain.id})}">
+                <input onclick='javascript:window.history.back()' value='No' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
     </div>

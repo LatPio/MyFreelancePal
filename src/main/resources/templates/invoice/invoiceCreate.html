@@ -12,33 +12,27 @@
         <form th:method="POST" th:action="@{/invoice/create}" th:object="${newInvoice}">
 
             <div class="form-group">
-                <label for="invoiceCreationDate">invoiceCreationDate</label>
+                <label for="invoiceCreationDate">Invoice Creation Date: </label>
                 <input id="invoiceCreationDate" class="form-control" type="date"  th:id="invoiceCreationDate" th:name="invoiceCreationDate" th:value="${today}">
             </div>
-
-
-
             <div class="form-group">
-                <label for="Employee">Employee</label>
+                <label for="Employee">Employee: </label>
                 <select id="Employee" class="form-control" type="date" th:id="employee.id" th:name="employee.id">
                     <option th:each="employeelist: ${ListOfEmployees}" th:value="${employeelist.id.intValue()}" th:text="${employeelist.name}"></option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="Employer">Employer</label>
+                <label for="Employer">Employer: </label>
                 <select id="Employer" class="form-control" type="date" th:id="employer.id" th:name="employer.id">
                     <option th:each="employerlist: ${ListOfEmployers}" th:value="${employerlist.id.intValue()}" th:text="${employerlist.name}"></option>
                 </select>
             </div>
-
-
-
             <div class="form-group">
                 <input type="submit"
                        class="form-control btn btn-primary"
-                       value="Stwórz"
+                       value="Create"
                        >
-                <input onclick='javascript:window.history.back()' value='Anuluj' type='button' class="form-control btn btn-secondary" />
+                <input onclick='javascript:window.history.back()' value='Cancel' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
 

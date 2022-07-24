@@ -8,16 +8,16 @@
 
     <body>
     <div class="container">
-        <h2>Task:</h2>
+        <h2>Task: [[${deleteTask}.name]]</h2>
         <form th:method="POST" th:action="@{/task-manager/delete(idOfEmployer=${idOfEmployer})}" th:object="${deleteTask}">
             <div>
-                Czy jesteś pewnien że chcesz usunąć Zadanie ?
+                Do you want to delete Task?
             </div>
             <div class="form-group">
                 <input type="number" th:field="*{id}" hidden>
 
-                <input type="submit" class="form-control btn btn-danger" value="Tak" >
-                <input onclick='javascript:window.history.back()' value='Nie' type='button' class="form-control btn btn-secondary" />
+                <input type="submit" class="form-control btn btn-danger" value="Yes" >
+                <input onclick='javascript:window.history.back()' value='No' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
     </div>

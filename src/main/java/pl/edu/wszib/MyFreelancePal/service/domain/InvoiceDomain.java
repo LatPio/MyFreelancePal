@@ -1,11 +1,9 @@
 package pl.edu.wszib.MyFreelancePal.service.domain;
 
 import lombok.*;
-import pl.edu.wszib.MyFreelancePal.model.InvoiceServiceEntry;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -22,7 +20,7 @@ public class InvoiceDomain {
     private Date secondDate;
     private String invoiceNumber;
     private String placeOfInvoiceCreation;
-    private EmployeeDomain employee;
+    private EmployeeManagerDomain employee;
     private EmployerManagerDomain employer;
     private AddressEmployerDomain employerAddress;
     private AddressEmployeeDomain employeeAddress;

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice [[${getInvoice.id}]]</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="text-end" th:text="|Creation Date: ${getInvoice.invoiceCreationDate}|"> </div>
+            <div class="text-end" th:text="|Date of exluding the service/work: ${getInvoice.secondDate}|"> </div>
+        </div>
+        <h4 class="text-start border-top  border-bottom border-2 bg-light border-dark py-2 mt-3" th:text="|Invoice No. of: ${getInvoice.id}|"> </h4>
+        <div class="row">
+            <div class="col mt-2">
+                <h5 class="border-bottom border-2 border-dark">Seller</h5>
+                <div th:text="${getInvoice.employee.name}"></div>
+                <div th:text="|NIP: ${getInvoice.employee.nip}|"></div>
+                <div>
+                    <div class="text-danger" th:if="${getInvoice.employeeAddress} == null"
+                         th:text="|Choose Address in Update Section|"></div>
+                    <div th:unless="${getInvoice.employeeAddress} == null">
+                        <div th:text="|${getInvoice.employeeAddress.street} ${getInvoice.employeeAddress.buildingNumber}/${getInvoice.employeeAddress.flatNumber}|"></div>
+                        <div th:text="|${getInvoice.employeeAddress.postalCode} ${getInvoice.employeeAddress.city}, ${getInvoice.employeeAddress.country}|"></div>
+                    </div>
+                </div>
+                <div class="mt-1" th:text="|Bank number: ${getInvoice.employee.bankNumber}|"></div>
+                <div th:text="|IBAN: ${getInvoice.employee.bankIban}|"></div>
+            </div>
+            <div class="col mt-2">
+                <h5 class="border-bottom border-2 border-dark">Buyer</h5>
+                <div th:text="${getInvoice.employer.name}"></div>
+                <div th:text="|NIP: ${getInvoice.employer.nip}|"></div>
+                <div th:text="|Phone: ${getInvoice.employer.phone}|"></div>
+                <div th:text="|Email: ${getInvoice.employer.email}|"></div>
+                <div>
+                    <div class="text-danger" th:if="${getInvoice.employerAddress} == null"
+                         th:text="|Choose Address in Update Section|"></div>
+                    <div th:unless="${getInvoice.employerAddress} == null">
+                        <div th:text="|${getInvoice.employerAddress.street} ${getInvoice.employerAddress.buildingNumber}/${getInvoice.employerAddress.flatNumber}|"></div>
+                        <div th:text="|${getInvoice.employerAddress.postalCode} ${getInvoice.employerAddress.city}, ${getInvoice.employerAddress.country}|"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-2">
+            <table class="table table-bordered">
+                <thead class="bg-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name of Work</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Net Price</th>
+                    <th scope="col">VAT</th>
+                    <th scope="col">Net Amount</th>
+                    <th scope="col">Vat Amount</th>
+                    <th scope="col">Pre Tax Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="listOfEntries, stat:  ${listOfInvoiceEntries}">
+                    <th th:text="${stat.index + 1}"></th>
+                    <td th:text="${listOfEntries.name}"> </td>
+                    <td th:text="${listOfEntries.amount}"></td>
+                    <td th:text="${listOfEntries.unit}"></td>
+                    <td th:text="${listOfEntries.netPrice}"></td>
+                    <td th:text="${listOfEntries.vat}"></td>
+                    <td th:text="${listOfEntries.netAmount}"></td>
+                    <td th:text="${listOfEntries.vatAmount}"></td>
+                    <td th:text="${listOfEntries.preTaxAmount}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col py-2">
+                    <table class="table table-bordered">
+                        <thead class="bg-light">
+                        <tr>
+                            <th scope="col">VAT rate</th>
+                            <th scope="col">Net </th>
+                            <th scope="col">Vat </th>
+                            <th scope="col">Pre Tax </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="|${getInvoice.vat} %|"></td>
+                            <td th:text="|${getInvoice.amountNet}|"></td>
+                            <td th:text="|${getInvoice.amountVat}|"></td>
+                            <td th:text="|${getInvoice.amountPreTax}|"></td>
+                        </tr>
+                        <tr class="bg-light">
+                            <td>Total</td>
+                            <td th:text="|${getInvoice.amountNet}|"></td>
+                            <td th:text="|${getInvoice.amountVat}|"></td>
+                            <td th:text="|${getInvoice.amountPreTax}|"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div th:text="|Paymen method: wire transfer|"></div>
+                    <div th:text="|Paymnet date *{getInvoice.daysToPay} days: *{getInvoice.payDue}|"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="py-1">
+            <div class="row bg-light py-1">
+                <div class="col"></div>
+                <h5 class="col" th:if="${getInvoice.amountPreTax} == null" th:text="|To pay: ___ PLN|"></h5>
+                <h5 class="col" th:unless="${getInvoice.amountPreTax} == null" th:text="|To pay: ${getInvoice.amountPreTax} PLN|"></h5>
+            </div>
+            <div class="row py-1">
+                <div class="col"></div>
+                <div class="col"  th:if="${getInvoice.amountInWords} == null" th:text="|Amount in words: ___ PLN|"></div>
+                <div class="col"  th:unless="${getInvoice.amountInWords} == null" th:text="|Amount in words: ${getInvoice.amountInWords}|"></div>
+            </div>
+        </div>
+        <div style="height: 5rem"></div>
+        <div class="row justify-content-evenly">
+            <div class="col-4 text-center">
+                <div>................................................................</div>
+                <div>Person Authorized to receive</div>
+            </div>
+            <div class="col-4 text-center">
+                <div>................................................................</div>
+                <div>Person Authorized to issue</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

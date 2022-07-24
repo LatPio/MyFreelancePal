@@ -2,6 +2,7 @@ package pl.edu.wszib.MyFreelancePal.controller.web;
 
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,11 @@ import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Controller
 @RequestMapping("/invoice")
@@ -31,17 +32,18 @@ public class InvoiceController {
     @Autowired
     private EmployerManagerService employerManagerService;
     @Autowired
-    private EmployeeService employeeService;
-
+    private EmployeeManagerService employeeManagerService;
     @Autowired
     private TaskInvoiceService taskInvoiceService;
 
     @Autowired
     private InvoiceServiceEntryService invoiceServiceEntryService;
 
+
+
     private InvoiceMapperDTO invoiceMapperDTO = Mappers.getMapper(InvoiceMapperDTO.class);
     private EmployerManagerMapperDTO employerManagerMapperDTO = Mappers.getMapper(EmployerManagerMapperDTO.class);
-    private EmployeeMapperDTO employeeMapperDTO = Mappers.getMapper(EmployeeMapperDTO.class);
+    private EmployeeManagerMapperDTO employeeManagerMapperDTO = Mappers.getMapper(EmployeeManagerMapperDTO.class);
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
     private InvoiceServiceEntryMapperDTO invoiceServiceEntryMapperDTO = Mappers.getMapper(InvoiceServiceEntryMapperDTO.class);
 
@@ -56,7 +58,7 @@ public class InvoiceController {
         model.addAttribute("newInvoice", new InvoiceDTO());
         List<EmployerManagerDTO> allEmployers = employerManagerMapperDTO.mapToDTO(employerManagerService.list());
         model.addAttribute("ListOfEmployers", allEmployers);
-        List<EmployeeDTO> allEmployee = employeeMapperDTO.mapToDTO(employeeService.list());
+        List<EmployeeManagerDTO> allEmployee = employeeManagerMapperDTO.mapToDTO(employeeManagerService.list());
         model.addAttribute("ListOfEmployees", allEmployee);
         model.addAttribute("today", LocalDate.now() );
 
@@ -84,7 +86,12 @@ public class InvoiceController {
         return "invoice/invoiceGet";
     }
 
-
+    @GetMapping("/getPrint")
+    public String getPrint(Model model, @RequestParam String id){
+        model.addAttribute("getInvoice", invoiceMapperDTO.map(invoiceService.get(id)));
+        model.addAttribute("listOfInvoiceEntries", invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id)));
+        return "invoice/invoiceGetPrint";
+    }
 
     @GetMapping("/update")
     public String update(@RequestParam String id, Model model){

@@ -14,12 +14,10 @@
                 <a type="button" class="btn btn-sm btn-outline-secondary" onclick='javascript:window.history.back()'><i class="fa-solid fa-file-pen"></i>Go Back</a>
                 <button type="submit" class="btn btn-sm btn-outline-secondary "><i class="fa-solid fa-floppy-disk"></i>Save</button>
             </div>
-
             <div class="form-group">
                 <label for="name" class="col-form-label">Name of Entry: </label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
             </div>
-
             <div class="form-group" hidden>
                 <label th:for="invoice.id">invoice ID</label>
                 <input class="form-control" type="text"
@@ -27,7 +25,6 @@
                        th:name="invoice.id"
                        th:value="${idOfInvoice}" >
             </div>
-
             <div class="row pt-3">
                 <h4 class="col"> List of available Tasks to choose:</h4>
                 <h4 class="col"> Selected task to form one row of Service in Invoice:</h4>

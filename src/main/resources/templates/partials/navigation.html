@@ -22,10 +22,7 @@
                     <a class="nav-link" th:href="@{/active-task}">
                         <i class="fa-solid fa-list-check"></i>
                         Active Tasks
-
                     </a>
-
-
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/calendar}">
@@ -52,18 +49,11 @@
                     </a>
                 </li>
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-
                     Billings
-                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                    <a class="link-secondary" th:href="@{/invoice/create}" aria-label="Add a new report">
                         <i class="fa-solid fa-circle-plus"></i>
                     </a>
                 </h6>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa-solid fa-file-pen"></i>
-                        Reports
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/invoice/list}">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
@@ -71,11 +61,10 @@
                     </a>
                 </li>
             </ul>
-
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                 <span>Settings</span>
-                <a class="link-secondary" href="#" aria-label="Add a new report">
-                    <span data-feather="plus-circle" class="align-text-bottom"></span>
+                <a class="link-secondary" th:href="@{/personalInfo/create}" aria-label="Add a employee">
+                    <i class="fa-solid fa-person-circle-plus"></i>
                 </a>
             </h6>
             <ul class="nav flex-column mb-2">
@@ -86,13 +75,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/personalInfo/list}">
                         <i class="fa-solid fa-circle-user"></i>
                         Personal Information
                     </a>
                 </li>
-
-
             </ul>
         </div>
     </nav>

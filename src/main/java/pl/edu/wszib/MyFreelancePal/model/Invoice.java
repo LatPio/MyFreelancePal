@@ -42,14 +42,6 @@ public class Invoice {
     private Date invoiceCreationDate;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date secondDate;
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "invoice_seq")
-//    @GenericGenerator(
-//            name = "invoice_seq",
-//            strategy = "pl.edu.wszib.MyFreelancePal.util.IdGeneratorForInvoice",
-//            parameters = {@org.hibernate.annotations.Parameter(name = IdGeneratorForInvoice.INCREMENT_PARAM, value = "50")}
-//    )
     private String invoiceNumber;
     private String placeOfInvoiceCreation;
     @ManyToOne

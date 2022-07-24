@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import pl.edu.wszib.MyFreelancePal.model.Address;
+import pl.edu.wszib.MyFreelancePal.model.Employee;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
+import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-20T22:49:30+0200",
-    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
+    date = "2022-07-24T20:44:31+0200",
+    comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployeeMapperImpl implements AddressEmployeeMapper {
 
@@ -29,6 +31,7 @@ public class AddressEmployeeMapperImpl implements AddressEmployeeMapper {
         addressEmployeeDomain.flatNumber( address.getFlatNumber() );
         addressEmployeeDomain.city( address.getCity() );
         addressEmployeeDomain.country( address.getCountry() );
+        addressEmployeeDomain.employee( employeeToEmployeeDomain( address.getEmployee() ) );
 
         return addressEmployeeDomain.build();
     }
@@ -49,6 +52,7 @@ public class AddressEmployeeMapperImpl implements AddressEmployeeMapper {
         address.flatNumber( addressEmployeeDomain.getFlatNumber() );
         address.city( addressEmployeeDomain.getCity() );
         address.country( addressEmployeeDomain.getCountry() );
+        address.employee( employeeDomainToEmployee( addressEmployeeDomain.getEmployee() ) );
 
         return address.build();
     }
@@ -65,5 +69,31 @@ public class AddressEmployeeMapperImpl implements AddressEmployeeMapper {
         }
 
         return list;
+    }
+
+    protected EmployeeDomain employeeToEmployeeDomain(Employee employee) {
+        if ( employee == null ) {
+            return null;
+        }
+
+        EmployeeDomain.EmployeeDomainBuilder employeeDomain = EmployeeDomain.builder();
+
+        employeeDomain.id( employee.getId() );
+        employeeDomain.name( employee.getName() );
+
+        return employeeDomain.build();
+    }
+
+    protected Employee employeeDomainToEmployee(EmployeeDomain employeeDomain) {
+        if ( employeeDomain == null ) {
+            return null;
+        }
+
+        Employee.EmployeeBuilder employee = Employee.builder();
+
+        employee.id( employeeDomain.getId() );
+        employee.name( employeeDomain.getName() );
+
+        return employee.build();
     }
 }

@@ -5,51 +5,34 @@
 <body>
 
 <div class="container1">
-
     <div class="container py-2">
-        <a class="btn btn-secondary" th:href="@{/tasks/create(id=${id})}">Utwórz</a>
+        <a class="btn btn-secondary" th:href="@{/tasks/create(id=${id})}">Create</a>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Task</th>
                 <th scope="col">Start</th>
                 <th scope="col">End</th>
-                <th scope="col">ProjektID</th>
-                <th scope="col">ProjektName</th>
+                <th scope="col">Project Name</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
-
             <tr th:each="task : ${tasks}">
 
-                <td th:text="${task.id}"></td>
                 <td th:text="${task.name}"></td>
                 <td th:text="${#temporals.format(task.dateStart, 'dd-MM-yyyy    HH:mm:ss')}"></td>
                 <td th:text="${#temporals.format(task.dateEnd, 'dd-MM-yyyy    HH:mm:ss')}"></td>
-                <td th:text="${task.projectDTO.id}"></td>
                 <td th:text="${task.projectDTO.name}"></td>
                 <td>
                     <a class="btn btn-secondary" th:href="@{/tasks/update(id=${task.id})}">Edit</a>
                     <a class="btn btn-danger" th:href="@{/tasks/delete(id=${task.id})}">Delete</a>
-
                 </td>
-
-
-
             </tr>
-
-
             </tbody>
         </table>
-
     </div>
-
-
-
 </div>
-
 
 </body>
 </html>

@@ -16,7 +16,6 @@ public class EmployerDomain {
 
     private Integer id;
     private String name;
-    private String nip;
 
 
 

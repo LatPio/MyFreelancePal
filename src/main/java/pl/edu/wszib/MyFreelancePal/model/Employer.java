@@ -35,8 +35,6 @@ public class Employer {
     @Email
     private String email;
     @Column
-    private String badgeColor;
-    @Column
     private Boolean active = true;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

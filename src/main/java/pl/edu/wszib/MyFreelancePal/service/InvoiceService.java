@@ -24,6 +24,7 @@ public class InvoiceService implements CrudService<InvoiceDomain, String> {
         return mapper.mapToDomain(invoiceRepository.findAll());
     }
 
+    public Long countInvoices() {return invoiceRepository.countByIdNotNull();}
 
     @Override
     public InvoiceDomain get(String string) {

@@ -21,7 +21,7 @@ public class RestCalendar {
     private EventMapper eventMapper = Mappers.getMapper(EventMapper.class);
 
 
-    @GetMapping("/all2")
+    @GetMapping("/calendarData")
     public List<Event> getMappedEvents(){
         return eventMapper.mapToDTO(taskService.list());
     }

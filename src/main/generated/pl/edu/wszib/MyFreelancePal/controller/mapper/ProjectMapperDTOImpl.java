@@ -10,8 +10,8 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-20T22:49:31+0200",
-    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
+    date = "2022-07-24T20:44:31+0200",
+    comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class ProjectMapperDTOImpl implements ProjectMapperDTO {
 
@@ -70,7 +70,6 @@ public class ProjectMapperDTOImpl implements ProjectMapperDTO {
 
         employerDTO.id( employerDomain.getId() );
         employerDTO.name( employerDomain.getName() );
-        employerDTO.nip( employerDomain.getNip() );
 
         return employerDTO.build();
     }
@@ -84,7 +83,6 @@ public class ProjectMapperDTOImpl implements ProjectMapperDTO {
 
         employerDomain.id( employerDTO.getId() );
         employerDomain.name( employerDTO.getName() );
-        employerDomain.nip( employerDTO.getNip() );
 
         return employerDomain.build();
     }

@@ -26,6 +26,8 @@ public class EmployerManagerService implements CrudService<EmployerManagerDomain
         return mapper.mapToDomain(employerRepository.findAll());
     }
 
+    public List<EmployerManagerDomain> findByActive(Boolean active) {return mapper.mapToDomain(employerRepository.findByActive(active));}
+
     @Override
     public EmployerManagerDomain get(Integer integer) {
         return employerRepository.findById(integer)

@@ -1,0 +1,59 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
+<head>
+</head>
+<body>
+
+<div class="container1">
+
+    <div class="container">
+
+        <h2>Address:</h2>
+        <form th:method="POST" th:action="@{/addressEe/update(id=${updateAddressEmployee.id})}" th:object="${updateAddressEmployee}">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input id="name" class="form-control" type="text" th:field="*{name}">
+            </div>
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input id="street" class="form-control" type="text" th:field="*{street}">
+            </div>
+            <div class="form-group">
+                <label for="buildingNumber">Building Number:</label>
+                <input id="buildingNumber" class="form-control" type="text" th:field="*{buildingNumber}">
+            </div>
+            <div class="form-group">
+                <label for="flatNumber">Flat Number:</label>
+                <input id="flatNumber" class="form-control" type="text" th:field="*{flatNumber}">
+            </div>
+            <div class="form-group">
+                <label for="postalCode">Postal Code:</label>
+                <input id="postalCode" class="form-control" type="text" th:field="*{postalCode}">
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input id="city" class="form-control" type="text" th:field="*{city}">
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input id="country" class="form-control" type="text" th:field="*{country}">
+            </div>
+            <div class="form-group" hidden>
+                <label for="employerDTO.id">employee id:</label>
+                <input id="employerDTO.id" class="form-control" type="number" th:field="*{employee.id}">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="form-control btn btn-primary" value="Update">
+                <input onclick='javascript:window.history.back()' value='Cancel' type='button' class="form-control btn btn-secondary" />
+            </div>
+        </form>
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>

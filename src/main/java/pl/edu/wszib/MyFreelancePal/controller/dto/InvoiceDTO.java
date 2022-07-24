@@ -1,13 +1,9 @@
 package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
-import pl.edu.wszib.MyFreelancePal.model.Address;
-import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceServiceEntryDomain;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.sql.Date;
-import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -24,7 +20,7 @@ public class InvoiceDTO {
     private Date secondDate;
     private String invoiceNumber;
     private String placeOfInvoiceCreation;
-    private EmployeeDTO employee;
+    private EmployeeManagerDTO employee;
     private EmployerManagerDTO employer;
     private AddressEmployerDTO employerAddress;
     private AddressEmployeeDTO employeeAddress;

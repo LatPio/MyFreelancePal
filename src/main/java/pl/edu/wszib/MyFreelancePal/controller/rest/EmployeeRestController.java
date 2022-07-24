@@ -4,10 +4,10 @@ package pl.edu.wszib.MyFreelancePal.controller.rest;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.wszib.MyFreelancePal.controller.dto.EmployeeDTO;
-import pl.edu.wszib.MyFreelancePal.controller.mapper.EmployeeMapperDTO;
-import pl.edu.wszib.MyFreelancePal.service.EmployeeService;
-import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
+import pl.edu.wszib.MyFreelancePal.controller.dto.EmployeeManagerDTO;
+import pl.edu.wszib.MyFreelancePal.controller.mapper.EmployeeManagerMapperDTO;
+import pl.edu.wszib.MyFreelancePal.service.EmployeeManagerService;
+import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeManagerDomain;
 
 import java.util.List;
 
@@ -16,39 +16,39 @@ import java.util.List;
 public class EmployeeRestController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeManagerService employeeManagerService;
 
-    private EmployeeMapperDTO employeeMapperDTO = Mappers.getMapper(EmployeeMapperDTO.class);
+    private EmployeeManagerMapperDTO employeeManagerMapperDTO = Mappers.getMapper(EmployeeManagerMapperDTO.class);
 
     @GetMapping("/list")
-    public List<EmployeeDTO> list(){
-        return employeeMapperDTO.mapToDTO(employeeService.list());
+    public List<EmployeeManagerDTO> list(){
+        return employeeManagerMapperDTO.mapToDTO(employeeManagerService.list());
     }
 
     @GetMapping
-    public EmployeeDTO get(@RequestParam Integer id) {
-        return employeeMapperDTO.map(employeeService.get(id));
+    public EmployeeManagerDTO get(@RequestParam Integer id) {
+        return employeeManagerMapperDTO.map(employeeManagerService.get(id));
     }
 
     @PostMapping
-    public EmployeeDTO create(@RequestBody EmployeeDTO employeeDTO){
-        EmployeeDomain output = employeeService.create(
-                employeeMapperDTO.map(employeeDTO)
+    public EmployeeManagerDTO create(@RequestBody EmployeeManagerDTO employeeManagerDTO){
+        EmployeeManagerDomain output = employeeManagerService.create(
+                employeeManagerMapperDTO.map(employeeManagerDTO)
         );
-        return employeeMapperDTO.map(output);
+        return employeeManagerMapperDTO.map(output);
     }
 
     @PutMapping
-    public EmployeeDTO update(@RequestBody EmployeeDTO employeeDTO){
-        EmployeeDomain output = employeeService.update(
-                employeeMapperDTO.map(employeeDTO)
+    public EmployeeManagerDTO update(@RequestBody EmployeeManagerDTO employeeManagerDTO){
+        EmployeeManagerDomain output = employeeManagerService.update(
+                employeeManagerMapperDTO.map(employeeManagerDTO)
         );
-        return employeeMapperDTO.map(output);
+        return employeeManagerMapperDTO.map(output);
     }
 
     @DeleteMapping
     public void delete(@RequestParam Integer id) {
-        employeeService.delete(id);
+        employeeManagerService.delete(id);
     }
 
 

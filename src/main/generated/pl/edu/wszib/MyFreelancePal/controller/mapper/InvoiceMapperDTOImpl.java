@@ -6,6 +6,7 @@ import javax.annotation.processing.Generated;
 import pl.edu.wszib.MyFreelancePal.controller.dto.AddressEmployeeDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.AddressEmployerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.EmployeeDTO;
+import pl.edu.wszib.MyFreelancePal.controller.dto.EmployeeManagerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerManagerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.InvoiceDTO;
@@ -13,6 +14,7 @@ import pl.edu.wszib.MyFreelancePal.controller.dto.ProjectDTO;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
+import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeManagerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerManagerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
@@ -20,8 +22,8 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-20T22:49:30+0200",
-    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
+    date = "2022-07-24T20:44:30+0200",
+    comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
 
@@ -38,7 +40,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDTO.secondDate( invoiceDomain.getSecondDate() );
         invoiceDTO.invoiceNumber( invoiceDomain.getInvoiceNumber() );
         invoiceDTO.placeOfInvoiceCreation( invoiceDomain.getPlaceOfInvoiceCreation() );
-        invoiceDTO.employee( employeeDomainToEmployeeDTO( invoiceDomain.getEmployee() ) );
+        invoiceDTO.employee( employeeManagerDomainToEmployeeManagerDTO( invoiceDomain.getEmployee() ) );
         invoiceDTO.employer( employerManagerDomainToEmployerManagerDTO( invoiceDomain.getEmployer() ) );
         invoiceDTO.employerAddress( addressEmployerDomainToAddressEmployerDTO( invoiceDomain.getEmployerAddress() ) );
         invoiceDTO.employeeAddress( addressEmployeeDomainToAddressEmployeeDTO( invoiceDomain.getEmployeeAddress() ) );
@@ -66,7 +68,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDomain.secondDate( invoiceDTO.getSecondDate() );
         invoiceDomain.invoiceNumber( invoiceDTO.getInvoiceNumber() );
         invoiceDomain.placeOfInvoiceCreation( invoiceDTO.getPlaceOfInvoiceCreation() );
-        invoiceDomain.employee( employeeDTOToEmployeeDomain( invoiceDTO.getEmployee() ) );
+        invoiceDomain.employee( employeeManagerDTOToEmployeeManagerDomain( invoiceDTO.getEmployee() ) );
         invoiceDomain.employer( employerManagerDTOToEmployerManagerDomain( invoiceDTO.getEmployer() ) );
         invoiceDomain.employerAddress( addressEmployerDTOToAddressEmployerDomain( invoiceDTO.getEmployerAddress() ) );
         invoiceDomain.employeeAddress( addressEmployeeDTOToAddressEmployeeDomain( invoiceDTO.getEmployeeAddress() ) );
@@ -95,6 +97,19 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         return list;
     }
 
+    protected EmployeeDTO employeeDomainToEmployeeDTO(EmployeeDomain employeeDomain) {
+        if ( employeeDomain == null ) {
+            return null;
+        }
+
+        EmployeeDTO.EmployeeDTOBuilder employeeDTO = EmployeeDTO.builder();
+
+        employeeDTO.id( employeeDomain.getId() );
+        employeeDTO.name( employeeDomain.getName() );
+
+        return employeeDTO.build();
+    }
+
     protected AddressEmployeeDTO addressEmployeeDomainToAddressEmployeeDTO(AddressEmployeeDomain addressEmployeeDomain) {
         if ( addressEmployeeDomain == null ) {
             return null;
@@ -110,6 +125,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         addressEmployeeDTO.flatNumber( addressEmployeeDomain.getFlatNumber() );
         addressEmployeeDTO.city( addressEmployeeDomain.getCity() );
         addressEmployeeDTO.country( addressEmployeeDomain.getCountry() );
+        addressEmployeeDTO.employee( employeeDomainToEmployeeDTO( addressEmployeeDomain.getEmployee() ) );
 
         return addressEmployeeDTO.build();
     }
@@ -127,21 +143,24 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         return list1;
     }
 
-    protected EmployeeDTO employeeDomainToEmployeeDTO(EmployeeDomain employeeDomain) {
-        if ( employeeDomain == null ) {
+    protected EmployeeManagerDTO employeeManagerDomainToEmployeeManagerDTO(EmployeeManagerDomain employeeManagerDomain) {
+        if ( employeeManagerDomain == null ) {
             return null;
         }
 
-        EmployeeDTO.EmployeeDTOBuilder employeeDTO = EmployeeDTO.builder();
+        EmployeeManagerDTO.EmployeeManagerDTOBuilder employeeManagerDTO = EmployeeManagerDTO.builder();
 
-        employeeDTO.id( employeeDomain.getId() );
-        employeeDTO.name( employeeDomain.getName() );
-        employeeDTO.nip( employeeDomain.getNip() );
-        employeeDTO.bankNumber( employeeDomain.getBankNumber() );
-        employeeDTO.bankIban( employeeDomain.getBankIban() );
-        employeeDTO.address( addressEmployeeDomainListToAddressEmployeeDTOList( employeeDomain.getAddress() ) );
+        employeeManagerDTO.id( employeeManagerDomain.getId() );
+        employeeManagerDTO.name( employeeManagerDomain.getName() );
+        employeeManagerDTO.nip( employeeManagerDomain.getNip() );
+        employeeManagerDTO.description( employeeManagerDomain.getDescription() );
+        employeeManagerDTO.phone( employeeManagerDomain.getPhone() );
+        employeeManagerDTO.email( employeeManagerDomain.getEmail() );
+        employeeManagerDTO.bankNumber( employeeManagerDomain.getBankNumber() );
+        employeeManagerDTO.bankIban( employeeManagerDomain.getBankIban() );
+        employeeManagerDTO.address( addressEmployeeDomainListToAddressEmployeeDTOList( employeeManagerDomain.getAddress() ) );
 
-        return employeeDTO.build();
+        return employeeManagerDTO.build();
     }
 
     protected EmployerDTO employerDomainToEmployerDTO(EmployerDomain employerDomain) {
@@ -153,7 +172,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
 
         employerDTO.id( employerDomain.getId() );
         employerDTO.name( employerDomain.getName() );
-        employerDTO.nip( employerDomain.getNip() );
 
         return employerDTO.build();
     }
@@ -231,13 +249,25 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         employerManagerDTO.notes( employerManagerDomain.getNotes() );
         employerManagerDTO.phone( employerManagerDomain.getPhone() );
         employerManagerDTO.email( employerManagerDomain.getEmail() );
-        employerManagerDTO.badgeColor( employerManagerDomain.getBadgeColor() );
         employerManagerDTO.nip( employerManagerDomain.getNip() );
         employerManagerDTO.active( employerManagerDomain.getActive() );
         employerManagerDTO.address( addressEmployerDomainListToAddressEmployerDTOList( employerManagerDomain.getAddress() ) );
         employerManagerDTO.projects( projectDomainListToProjectDTOList( employerManagerDomain.getProjects() ) );
 
         return employerManagerDTO.build();
+    }
+
+    protected EmployeeDomain employeeDTOToEmployeeDomain(EmployeeDTO employeeDTO) {
+        if ( employeeDTO == null ) {
+            return null;
+        }
+
+        EmployeeDomain.EmployeeDomainBuilder employeeDomain = EmployeeDomain.builder();
+
+        employeeDomain.id( employeeDTO.getId() );
+        employeeDomain.name( employeeDTO.getName() );
+
+        return employeeDomain.build();
     }
 
     protected AddressEmployeeDomain addressEmployeeDTOToAddressEmployeeDomain(AddressEmployeeDTO addressEmployeeDTO) {
@@ -255,6 +285,7 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         addressEmployeeDomain.flatNumber( addressEmployeeDTO.getFlatNumber() );
         addressEmployeeDomain.city( addressEmployeeDTO.getCity() );
         addressEmployeeDomain.country( addressEmployeeDTO.getCountry() );
+        addressEmployeeDomain.employee( employeeDTOToEmployeeDomain( addressEmployeeDTO.getEmployee() ) );
 
         return addressEmployeeDomain.build();
     }
@@ -272,21 +303,24 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         return list1;
     }
 
-    protected EmployeeDomain employeeDTOToEmployeeDomain(EmployeeDTO employeeDTO) {
-        if ( employeeDTO == null ) {
+    protected EmployeeManagerDomain employeeManagerDTOToEmployeeManagerDomain(EmployeeManagerDTO employeeManagerDTO) {
+        if ( employeeManagerDTO == null ) {
             return null;
         }
 
-        EmployeeDomain.EmployeeDomainBuilder employeeDomain = EmployeeDomain.builder();
+        EmployeeManagerDomain.EmployeeManagerDomainBuilder employeeManagerDomain = EmployeeManagerDomain.builder();
 
-        employeeDomain.id( employeeDTO.getId() );
-        employeeDomain.name( employeeDTO.getName() );
-        employeeDomain.nip( employeeDTO.getNip() );
-        employeeDomain.bankNumber( employeeDTO.getBankNumber() );
-        employeeDomain.bankIban( employeeDTO.getBankIban() );
-        employeeDomain.address( addressEmployeeDTOListToAddressEmployeeDomainList( employeeDTO.getAddress() ) );
+        employeeManagerDomain.id( employeeManagerDTO.getId() );
+        employeeManagerDomain.name( employeeManagerDTO.getName() );
+        employeeManagerDomain.nip( employeeManagerDTO.getNip() );
+        employeeManagerDomain.description( employeeManagerDTO.getDescription() );
+        employeeManagerDomain.phone( employeeManagerDTO.getPhone() );
+        employeeManagerDomain.email( employeeManagerDTO.getEmail() );
+        employeeManagerDomain.bankNumber( employeeManagerDTO.getBankNumber() );
+        employeeManagerDomain.bankIban( employeeManagerDTO.getBankIban() );
+        employeeManagerDomain.address( addressEmployeeDTOListToAddressEmployeeDomainList( employeeManagerDTO.getAddress() ) );
 
-        return employeeDomain.build();
+        return employeeManagerDomain.build();
     }
 
     protected EmployerDomain employerDTOToEmployerDomain(EmployerDTO employerDTO) {
@@ -298,7 +332,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
 
         employerDomain.id( employerDTO.getId() );
         employerDomain.name( employerDTO.getName() );
-        employerDomain.nip( employerDTO.getNip() );
 
         return employerDomain.build();
     }
@@ -375,7 +408,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         employerManagerDomain.description( employerManagerDTO.getDescription() );
         employerManagerDomain.notes( employerManagerDTO.getNotes() );
         employerManagerDomain.phone( employerManagerDTO.getPhone() );
-        employerManagerDomain.badgeColor( employerManagerDTO.getBadgeColor() );
         employerManagerDomain.email( employerManagerDTO.getEmail() );
         employerManagerDomain.nip( employerManagerDTO.getNip() );
         employerManagerDomain.active( employerManagerDTO.getActive() );

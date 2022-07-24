@@ -7,23 +7,22 @@
 <div class="container1">
 
     <div class="container">
-
         <h2>Task:</h2>
         <form th:method="POST" th:action="@{/task-manager/update(id=${updateTask.id},idOfEmployer=${idOfEmployer})}" th:object="${updateTask}">
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label for="id">Id</label>
                 <input id="id" class="form-control" type="text" th:field="*{id}" disabled>
             </div>
             <div class="form-group">
-                <label for="name">Nazwa</label>
+                <label for="name">Name: </label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
             </div>
             <div class="form-group">
-                <label for="dateStart">dateStart</label>
+                <label for="dateStart">Date Start</label>
                 <input id="dateStart" class="form-control" type="datetime-local" th:field="*{dateStart}">
             </div>
             <div class="form-group">
-                <label for="dateEnd">dateEnd</label>
+                <label for="dateEnd">Date End</label>
                 <input id="dateEnd" class="form-control" type="datetime-local" th:field="*{dateEnd}">
             </div>
             <div class="form-group" hidden>
@@ -32,15 +31,11 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" class="form-control btn btn-primary" value="Zapisz" >
-                <input onclick='javascript:window.history.back()' value='Anuluj' type='button' class="form-control btn btn-secondary" />
+                <input type="submit" class="form-control btn btn-primary" value="Save" >
+                <input onclick='javascript:window.history.back()' value='Cancel' type='button' class="form-control btn btn-secondary" />
             </div>
         </form>
-
     </div>
-
-
-
 </div>
 
 

@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{partials/layout :: template (~{:: .container1})}">
+<head>
+</head>
+<body>
+
+<div class="container1">
+
+    <div class="container py-2">
+        <a class="btn btn-secondary " th:href="@{/personalInfo/create}">Create New Profile</a>
+        <div class="card my-2" th:each="employee : ${employees}">
+            <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
+                <h5 th:text="|*{employee.name} :  *{employee.description}|" ></h5>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/personalInfo/update(id=*{employee.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
+                    </div>
+                    <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/personalInfo/delete(id=${employee.id})}">
+                        <span style="color: red" >
+                            <i class="fa-solid fa-trash-can"></i>
+                        </span>
+                        Delete
+                    </a>
+                </div>
+            </div>
+            <div class="card-body" >
+                <div class="row">
+                    <div class="col border-end">
+                        <h7 class="card-title" > Address: </h7>
+                        <a th:href="@{/addressEe/create(id=*{employee.id})}">
+                            <i class="fa-solid fa-square-plus"></i>
+                        </a>
+                        <p class="card-text">
+                        <div th:each="addresses : ${employee.address}">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                                <h5 class="fw-bold pt-2" th:text="*{addresses.name}"></h5>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <a type="button" class="btn btn-outline-secondary" th:href="@{/addressEe/update(id=*{addresses.id})}"><i class="fa-solid fa-file-pen"></i></a>
+                                    <a type="button" class="btn btn-outline-secondary" th:href="@{/addressEe/delete(id=*{addresses.id})}"><i class="fa-solid fa-trash-can"></i></a>
+                                </div>
+                            </div>
+                            <div th:text="|*{addresses.street} *{addresses.buildingNumber}/*{addresses.flatNumber}|"></div>
+                            <div th:text="|*{addresses.postalCode} *{addresses.city}, *{addresses.country}|"></div>
+                        </div>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|NIP: |"></span><span th:text="*{employee.nip}"></span>
+                        </div>
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|E-mail: |"></span><span th:text="*{employee.email}"></span>
+                        </div>
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|Phone number: |"></span><span th:text="*{employee.phone}"></span>
+                        </div>
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|Description: |"></span><span th:text="*{employee.description}"></span>
+                        </div>
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|Bank Number: |"></span><span th:text="*{employee.bankNumber}"></span>
+                        </div>
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|Bank Iban: |"></span><span th:text="*{employee.bankIban}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

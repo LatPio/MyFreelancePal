@@ -2,20 +2,16 @@ package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
 
-import java.util.List;
-
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@Builder
 @ToString
+@EqualsAndHashCode
 public class EmployeeDTO {
 
     private Integer id;
     private String name;
-    private String nip;
-    private String bankNumber;
-    private String bankIban;
-    private List<AddressEmployeeDTO> address;
+
 }

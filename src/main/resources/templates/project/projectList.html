@@ -7,41 +7,29 @@
 <div class="container1">
 
     <div class="container py-2">
-        <a class="btn btn-secondary" th:href="@{/projects/create(id=${id})}">Utwórz</a>
+        <a class="btn btn-secondary" th:href="@{/projects/create(id=${id})}">Create</a>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Project Name</th>
                 <th scope="col">Action</th>
-
             </tr>
             </thead>
             <tbody>
-
             <tr th:each="project : ${projects}">
 
                 <td th:text="${project.id}"></td>
                 <td th:text="${project.name}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{/tasks/list2(id=${project.id})}">Otwórz</a>
+                    <a class="btn btn-primary" th:href="@{/tasks/list2(id=${project.id})}">Open</a>
                     <a class="btn btn-secondary" th:href="@{/projects/update(id=${project.id})}">Edit</a>
                     <a class="btn btn-danger" th:href="@{/projects/delete(id=${project.id})}">Delete</a>
-
                 </td>
-
-
-
-
             </tr>
-
-
             </tbody>
         </table>
-
     </div>
-
-
 
 </div>
 

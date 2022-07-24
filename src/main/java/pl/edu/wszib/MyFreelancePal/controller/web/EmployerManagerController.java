@@ -44,6 +44,9 @@ public class EmployerManagerController {
     public String listview(Model model){
         List<EmployerManagerDTO> allEmployers = employerManagerMapperDTO.mapToDTO(employerManagerService.list());
         model.addAttribute("employers", allEmployers);
+        model.addAttribute("test", allEmployers.size());
+
+
         return "employerManager/employerManagerList";
     }
 

@@ -9,6 +9,8 @@ import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.TaskMapper;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,11 +29,17 @@ public class TaskService implements CrudService<TaskDomain, Integer> {
     public List<TaskDomain> list2(Integer id){
         return mapper.mapToDomain(taskRepository.findByProject_Id(id));
     }
-    public Integer countPendingTasks(boolean b){return taskRepository.countAllByDoneTask(b);}
+    public Integer countPendingTasks(boolean doneTask){return taskRepository.countAllByDoneTask(doneTask);}
 
     public Long countTask(){ return taskRepository.count();}
 
+    public Long countByInvoiceCreatedFalse(){return  taskRepository.countByInvoiceCreatedFalse();}
+
     public Long totalMinutes(){return taskRepository.totalMinutes();}
+    public BigDecimal sumAmountByInvoiceCreated(LocalDateTime startDate, LocalDateTime endDate){return taskRepository.sumAmountByInvoiceCreated(startDate, endDate);
+    };
+    public Long sumTimeByInvoiceCreated(LocalDateTime startDate, LocalDateTime endDate){return taskRepository.sumTimeByInvoiceCreated(startDate, endDate);
+    };
 
     @Override
     public TaskDomain get(Integer integer) {

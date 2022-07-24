@@ -42,13 +42,13 @@ public class Address {
     @OneToMany(mappedBy = "employeeAddress")
     private List<Invoice> invoiceAddressEmployee;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "employer_id")
 //    @JoinTable (name = "employer_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
 //    inverseJoinColumns = @JoinColumn(name = "employer_id", referencedColumnName = "id"))
     private Employer employer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "employee_id")
 //    @JoinTable (name = "employee_address_map", joinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id"),
 //            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))

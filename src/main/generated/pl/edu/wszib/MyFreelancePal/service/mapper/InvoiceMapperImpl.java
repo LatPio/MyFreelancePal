@@ -11,6 +11,7 @@ import pl.edu.wszib.MyFreelancePal.model.Project;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
+import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeManagerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerManagerDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
@@ -18,8 +19,8 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-20T22:49:32+0200",
-    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
+    date = "2022-07-24T20:44:31+0200",
+    comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
 
@@ -36,7 +37,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoiceDomain.secondDate( invoice.getSecondDate() );
         invoiceDomain.invoiceNumber( invoice.getInvoiceNumber() );
         invoiceDomain.placeOfInvoiceCreation( invoice.getPlaceOfInvoiceCreation() );
-        invoiceDomain.employee( employeeToEmployeeDomain( invoice.getEmployee() ) );
+        invoiceDomain.employee( employeeToEmployeeManagerDomain( invoice.getEmployee() ) );
         invoiceDomain.employer( employerToEmployerManagerDomain( invoice.getEmployer() ) );
         invoiceDomain.employerAddress( addressToAddressEmployerDomain( invoice.getEmployerAddress() ) );
         invoiceDomain.employeeAddress( addressToAddressEmployeeDomain( invoice.getEmployeeAddress() ) );
@@ -64,7 +65,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoice.secondDate( invoiceDomain.getSecondDate() );
         invoice.invoiceNumber( invoiceDomain.getInvoiceNumber() );
         invoice.placeOfInvoiceCreation( invoiceDomain.getPlaceOfInvoiceCreation() );
-        invoice.employee( employeeDomainToEmployee( invoiceDomain.getEmployee() ) );
+        invoice.employee( employeeManagerDomainToEmployee( invoiceDomain.getEmployee() ) );
         invoice.employer( employerManagerDomainToEmployer( invoiceDomain.getEmployer() ) );
         invoice.employeeAddress( addressEmployeeDomainToAddress( invoiceDomain.getEmployeeAddress() ) );
         invoice.employerAddress( addressEmployerDomainToAddress( invoiceDomain.getEmployerAddress() ) );
@@ -93,6 +94,19 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         return list;
     }
 
+    protected EmployeeDomain employeeToEmployeeDomain(Employee employee) {
+        if ( employee == null ) {
+            return null;
+        }
+
+        EmployeeDomain.EmployeeDomainBuilder employeeDomain = EmployeeDomain.builder();
+
+        employeeDomain.id( employee.getId() );
+        employeeDomain.name( employee.getName() );
+
+        return employeeDomain.build();
+    }
+
     protected AddressEmployeeDomain addressToAddressEmployeeDomain(Address address) {
         if ( address == null ) {
             return null;
@@ -108,6 +122,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         addressEmployeeDomain.flatNumber( address.getFlatNumber() );
         addressEmployeeDomain.city( address.getCity() );
         addressEmployeeDomain.country( address.getCountry() );
+        addressEmployeeDomain.employee( employeeToEmployeeDomain( address.getEmployee() ) );
 
         return addressEmployeeDomain.build();
     }
@@ -125,21 +140,24 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         return list1;
     }
 
-    protected EmployeeDomain employeeToEmployeeDomain(Employee employee) {
+    protected EmployeeManagerDomain employeeToEmployeeManagerDomain(Employee employee) {
         if ( employee == null ) {
             return null;
         }
 
-        EmployeeDomain.EmployeeDomainBuilder employeeDomain = EmployeeDomain.builder();
+        EmployeeManagerDomain.EmployeeManagerDomainBuilder employeeManagerDomain = EmployeeManagerDomain.builder();
 
-        employeeDomain.id( employee.getId() );
-        employeeDomain.name( employee.getName() );
-        employeeDomain.nip( employee.getNip() );
-        employeeDomain.bankNumber( employee.getBankNumber() );
-        employeeDomain.bankIban( employee.getBankIban() );
-        employeeDomain.address( addressListToAddressEmployeeDomainList( employee.getAddress() ) );
+        employeeManagerDomain.id( employee.getId() );
+        employeeManagerDomain.name( employee.getName() );
+        employeeManagerDomain.nip( employee.getNip() );
+        employeeManagerDomain.description( employee.getDescription() );
+        employeeManagerDomain.phone( employee.getPhone() );
+        employeeManagerDomain.email( employee.getEmail() );
+        employeeManagerDomain.bankNumber( employee.getBankNumber() );
+        employeeManagerDomain.bankIban( employee.getBankIban() );
+        employeeManagerDomain.address( addressListToAddressEmployeeDomainList( employee.getAddress() ) );
 
-        return employeeDomain.build();
+        return employeeManagerDomain.build();
     }
 
     protected EmployerDomain employerToEmployerDomain(Employer employer) {
@@ -151,7 +169,6 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 
         employerDomain.id( employer.getId() );
         employerDomain.name( employer.getName() );
-        employerDomain.nip( employer.getNip() );
 
         return employerDomain.build();
     }
@@ -229,7 +246,6 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         employerManagerDomain.description( employer.getDescription() );
         employerManagerDomain.notes( employer.getNotes() );
         employerManagerDomain.phone( employer.getPhone() );
-        employerManagerDomain.badgeColor( employer.getBadgeColor() );
         employerManagerDomain.email( employer.getEmail() );
         employerManagerDomain.nip( employer.getNip() );
         employerManagerDomain.active( employer.getActive() );
@@ -237,6 +253,19 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         employerManagerDomain.projects( projectListToProjectDomainList( employer.getProjects() ) );
 
         return employerManagerDomain.build();
+    }
+
+    protected Employee employeeDomainToEmployee(EmployeeDomain employeeDomain) {
+        if ( employeeDomain == null ) {
+            return null;
+        }
+
+        Employee.EmployeeBuilder employee = Employee.builder();
+
+        employee.id( employeeDomain.getId() );
+        employee.name( employeeDomain.getName() );
+
+        return employee.build();
     }
 
     protected Address addressEmployeeDomainToAddress(AddressEmployeeDomain addressEmployeeDomain) {
@@ -254,6 +283,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         address.flatNumber( addressEmployeeDomain.getFlatNumber() );
         address.city( addressEmployeeDomain.getCity() );
         address.country( addressEmployeeDomain.getCountry() );
+        address.employee( employeeDomainToEmployee( addressEmployeeDomain.getEmployee() ) );
 
         return address.build();
     }
@@ -271,19 +301,22 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         return list1;
     }
 
-    protected Employee employeeDomainToEmployee(EmployeeDomain employeeDomain) {
-        if ( employeeDomain == null ) {
+    protected Employee employeeManagerDomainToEmployee(EmployeeManagerDomain employeeManagerDomain) {
+        if ( employeeManagerDomain == null ) {
             return null;
         }
 
         Employee.EmployeeBuilder employee = Employee.builder();
 
-        employee.id( employeeDomain.getId() );
-        employee.name( employeeDomain.getName() );
-        employee.nip( employeeDomain.getNip() );
-        employee.bankNumber( employeeDomain.getBankNumber() );
-        employee.bankIban( employeeDomain.getBankIban() );
-        employee.address( addressEmployeeDomainListToAddressList( employeeDomain.getAddress() ) );
+        employee.id( employeeManagerDomain.getId() );
+        employee.name( employeeManagerDomain.getName() );
+        employee.nip( employeeManagerDomain.getNip() );
+        employee.description( employeeManagerDomain.getDescription() );
+        employee.phone( employeeManagerDomain.getPhone() );
+        employee.email( employeeManagerDomain.getEmail() );
+        employee.bankNumber( employeeManagerDomain.getBankNumber() );
+        employee.bankIban( employeeManagerDomain.getBankIban() );
+        employee.address( addressEmployeeDomainListToAddressList( employeeManagerDomain.getAddress() ) );
 
         return employee.build();
     }
@@ -297,7 +330,6 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 
         employer.id( employerDomain.getId() );
         employer.name( employerDomain.getName() );
-        employer.nip( employerDomain.getNip() );
 
         return employer.build();
     }
@@ -377,7 +409,6 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         employer.nip( employerManagerDomain.getNip() );
         employer.phone( employerManagerDomain.getPhone() );
         employer.email( employerManagerDomain.getEmail() );
-        employer.badgeColor( employerManagerDomain.getBadgeColor() );
         employer.active( employerManagerDomain.getActive() );
         employer.address( addressEmployerDomainListToAddressList( employerManagerDomain.getAddress() ) );
         employer.projects( projectDomainListToProjectList( employerManagerDomain.getProjects() ) );

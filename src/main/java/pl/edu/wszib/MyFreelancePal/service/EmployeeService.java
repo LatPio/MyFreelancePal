@@ -17,8 +17,7 @@ public class EmployeeService implements CrudService<EmployeeDomain, Integer> {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    private final EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
-
+    private EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
     @Override
     public List<EmployeeDomain> list() {
         return mapper.mapToDomain(employeeRepository.findAll());
@@ -26,9 +25,7 @@ public class EmployeeService implements CrudService<EmployeeDomain, Integer> {
 
     @Override
     public EmployeeDomain get(Integer integer) {
-        return employeeRepository.findById(integer)
-                .map(employee -> mapper.map(employee))
-                .orElse(null);
+        return employeeRepository.findById(integer).map(employee -> mapper.map(employee)).orElse(null);
     }
 
     @Override
@@ -41,16 +38,15 @@ public class EmployeeService implements CrudService<EmployeeDomain, Integer> {
     @Override
     public EmployeeDomain update(EmployeeDomain employeeDomain) {
         EmployeeDomain existing = get(employeeDomain.getId());
-        if (existing == null) {
-            return null;
+        if(existing ==null){
+            return  null;
         }
-
         Employee updated = employeeRepository.save(mapper.map(employeeDomain));
         return mapper.map(updated);
     }
 
     @Override
-    public void delete(Integer integer) {
-        employeeRepository.deleteById(integer);
+    public void delete(Integer integer) { employeeRepository.deleteById(integer);
+
     }
 }

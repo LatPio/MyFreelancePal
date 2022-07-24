@@ -23,8 +23,6 @@
          </div>
       </div>
 
-
-
       <div class="card my-2 mx-2" th:each="projectfromlist : ${ProjectsList}">
          <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
             <h5 th:text="*{projectfromlist.name}" ></h5>
@@ -41,11 +39,9 @@
                </a>
             </div>
          </div>
-
          <div class="card-body">
             <div class="row">
                <div class="col">
-
                   <div th:text="|Description: *{projectfromlist.description}|"></div>
                   <div th:text="|Color: *{projectfromlist.color}|"></div>
                   <div th:text="|Active? *{projectfromlist.activeProject}|"></div>
@@ -53,7 +49,6 @@
                </div>
                <div class="col">
                   <div >
-
                      <div th:each="tasksfromlist : ${projectfromlist.tasks}">
                         <div>
                            <a type="button" th:href="@{/task-manager/update(id=*{tasksfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}">
@@ -72,15 +67,9 @@
             </div>
          </div>
          <div class="card-footer text-muted">
-
          </div>
       </div>
    </div>
-
-
-
-
-
 
 </div>
 

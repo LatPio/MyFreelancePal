@@ -7,9 +7,7 @@
 <div class="container1">
 
     <div class="container py-2">
-
-        <a class="btn btn-secondary" th:href="@{/invoice/create}">Create</a>
-
+        <a class="btn btn-secondary" th:href="@{/invoice/create}">Create New Invoice</a>
         <table id="table_1" class="table">
             <thead>
             <tr>
@@ -21,14 +19,10 @@
                 <th scope="col">VAT</th>
                 <th scope="col">Pay Due</th>
                 <th scope="col">Action</th>
-
-
             </tr>
             </thead>
             <tbody>
-
             <tr th:each="invoice : ${InvoiceList}">
-
                 <td th:text="${invoice.id}"></td>
                 <td th:text="${#dates.format(invoice.invoiceCreationDate, 'dd-MM-yyyy')}"></td>
                 <td th:text="${#dates.format(invoice.secondDate, 'dd-MM-yyyy')}"></td>
@@ -37,18 +31,11 @@
                 <td th:text="${invoice.vat}"></td>
                 <td th:text="${#dates.format(invoice.payDue, 'dd-MM-yyyy')}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{/invoice/get(id=${invoice.id})}">Otwórz</a>
+                    <a class="btn btn-primary" th:href="@{/invoice/get(id=${invoice.id})}">Open</a>
                     <a class="btn btn-secondary" th:href="@{/invoice/update(id=${invoice.id})}">Edit</a>
                     <a class="btn btn-danger" th:href="@{/invoice/delete(id=${invoice.id})}">Delete</a>
-
                 </td>
-
-
-
-
             </tr>
-
-
             </tbody>
         </table>
 

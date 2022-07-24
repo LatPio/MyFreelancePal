@@ -9,15 +9,6 @@
   <div class="container">
     <form th:method="POST" th:action="@{/invoice/update(id=${updateInvoice.id})}" th:object="${updateInvoice}">
 
-<!--      <div class="form-group">-->
-<!--        <input id="id" class="form-control" type="text" th:field="*{id}">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <input id="invoiceCreationDate" class="form-control" type="date" th:field="*{invoiceCreationDate}" hidden>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <input id="secondDate" class="form-control" type="date" th:field="*{secondDate}" hidden>-->
-<!--      </div>-->
       <div class="form-group">
         <input id="invoiceNumber" class="form-control" type="text" th:field="*{invoiceNumber}" hidden>
       </div>
@@ -30,9 +21,6 @@
       <div class="form-group">
         <input id="employer" class="form-control" type="number" th:field="*{employer.id}" hidden>
       </div>
-<!--      <div class="form-group">-->
-<!--        <input id="employerAddress" class="form-control" type="number" th:field="*{employerAddress}" hidden>-->
-<!--      </div>-->
       <div class="form-group">
         <input id="priceNet" class="form-control" type="number" th:field="*{amountNet}" hidden>
       </div>
@@ -45,13 +33,6 @@
       <div class="form-group">
         <input id="vat" class="form-control" type="number" th:field="*{vat}" hidden>
       </div>
-
-<!--      <div class="form-group">-->
-<!--        <input id="payDue" class="form-control" type="date" th:field="*{payDue}" hidden>-->
-<!--      </div>-->
-
-
-
 
     <div class="card my-4">
       <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
@@ -79,7 +60,6 @@
               <input id="invoiceCreationDate" class="form-control" type="date" th:field="*{invoiceCreationDate}">
             </div>
           </div>
-
           <div class="row g-2 justify-content-end my-2">
             <div class="col-auto">
               <label for="secondDate" class="col-form-label">Date of excluding the service/work: </label>
@@ -88,16 +68,11 @@
               <input id="secondDate" class="form-control" type="date" th:field="*{secondDate}">
             </div>
           </div>
-
-
-
         <h4 class="text-start border-top  border-bottom border-2 bg-light border-dark py-2 mt-3" th:text="|Invoice No. of: ${updateInvoice.id}|"> </h4>
         <div class="row">
           <div class="col mt-2">
-
             <h5 class="border-bottom border-2 border-dark">Seller</h5>
             <h6 th:text="${updateInvoice.employee.name}"></h6>
-
             <div>
               <label for="employeeAddress">Employee Address</label>
               <select id="employeeAddress" class="form-control" type="text" th:id="employeeAddress.id" th:name="employeeAddress.id">
@@ -108,11 +83,7 @@
 
             <div class="mt-1" th:text="|Bank number: ${updateInvoice.employee.bankNumber}|"></div>
             <div th:text="|IBAN: ${updateInvoice.employee.bankIban}|"></div>
-
-
-
           </div>
-
           <div class="col mt-2">
             <h5 class="border-bottom border-2 border-dark">Buyer</h5>
             <h6 th:text="${updateInvoice.employer.name}"></h6>
@@ -125,11 +96,8 @@
             <div th:text="|NIP: ${updateInvoice.employer.nip}|"></div>
             <div th:text="|Phone: ${updateInvoice.employer.phone}|"></div>
             <div th:text="|Email: ${updateInvoice.employer.email}|"></div>
-
           </div>
 
-
-          <div></div>
         </div>
         <div class="my-2">
           <table class="table table-bordered">
@@ -164,8 +132,6 @@
               <td th:text="${listOfEntries.vatAmount}"></td>
               <td th:text="${listOfEntries.preTaxAmount}"></td>
             </tr>
-
-
             </tbody>
           </table>
         </div>
@@ -182,7 +148,6 @@
             <div class="col"></div>
             <div class="col py-2">
               <div class="text-danger py-2" th:text="|Values will update after saving|"></div>
-
               <table class="table table-bordered">
                 <thead class="bg-light">
                 <tr>
@@ -194,7 +159,6 @@
                 </thead>
                 <tbody>
                 <tr>
-
                 </tr>
                 <tr>
                   <td th:text="${updateInvoice.vat}"></td>
@@ -208,21 +172,17 @@
                   <td th:text="|${updateInvoice.amountVat}|"></td>
                   <td th:text="|${updateInvoice.amountPreTax}|"></td>
                 </tr>
-
-
                 </tbody>
               </table>
-
               <div th:text="|Paymen method: wire transfer|"></div>
               <div class="row g-2 my-2">
                 <div class="col-auto">
-                  <label for="invoiceCreationDate" class="col-form-label">Payment date 14 days:  </label>
+                  <label for="invoiceCreationDate" class="col-form-label">Payment date [[*{daysToPay}]] days:  </label>
                 </div>
                 <div class="col-auto">
                   <input id="payDue" class="form-control" type="date" th:field="*{payDue}">
                 </div>
               </div>
-
               </div>
             </div>
 
@@ -240,7 +200,6 @@
             <div class="col"></div>
             <div class="col"  th:if="${updateInvoice.amountInWords} == null" th:text="|Amount in words: ___ PLN|"></div>
             <div class="col"  th:unless="${updateInvoice.amountInWords} == null" th:text="|Amount in words: ${updateInvoice.amountInWords}|"></div>
-
           </div>
         </div>
         <div style="height: 5rem"></div>

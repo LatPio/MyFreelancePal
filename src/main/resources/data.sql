@@ -46,8 +46,6 @@ VALUES
     (1000, '2021-05-10 13:07:12.000000', '2021-05-10 22:47:12.000000', '2021-05-10 22:07:12.000000', false, 'Zadanie 1', 345, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', 1000, 78.00),
     (1100, '2021-05-10 13:07:12.000000', '2021-05-10 23:27:12.000000', '2021-05-10 23:07:12.000000', false, 'Zadanie 2', 55, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', 100, 40.00);
 
-
-
 -- adresses
 
 insert into address (id, buildingnumber, city, country, createdat, flatnumber, name, postalcode, street, updatedat, employer_id)
@@ -74,18 +72,4 @@ VALUES
 -- insert into invoice(id, createdat, invoicecreationdate, paydue, seconddate, updatedat, vat, employee_id, employer_id)
 -- VALUES (100, '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000', '2021-05-10 13:07:12.000000','2021-05-10 13:07:12.000000','2021-05-10 13:07:12.000000',23,100,100);
 
----- Maps
--- empolyee_address_map
--- insert into employee_address_map(address_id, employee_id) VALUES (100,100);
--- insert into employee_address_map(address_id, employee_id) VALUES (300,200);
--- empolyer_address_map
--- insert into employer_address_map(address_id, employer_id) VALUES (200,100);
--- insert into employer_address_map(address_id, employer_id) VALUES (400,200);
--- insert into employer_address_map(address_id, employer_id)VALUES (500,300);
--- insert into employer_address_map(address_id, employer_id) VALUES (600,400);
---employee-employer-map
--- insert into employer_employee_map(employer_id, employee_id) VALUES (100,100);
--- insert into employer_employee_map(employer_id, employee_id) VALUES (200,200);
--- insert into employer_employee_map(employer_id, employee_id) VALUES (300,200);
--- insert into employer_employee_map(employer_id, employee_id) VALUES (400,200);
 
