@@ -1,6 +1,5 @@
 package pl.edu.wszib.MyFreelancePal.controller.dto;
 
-
 import lombok.*;
 
 import java.math.BigDecimal;

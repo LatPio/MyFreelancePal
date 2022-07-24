@@ -11,8 +11,6 @@ import java.util.List;
 public interface EmployeeManagerMapper {
 
     EmployeeManagerDomain map(Employee employee);
-
     Employee map (EmployeeManagerDomain employeeManagerDomain);
-
     List<EmployeeManagerDomain> mapToDomain(List<Employee> employee);
 }

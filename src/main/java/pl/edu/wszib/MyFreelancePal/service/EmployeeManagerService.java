@@ -16,7 +16,6 @@ public class EmployeeManagerService implements CrudService<EmployeeManagerDomain
 
     @Autowired
     private EmployeeRepository employeeRepository;
-
     private final EmployeeManagerMapper mapper = Mappers.getMapper(EmployeeManagerMapper.class);
 
     @Override

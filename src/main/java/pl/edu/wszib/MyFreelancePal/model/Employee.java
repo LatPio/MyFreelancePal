@@ -39,13 +39,8 @@ public class Employee {
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> address;
 
-//    @ManyToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-//    private List<Employer> employer;
-
-
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Invoice> invoice;
-
 
     @CreationTimestamp
     private Instant createdAt;

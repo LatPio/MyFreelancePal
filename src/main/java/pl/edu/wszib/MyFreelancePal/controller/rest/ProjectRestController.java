@@ -17,7 +17,6 @@ public class ProjectRestController {
 
     @Autowired
     private ProjectService projectService;
-
     private ProjectMapperDTO projectMapperDTO = Mappers.getMapper(ProjectMapperDTO.class);
 
     @GetMapping("/list")

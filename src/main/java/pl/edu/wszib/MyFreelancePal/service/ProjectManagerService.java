@@ -24,7 +24,6 @@ public class ProjectManagerService implements CrudService<ProjectManagerDomain, 
     public List<ProjectManagerDomain> list() {
         return mapper.mapToDomain(projectRepository.findAll());
     }
-
     public List<ProjectManagerDomain> list2(Integer id){ return mapper.mapToDomain(projectRepository.findByEmployer_Id(id));}
     public List<ProjectManagerDomain> listActiveProject(boolean b){ return mapper.mapToDomain(projectRepository.findByActiveProject(b));}
     public List<ProjectManagerDomain> findByEmployer_Active(Boolean activeEmployer){return mapper.mapToDomain(projectRepository.findByEmployer_Active(activeEmployer));}

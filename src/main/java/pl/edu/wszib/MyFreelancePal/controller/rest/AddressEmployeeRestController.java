@@ -9,7 +9,6 @@ import pl.edu.wszib.MyFreelancePal.controller.mapper.AddressEmployeeMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.AddressEmployeeService;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/rest/address_employee")
@@ -17,14 +16,7 @@ public class AddressEmployeeRestController {
 
     @Autowired
     private AddressEmployeeService addressEmployeeService;
-
     private final AddressEmployeeMapperDTO addressEmployeeMapperDTO = Mappers.getMapper(AddressEmployeeMapperDTO.class);
-
-
-//    @GetMapping("/list")
-//    public List<AddressEmployeeDTO> list(@RequestParam Integer id) {
-//        return addressEmployeeMapperDTO.mapToDTO(addressEmployeeService.list2(id));
-//    }
 
     @GetMapping
     public AddressEmployeeDTO get(@RequestParam Integer id) {

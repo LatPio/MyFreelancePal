@@ -11,7 +11,6 @@ public interface EmployeeMapper {
 
     EmployeeDomain map(Employee employee);
     Employee map(EmployeeDomain employeeDomain);
-
     List<EmployeeDomain> mapToDomain(List<Employee> employees);
 
 }

@@ -9,7 +9,6 @@ import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.InvoiceMapper;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @Service

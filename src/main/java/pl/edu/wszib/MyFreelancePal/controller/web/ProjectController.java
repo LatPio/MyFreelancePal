@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.ProjectDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.ProjectMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.ProjectService;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Controller

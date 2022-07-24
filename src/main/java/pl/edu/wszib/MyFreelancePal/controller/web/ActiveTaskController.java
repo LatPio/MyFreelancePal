@@ -48,15 +48,11 @@ public class ActiveTaskController {
         return "activeTasks/activeTaskList";
     }
 
-
-
-
     @PostMapping("/create")
     public String createAction(TaskDTO taskDTO, Model model){
         BigDecimal price = projectManagerService.get(taskDTO.getProjectDTO().getId()).getHourPriceDefault();
         taskDTO.setHourPrice(price);
         TaskDomain taskDomain = taskService.create(taskMapperDTO.map(taskDTO));
-
         taskDomain.setDoneTask(Boolean.FALSE);
         return "redirect:/active-task";
     }
@@ -66,7 +62,6 @@ public class ActiveTaskController {
         TaskDTO task = taskMapperDTO.map(taskService.get(id));
         task.setDateStart(LocalDateTime.of(LocalDate.now(), LocalTime.now()));
         TaskDomain taskDomain = taskService.update(taskMapperDTO.map(task));
-
         return "redirect:/active-task";
     }
 

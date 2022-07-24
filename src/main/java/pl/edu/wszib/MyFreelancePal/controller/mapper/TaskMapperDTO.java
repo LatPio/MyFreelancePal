@@ -12,12 +12,9 @@ public interface TaskMapperDTO {
 
     @Mapping(target = "projectDTO", source = "projectDomain")
     TaskDTO  map(TaskDomain taskDomain);
-
     @Mapping(target = "projectDomain", source = "projectDTO")
     TaskDomain map(TaskDTO taskDTO);
-
     List<TaskDTO> mapToDTO(List<TaskDomain> taskDomains);
-
     List<TaskDomain> mapToDomain(List<TaskDTO> taskDTOS);
 
 

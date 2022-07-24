@@ -12,12 +12,9 @@ public interface TaskMapper {
 
     @Mapping(target = "projectDomain", source = "project")
     TaskDomain map(Task task);
-
     @Mapping(target = "project", source = "projectDomain")
     Task map(TaskDomain taskDomain);
-
     List<TaskDomain> mapToDomain(List<Task> tasks);
-
     List<Task> mapToTasks(List<TaskDomain> taskDomains);
 
 }

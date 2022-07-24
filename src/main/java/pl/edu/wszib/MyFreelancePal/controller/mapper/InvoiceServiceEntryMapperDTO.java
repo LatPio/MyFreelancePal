@@ -8,11 +8,8 @@ import java.util.List;
 
 @Mapper(uses = {TaskMapperDTO.class})
 public interface InvoiceServiceEntryMapperDTO {
-
     InvoiceServiceEntryDTO map(InvoiceServiceEntryDomain invoiceServiceEntryDomain);
-
     InvoiceServiceEntryDomain map(InvoiceServiceEntryDTO invoiceServiceEntryDTO);
-
     List<InvoiceServiceEntryDTO> mapToDTO(List<InvoiceServiceEntryDomain> invoiceServiceEntryDomains);
 
 }

@@ -32,12 +32,11 @@ public class DashboardController {
     private EmployerManagerService employerManagerService;
     @Autowired
     private InvoiceService invoiceService;
-    @Autowired
-    private Utilities utils;
+
+
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
     private ProjectManagerMapperDTO projectManagerMapperDTO = Mappers.getMapper(ProjectManagerMapperDTO.class);
     private EmployerManagerMapperDTO employerManagerMapperDTO = Mappers.getMapper(EmployerManagerMapperDTO.class);
-    private InvoiceMapperDTO invoiceMapperDTO = Mappers.getMapper(InvoiceMapperDTO.class);
 
     @GetMapping
     public String deflautView(){
@@ -85,13 +84,8 @@ public class DashboardController {
             }
         });
         model.addAttribute("dataSetMonthlySpendTime", monthlySpendTime.stream().toList());
-
-
-
-
         return "dashboard/dashboardView";
     }
-
 
     @GetMapping("/updateActiveTrue")
     public String updateActiveTrue(@RequestParam Integer id){

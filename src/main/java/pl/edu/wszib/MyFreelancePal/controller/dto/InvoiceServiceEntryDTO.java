@@ -1,7 +1,6 @@
 package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
-import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
 
 import java.math.BigDecimal;
 import java.util.List;

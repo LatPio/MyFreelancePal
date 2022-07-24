@@ -10,8 +10,6 @@ import java.util.List;
 public interface InvoiceServiceEntryMapper {
 
     InvoiceServiceEntry map(InvoiceServiceEntryDomain invoiceServiceEntryDomain);
-
     InvoiceServiceEntryDomain map(InvoiceServiceEntry invoiceServiceEntry);
-
     List<InvoiceServiceEntryDomain> mapToDomain(List<InvoiceServiceEntry> invoiceServiceEntries);
 }

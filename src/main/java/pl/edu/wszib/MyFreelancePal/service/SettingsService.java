@@ -18,7 +18,6 @@ public class SettingsService implements CrudService<SettingsDomain, Integer> {
     private SettingsRepository settingsRepository;
     private SettingsMapper settingsMapper = Mappers.getMapper(SettingsMapper.class);
 
-
     @Override
     public List<SettingsDomain> list() {
         return settingsMapper.mapToDomain(settingsRepository.findAll());

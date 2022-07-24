@@ -3,7 +3,6 @@ package pl.edu.wszib.MyFreelancePal.service.domain;
 
 
 import lombok.*;
-import pl.edu.wszib.MyFreelancePal.model.InvoiceServiceEntry;
 
 import java.math.BigDecimal;
 import java.time.Instant;

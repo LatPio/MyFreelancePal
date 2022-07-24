@@ -9,7 +9,6 @@ import pl.edu.wszib.MyFreelancePal.util.IdGeneratorForInvoice;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
@@ -25,10 +24,7 @@ import java.util.List;
 @Entity
 public class Invoice {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//
-//    private Integer id;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "invoice_seq")
     @GenericGenerator(

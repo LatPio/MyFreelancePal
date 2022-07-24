@@ -34,21 +34,6 @@ public class TaskManagerController {
 
 
 
-//    @GetMapping("/list")
-//    public String listView(Model model) {
-//        List<TaskDTO> allTasks = taskMapperDTO.mapToDTO(taskService.list());
-//        model.addAttribute("tasks", allTasks);
-//        return "task/taskList";
-//    }
-//
-//    @GetMapping("/list2")
-//    public String listViewByProject(@NotNull Model model, @RequestParam Integer id) {
-//        List<TaskDTO> TasksByProject = taskMapperDTO.mapToDTO(taskService.list2(id));
-//        model.addAttribute("id", id);
-//        model.addAttribute("tasks", TasksByProject);
-//        return "task/taskList";
-//    }
-
     @GetMapping("/create")
     public String create(Model model, @RequestParam Integer id, @RequestParam Integer idOfEmployer) {
         model.addAttribute("newTask", new TaskDTO());
@@ -76,7 +61,6 @@ public class TaskManagerController {
     @PostMapping("/update")
     public String updateAction(TaskDTO taskDTO, Model model, @RequestParam Integer idOfEmployer) {
         taskDTO.setTimeOfWorkInMin(utils.workTimeInMinutes(taskDTO.getDateStart(), taskDTO.getDateEnd()));
-
         TaskDomain taskDomain = taskService.update(taskMapperDTO.map(taskDTO));
         return "redirect:/project-manager/list?id=" + idOfEmployer;
     }

@@ -17,9 +17,7 @@ public class RestCalendar {
 
     @Autowired
     private TaskService taskService;
-
     private EventMapper eventMapper = Mappers.getMapper(EventMapper.class);
-
 
     @GetMapping("/calendarData")
     public List<Event> getMappedEvents(){

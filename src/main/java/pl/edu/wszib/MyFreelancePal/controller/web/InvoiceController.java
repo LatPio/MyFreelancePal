@@ -33,18 +33,13 @@ public class InvoiceController {
     private EmployerManagerService employerManagerService;
     @Autowired
     private EmployeeManagerService employeeManagerService;
-    @Autowired
-    private TaskInvoiceService taskInvoiceService;
 
     @Autowired
     private InvoiceServiceEntryService invoiceServiceEntryService;
 
-
-
     private InvoiceMapperDTO invoiceMapperDTO = Mappers.getMapper(InvoiceMapperDTO.class);
     private EmployerManagerMapperDTO employerManagerMapperDTO = Mappers.getMapper(EmployerManagerMapperDTO.class);
     private EmployeeManagerMapperDTO employeeManagerMapperDTO = Mappers.getMapper(EmployeeManagerMapperDTO.class);
-    private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
     private InvoiceServiceEntryMapperDTO invoiceServiceEntryMapperDTO = Mappers.getMapper(InvoiceServiceEntryMapperDTO.class);
 
     @GetMapping("/list")
@@ -78,7 +73,6 @@ public class InvoiceController {
         return "redirect:/invoice/list";
     }
 
-
     @GetMapping("/get")
     public String get(Model model, @RequestParam String id){
         model.addAttribute("getInvoice", invoiceMapperDTO.map(invoiceService.get(id)));
@@ -103,7 +97,6 @@ public class InvoiceController {
     @PostMapping("/update")
     public String updateAction(InvoiceDTO invoiceDTO, Model model, @RequestParam String id){
         List<InvoiceServiceEntryDTO> listOfInvoiceEntries = invoiceServiceEntryMapperDTO.mapToDTO(invoiceServiceEntryService.listByInvoice(id));
-//        invoiceDTO.setVat(23);
         List<BigDecimal> amountNet = new ArrayList<>();
         List<BigDecimal> amountVat = new ArrayList<>();
         List<BigDecimal> amountPreTax = new ArrayList<>();

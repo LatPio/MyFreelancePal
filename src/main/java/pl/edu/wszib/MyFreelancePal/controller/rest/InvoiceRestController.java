@@ -16,7 +16,6 @@ public class InvoiceRestController {
 
     @Autowired
     private InvoiceService invoiceService;
-
     private InvoiceMapperDTO invoiceMapperDTO = Mappers.getMapper(InvoiceMapperDTO.class);
 
     @GetMapping("/list")

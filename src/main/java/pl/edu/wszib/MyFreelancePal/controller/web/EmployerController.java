@@ -21,7 +21,6 @@ public class EmployerController {
 
     @Autowired
     private EmployerService employerService;
-
     private EmployerMapperDTO employerMapperDTO = Mappers.getMapper(EmployerMapperDTO.class);
 
     @GetMapping

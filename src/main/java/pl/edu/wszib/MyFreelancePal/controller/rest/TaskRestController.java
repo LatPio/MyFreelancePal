@@ -17,7 +17,6 @@ public class TaskRestController {
 
     @Autowired
     private TaskService taskService;
-
     private TaskMapperDTO taskMapperDTO = Mappers.getMapper(TaskMapperDTO.class);
 
     @GetMapping("/list")

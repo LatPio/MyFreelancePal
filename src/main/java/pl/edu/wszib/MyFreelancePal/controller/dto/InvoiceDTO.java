@@ -24,7 +24,6 @@ public class InvoiceDTO {
     private EmployerManagerDTO employer;
     private AddressEmployerDTO employerAddress;
     private AddressEmployeeDTO employeeAddress;
-//    private List<InvoiceServiceEntryDTO> invoiceServiceEntries;
     private BigDecimal amountNet;
     private BigDecimal amountVat;
     private BigDecimal amountPreTax;

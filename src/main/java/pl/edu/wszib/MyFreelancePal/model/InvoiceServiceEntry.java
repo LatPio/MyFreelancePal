@@ -2,7 +2,6 @@ package pl.edu.wszib.MyFreelancePal.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;

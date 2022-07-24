@@ -10,7 +10,6 @@ import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.ProjectMapper;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service

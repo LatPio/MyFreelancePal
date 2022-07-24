@@ -16,7 +16,6 @@ public class AddressEmployerService implements CrudService<AddressEmployerDomain
 
     @Autowired
     private AddressRepository addressRepository;
-
     private AddressEmployerMapper mapper = Mappers.getMapper(AddressEmployerMapper.class);
 
     @Override

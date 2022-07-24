@@ -9,16 +9,13 @@ import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceServiceEntryDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.InvoiceServiceEntryMapper;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class InvoiceServiceEntryService implements CrudService<InvoiceServiceEntryDomain, Integer> {
 
     @Autowired
     private InvoiceServiceEntryRepository invoiceServiceEntryRepository;
-
     private InvoiceServiceEntryMapper mapper = Mappers.getMapper(InvoiceServiceEntryMapper.class);
 
     @Override

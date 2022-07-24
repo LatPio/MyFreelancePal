@@ -8,10 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface EmployeeManagerMapperDTO {
-
     EmployeeManagerDTO map(EmployeeManagerDomain employeeManagerDomain);
-
     EmployeeManagerDomain map(EmployeeManagerDTO employeeManagerDTO);
-
     List<EmployeeManagerDTO> mapToDTO(List<EmployeeManagerDomain> employeeManagerDomains);
 }

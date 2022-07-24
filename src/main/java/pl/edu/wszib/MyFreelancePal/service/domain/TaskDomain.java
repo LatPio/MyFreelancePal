@@ -5,7 +5,6 @@ package pl.edu.wszib.MyFreelancePal.service.domain;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Builder
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-
 @EqualsAndHashCode
 public class TaskDomain {
 

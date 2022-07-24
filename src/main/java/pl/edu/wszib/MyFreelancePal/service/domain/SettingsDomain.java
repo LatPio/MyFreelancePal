@@ -12,8 +12,10 @@ import java.math.BigDecimal;
 @ToString
 @EqualsAndHashCode
 public class SettingsDomain {
+
     private  Integer id;
     private  Integer vat;
     private BigDecimal defaultHourPrice;
     private  String globalCurrency;
+
 }

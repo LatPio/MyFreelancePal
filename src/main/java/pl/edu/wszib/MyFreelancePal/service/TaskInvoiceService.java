@@ -6,10 +6,8 @@ import org.springframework.stereotype.Service;
 import pl.edu.wszib.MyFreelancePal.model.Task;
 import pl.edu.wszib.MyFreelancePal.repository.TaskRepository;
 import pl.edu.wszib.MyFreelancePal.service.common.CrudService;
-import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskInvoiceDomain;
 import pl.edu.wszib.MyFreelancePal.service.mapper.TaskInvoiceMapper;
-import pl.edu.wszib.MyFreelancePal.service.mapper.TaskMapper;
 
 import java.util.List;
 

@@ -18,7 +18,6 @@ public class EmployerManagerService implements CrudService<EmployerManagerDomain
 
     @Autowired
     private EmployerRepository employerRepository;
-
     private EmployerManagerMapper mapper = Mappers.getMapper(EmployerManagerMapper.class);
 
     @Override

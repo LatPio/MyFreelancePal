@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.edu.wszib.MyFreelancePal.controller.dto.AddressEmployeeDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.AddressEmployerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.AddressEmployeeMapperDTO;
-import pl.edu.wszib.MyFreelancePal.controller.mapper.AddressEmployerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.AddressEmployeeService;
-import pl.edu.wszib.MyFreelancePal.service.AddressEmployerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
-import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 
 import java.util.List;
 
@@ -23,10 +20,8 @@ import java.util.List;
 @RequestMapping("/addressEe")
 public class AddressEmployeeController {
 
-
     @Autowired
     private AddressEmployeeService addressEmployeeService;
-
     private AddressEmployeeMapperDTO addressEmployeeMapperDTO = Mappers.getMapper(AddressEmployeeMapperDTO.class);
 
     @GetMapping
@@ -34,9 +29,6 @@ public class AddressEmployeeController {
         List<AddressEmployeeDTO> addressByEmployee = addressEmployeeMapperDTO.mapToDTO(addressEmployeeService.list2(id));
         return "/";
     }
-
-
-
 
     @GetMapping("/create")
     public String create(Model model, @RequestParam Integer id) {
@@ -48,22 +40,20 @@ public class AddressEmployeeController {
     @PostMapping("/create")
     public String createAction(AddressEmployeeDTO addressEmployeeDTO, Model model) {
         AddressEmployeeDomain addressEmployeeDomain = addressEmployeeService.create(addressEmployeeMapperDTO.map(addressEmployeeDTO));
-
         return "redirect:/personalInfo";
     }
     @GetMapping("/update")
     public String update(@RequestParam Integer id, Model model) {
         model.addAttribute("updateAddressEmployee", addressEmployeeMapperDTO.map(addressEmployeeService.get(id)));
-
         return "addressEmployee/addressEmployeeUpdate";
     }
 
     @PostMapping("/update")
     public String updateAction(AddressEmployeeDTO addressEmployeeDTO, Model model) {
         AddressEmployeeDomain addressEmployeeDomain = addressEmployeeService.update(addressEmployeeMapperDTO.map(addressEmployeeDTO));
-
         return "redirect:/personalInfo";
     }
+
     @GetMapping("/delete")
     public String delete(@RequestParam Integer id, Model model) {
         model.addAttribute("deleteAddressEmployee", addressEmployeeService.get(id));

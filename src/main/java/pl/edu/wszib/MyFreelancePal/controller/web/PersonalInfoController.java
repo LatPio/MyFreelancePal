@@ -21,10 +21,7 @@ public class PersonalInfoController {
 
     @Autowired
     private EmployeeManagerService employeeManagerService;
-
-
     private EmployeeManagerMapperDTO employeeManagerMapperDTO = Mappers.getMapper(EmployeeManagerMapperDTO.class);
-
 
     @GetMapping
     public String defaultView() {
@@ -41,7 +38,6 @@ public class PersonalInfoController {
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("newEmployee", new EmployeeManagerDTO());
-
         return "personalInfo/personalInfoCreate";
     }
 
@@ -54,7 +50,6 @@ public class PersonalInfoController {
     @GetMapping("/update")
     public String update(@RequestParam Integer id, Model model){
         model.addAttribute("updateEmployee", employeeManagerMapperDTO.map(employeeManagerService.get(id)));
-
         return "personalInfo/personalInfoUpdate";
     }
 

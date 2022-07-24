@@ -8,7 +8,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.awt.*;
 import java.time.Instant;
 import java.util.List;
 
@@ -42,15 +41,6 @@ public class Employer {
 
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Project> projects;
-
-//    @ManyToMany
-//    @JoinTable(name = "employer_employee_map",
-//               joinColumns = @JoinColumn(name = "employer_id",
-//                                        referencedColumnName = "id"),
-//               inverseJoinColumns = @JoinColumn(name = "employee_id",
-//                                        referencedColumnName = "id"))
-//    private List<Employee> employee;
-
 
     @OneToMany(mappedBy = "employer", cascade = CascadeType.ALL)
     private List<Invoice> invoice;

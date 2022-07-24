@@ -18,9 +18,7 @@ public class AddressEmployerRestController {
 
     @Autowired
     private AddressEmployerService addressEmployerService;
-
     private AddressEmployerMapperDTO addressEmployerMapperDTO = Mappers.getMapper(AddressEmployerMapperDTO.class);
-
 
     @GetMapping("/list")
     public List<AddressEmployerDTO> list(@RequestParam Integer id){

@@ -3,7 +3,6 @@ package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.edu.wszib.MyFreelancePal.model.InvoiceServiceEntry;
 
 import java.math.BigDecimal;
 import java.time.Instant;

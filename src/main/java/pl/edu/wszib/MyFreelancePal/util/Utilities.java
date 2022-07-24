@@ -9,9 +9,7 @@ import java.time.LocalDateTime;
 @Component
 public class Utilities {
 
-
     public Long workTimeInMinutes(LocalDateTime startTime, LocalDateTime endTime) throws NullPointerException{
-
 
         Long time = Long.valueOf(0);
         if (startTime != null & endTime != null) {
@@ -21,7 +19,6 @@ public class Utilities {
         } else {
             return time;
         }
-
     }
 
 

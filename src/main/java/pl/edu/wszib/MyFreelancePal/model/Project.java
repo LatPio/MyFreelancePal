@@ -5,7 +5,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
@@ -37,7 +36,6 @@ public class    Project {
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
-
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Task> tasks;

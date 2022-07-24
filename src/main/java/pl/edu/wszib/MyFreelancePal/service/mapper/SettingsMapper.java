@@ -8,7 +8,9 @@ import java.util.List;
 
 @Mapper
 public interface SettingsMapper {
+
     SettingsDomain map(Settings settings);
     Settings map(SettingsDomain settingsDomain);
     List<SettingsDomain> mapToDomain(List<Settings> settings);
+
 }

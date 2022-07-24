@@ -16,7 +16,6 @@ import pl.edu.wszib.MyFreelancePal.service.EmployerManagerService;
 import pl.edu.wszib.MyFreelancePal.service.ProjectManagerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectManagerDomain;
 
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Controller
 @RequestMapping("/project-manager")
@@ -73,7 +72,6 @@ public class ProjectManagerController {
 
     @PostMapping("/delete")
     public String deleteAction (ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer idOfEmployer){
-
         projectManagerService.delete(projectManagerDTO.getId());
         return "redirect:/project-manager/list?id=" + idOfEmployer;
     }

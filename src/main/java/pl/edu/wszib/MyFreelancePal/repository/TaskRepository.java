@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import pl.edu.wszib.MyFreelancePal.model.Task;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,12 +15,8 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
     List<Task> findByProject_Id(Integer id);
-
     Integer countAllByDoneTask(boolean doneTask);
-
     Long countByInvoiceCreatedFalse();
-
-
 
     @Query(value = "SELECT sum(timeOfWorkInMin) from Task")
     Long totalMinutes();

@@ -3,7 +3,6 @@ package pl.edu.wszib.MyFreelancePal.service.domain;
 
 import lombok.*;
 
-import java.util.List;
 
 @Builder
 @AllArgsConstructor

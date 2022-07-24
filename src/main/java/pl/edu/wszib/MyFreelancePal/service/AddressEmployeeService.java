@@ -16,14 +16,12 @@ public class AddressEmployeeService implements CrudService<AddressEmployeeDomain
 
     @Autowired
     private AddressRepository addressRepository;
-
     private AddressEmployeeMapper mapper = Mappers.getMapper(AddressEmployeeMapper.class);
 
 
     public List<AddressEmployeeDomain> list2(Integer id) {
         return mapper.mapToDomain(addressRepository.findByEmployee_id(id));
     }
-
 
     @Override
     public List<AddressEmployeeDomain> list() {

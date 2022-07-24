@@ -17,7 +17,6 @@ public class EmployerRestController {
 
     @Autowired
     private EmployerService employerService;
-
     private EmployerMapperDTO employerMapperDTO = Mappers.getMapper(EmployerMapperDTO.class);
 
     @GetMapping("/list")

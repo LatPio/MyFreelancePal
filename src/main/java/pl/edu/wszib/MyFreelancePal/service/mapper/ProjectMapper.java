@@ -14,6 +14,5 @@ public interface ProjectMapper {
     ProjectDomain map(Project project);
     @Mapping(target = "employer", source = "employerDomain")
     Project map(ProjectDomain projectDomain);
-
     List<ProjectDomain> mapToDomain(List<Project> projects);
 }

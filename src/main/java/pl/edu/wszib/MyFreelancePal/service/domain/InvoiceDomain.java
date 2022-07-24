@@ -24,7 +24,6 @@ public class InvoiceDomain {
     private EmployerManagerDomain employer;
     private AddressEmployerDomain employerAddress;
     private AddressEmployeeDomain employeeAddress;
-//    private List<InvoiceServiceEntryDomain> invoiceServiceEntries;
     private BigDecimal amountNet;
     private BigDecimal amountVat;
     private BigDecimal amountPreTax;
