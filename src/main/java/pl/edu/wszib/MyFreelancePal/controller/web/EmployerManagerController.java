@@ -45,7 +45,14 @@ public class EmployerManagerController {
     }
 
     @PostMapping("/create")
-    public String createAction(EmployerManagerDTO employerManagerDTO,  Model model) {
+    public String createAction(EmployerManagerDTO employerManagerDTO,  BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute(employerManagerDTO);
+
+            model.addAttribute("org.springframework.validation.BindingResult.employerManagerDTO", bindingResult);
+            return "employerManager/employerManagerCreate";
+        }
+
 
         employerManagerDTO.setActive(true);
         EmployerManagerDomain employerManagerDomain = employerManagerService.create(employerManagerMapperDTO.map(employerManagerDTO));

@@ -25,8 +25,8 @@ public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @NotBlank(message = "Name  must contain something")
     @Column(name = "Name", nullable = false)
-
     private String name;
     private String description;
     private String notes;
