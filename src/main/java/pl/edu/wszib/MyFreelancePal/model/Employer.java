@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.Instant;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class Employer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(name = "Name", nullable = false)
+
     private String name;
     private String description;
     private String notes;

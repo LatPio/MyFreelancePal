@@ -2,6 +2,7 @@ package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Builder
@@ -14,6 +15,7 @@ import java.util.List;
 public class EmployerManagerDTO {
 
     private Integer id;
+    @NotBlank(message = "not blank")
     private String name;
     private String description;
     private String notes;

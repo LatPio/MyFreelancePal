@@ -18,8 +18,6 @@ public class InvoiceDTO {
     private String id;
     private Date invoiceCreationDate;
     private Date secondDate;
-    private String invoiceNumber;
-    private String placeOfInvoiceCreation;
     private EmployeeManagerDTO employee;
     private EmployerManagerDTO employer;
     private AddressEmployerDTO employerAddress;

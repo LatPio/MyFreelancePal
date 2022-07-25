@@ -25,7 +25,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-24T20:44:30+0200",
+    date = "2022-07-25T23:57:26+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceServiceEntryMapperDTOImpl implements InvoiceServiceEntryMapperDTO {
@@ -264,8 +264,6 @@ public class InvoiceServiceEntryMapperDTOImpl implements InvoiceServiceEntryMapp
         invoiceDTO.id( invoiceDomain.getId() );
         invoiceDTO.invoiceCreationDate( invoiceDomain.getInvoiceCreationDate() );
         invoiceDTO.secondDate( invoiceDomain.getSecondDate() );
-        invoiceDTO.invoiceNumber( invoiceDomain.getInvoiceNumber() );
-        invoiceDTO.placeOfInvoiceCreation( invoiceDomain.getPlaceOfInvoiceCreation() );
         invoiceDTO.employee( employeeManagerDomainToEmployeeManagerDTO( invoiceDomain.getEmployee() ) );
         invoiceDTO.employer( employerManagerDomainToEmployerManagerDTO( invoiceDomain.getEmployer() ) );
         invoiceDTO.employerAddress( addressEmployerDomainToAddressEmployerDTO( invoiceDomain.getEmployerAddress() ) );
@@ -451,8 +449,6 @@ public class InvoiceServiceEntryMapperDTOImpl implements InvoiceServiceEntryMapp
         invoiceDomain.id( invoiceDTO.getId() );
         invoiceDomain.invoiceCreationDate( invoiceDTO.getInvoiceCreationDate() );
         invoiceDomain.secondDate( invoiceDTO.getSecondDate() );
-        invoiceDomain.invoiceNumber( invoiceDTO.getInvoiceNumber() );
-        invoiceDomain.placeOfInvoiceCreation( invoiceDTO.getPlaceOfInvoiceCreation() );
         invoiceDomain.employee( employeeManagerDTOToEmployeeManagerDomain( invoiceDTO.getEmployee() ) );
         invoiceDomain.employer( employerManagerDTOToEmployerManagerDomain( invoiceDTO.getEmployer() ) );
         invoiceDomain.employerAddress( addressEmployerDTOToAddressEmployerDomain( invoiceDTO.getEmployerAddress() ) );

@@ -4,6 +4,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,8 @@ import pl.edu.wszib.MyFreelancePal.controller.mapper.EmployerManagerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.EmployerManagerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerManagerDomain;
 
+import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -42,7 +45,9 @@ public class EmployerManagerController {
     }
 
     @PostMapping("/create")
-    public String createAction(EmployerManagerDTO employerManagerDTO, Model model){
+    public String createAction(EmployerManagerDTO employerManagerDTO,  Model model) {
+
+        employerManagerDTO.setActive(true);
         EmployerManagerDomain employerManagerDomain = employerManagerService.create(employerManagerMapperDTO.map(employerManagerDTO));
         return "redirect:/employer-manager";
     }

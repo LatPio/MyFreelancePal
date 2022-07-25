@@ -46,6 +46,7 @@ public class ProjectManagerController {
 
     @PostMapping("/create")
     public String createAction(ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer id){
+        projectManagerDTO.setActiveProject(true);
         ProjectManagerDomain projectManagerDomain = projectManagerService.create(projectManagerMapperDTO.map(projectManagerDTO));
         return "redirect:/project-manager/list?id=" + id;
     }

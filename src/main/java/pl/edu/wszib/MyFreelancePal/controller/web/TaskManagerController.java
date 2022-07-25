@@ -61,6 +61,7 @@ public class TaskManagerController {
     @PostMapping("/update")
     public String updateAction(TaskDTO taskDTO, Model model, @RequestParam Integer idOfEmployer) {
         taskDTO.setTimeOfWorkInMin(utils.workTimeInMinutes(taskDTO.getDateStart(), taskDTO.getDateEnd()));
+        taskDTO.setDoneTask(true);
         TaskDomain taskDomain = taskService.update(taskMapperDTO.map(taskDTO));
         return "redirect:/project-manager/list?id=" + idOfEmployer;
     }
