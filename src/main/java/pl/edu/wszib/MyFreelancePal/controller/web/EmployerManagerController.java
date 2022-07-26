@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,11 +46,16 @@ public class EmployerManagerController {
     }
 
     @PostMapping("/create")
-    public String createAction(EmployerManagerDTO employerManagerDTO,  BindingResult bindingResult, Model model) {
+    public String createAction(@Valid EmployerManagerDTO employerManagerDTO, BindingResult bindingResult, Model model) throws IOException {
         if(bindingResult.hasErrors()){
-            model.addAttribute(employerManagerDTO);
 
             model.addAttribute("org.springframework.validation.BindingResult.employerManagerDTO", bindingResult);
+            System.out.println("-------------------------------------------");
+            System.out.println(bindingResult.getAllErrors().get(0).getCode());
+            System.out.println(bindingResult.getAllErrors().get(0).getDefaultMessage());
+            System.out.println(bindingResult.getAllErrors());
+            System.out.println("-------------------------------------------");
+            model.addAttribute(employerManagerDTO);
             return "employerManager/employerManagerCreate";
         }
 

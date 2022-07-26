@@ -16,7 +16,6 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@Builder
 @EqualsAndHashCode
 @Table()
 @Entity(name = "Employer")
@@ -25,7 +24,7 @@ public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @NotBlank(message = "Name  must contain something")
+    @NotBlank(message = "Name must be filed")
     @Column(name = "Name", nullable = false)
     private String name;
     private String description;
@@ -36,7 +35,7 @@ public class Employer {
     @Email
     private String email;
     @Column
-    private Boolean active = true;
+    private Boolean active;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> address;
