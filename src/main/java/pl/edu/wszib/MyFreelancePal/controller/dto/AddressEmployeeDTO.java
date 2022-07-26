@@ -2,6 +2,7 @@ package pl.edu.wszib.MyFreelancePal.controller.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 

@@ -11,7 +11,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeManagerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-26T12:11:46+0200",
+    date = "2022-07-26T12:24:06+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployeeManagerMapperImpl implements EmployeeManagerMapper {

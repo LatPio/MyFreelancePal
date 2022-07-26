@@ -15,7 +15,7 @@ import java.util.List;
 public class EmployerManagerDTO {
 
     private Integer id;
-    @NotBlank(message = "not blank")
+    @NotBlank(message = "Name must be filed")
     private String name;
     private String description;
     private String notes;
