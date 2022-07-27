@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col border-end">
                         <h7 class="card-title" > Address: </h7>
-                        <a th:href="@{/addressEe/create(id=*{employee.id})}">
+                        <a th:href="@{/addressEe/create(idOfEmployee=*{employee.id})}">
                             <i class="fa-solid fa-square-plus"></i>
                         </a>
                         <p class="card-text">
@@ -46,16 +46,22 @@
                     </div>
                     <div class="col">
                         <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|Description: |"></span><span th:text="*{employee.description}"></span>
+                        </div>
+                        <div class="py-1">
                             <span class="fw-bold pt-2" th:text="|NIP: |"></span><span th:text="*{employee.nip}"></span>
+                        </div>
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|VAT: |"></span><span th:text="*{employee.vat}"></span>
+                        </div>
+                        <div class="py-1">
+                            <span class="fw-bold pt-2" th:text="|Currency: |"></span><span th:text="*{employee.currency}"></span>
                         </div>
                         <div class="py-1">
                             <span class="fw-bold pt-2" th:text="|E-mail: |"></span><span th:text="*{employee.email}"></span>
                         </div>
                         <div class="py-1">
                             <span class="fw-bold pt-2" th:text="|Phone number: |"></span><span th:text="*{employee.phone}"></span>
-                        </div>
-                        <div class="py-1">
-                            <span class="fw-bold pt-2" th:text="|Description: |"></span><span th:text="*{employee.description}"></span>
                         </div>
                         <div class="py-1">
                             <span class="fw-bold pt-2" th:text="|Bank Number: |"></span><span th:text="*{employee.bankNumber}"></span>

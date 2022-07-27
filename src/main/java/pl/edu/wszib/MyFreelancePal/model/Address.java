@@ -25,16 +25,24 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Integer id;
+    @Column(name = "Name", nullable = false)
     private String name;
+    @Column(name = "Street", nullable = false)
     private String street;
+    @Column(name = "PostalCode", nullable = false)
     private String postalCode;
+    @Column(name = "BuildingNumber", nullable = false)
     private String buildingNumber;
+    @Column(name = "FlatNumber")
     private String flatNumber;
+    @Column(name = "City", nullable = false)
     private String city;
+    @Column(name = "Country", nullable = false)
     private String country;
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(name = "CreatindDate", updatable = false)
     private Instant createdAt;
+    @Column(name = "UpdateDate")
     @UpdateTimestamp
     private Instant updatedAt;
 

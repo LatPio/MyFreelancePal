@@ -32,14 +32,14 @@ public class Invoice {
         strategy = "pl.edu.wszib.MyFreelancePal.util.IdGeneratorForInvoice",
         parameters = {@org.hibernate.annotations.Parameter(name = IdGeneratorForInvoice.INCREMENT_PARAM, value = "50")}
     )
+    @Column(name = "ID", nullable = false)
     private String id;
-
+    @Column(name = "InvoiceCreationDate")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date invoiceCreationDate;
+    @Column(name = "InvoiceDateOfWorkCompletion")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date secondDate;
-    private String invoiceNumber;
-    private String placeOfInvoiceCreation;
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
@@ -54,17 +54,25 @@ public class Invoice {
     @ManyToOne
     @JoinColumn(name = "EmployerAddress_id")
     private Address employerAddress;
+    @Column(name = "VAT")
     private Integer vat;
+    @Column(name = "AmountNet")
     private BigDecimal amountNet;
+    @Column(name = "AmountVAT")
     private BigDecimal amountVat;
+    @Column(name = "AmountPreTax")
     private BigDecimal amountPreTax;
+    @Column(name = "AmountInWords")
     private String amountInWords;
+    @Column(name = "PayDueDate")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date payDue;
+    @Column(name = "DaysToPay")
     private Integer daysToPay;
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(name = "CreatindDate", updatable = false)
     private Instant createdAt;
+    @Column(name = "UpdateDate")
     @UpdateTimestamp
     private Instant updatedAt;
 

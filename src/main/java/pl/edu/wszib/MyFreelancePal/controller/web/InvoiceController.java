@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import pl.edu.wszib.MyFreelancePal.controller.mapper.*;
 import pl.edu.wszib.MyFreelancePal.service.*;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceDomain;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -60,16 +62,30 @@ public class InvoiceController {
         return "invoice/invoiceCreate";
     }
     @PostMapping("/create")
-    public String createAction(Model model, InvoiceDTO invoiceDTO){
+    public String createAction(Model model, @Valid InvoiceDTO invoiceDTO, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.newInvoice", bindingResult);
+            List<EmployerManagerDTO> allEmployers = employerManagerMapperDTO.mapToDTO(employerManagerService.list());
+            model.addAttribute("ListOfEmployers", allEmployers);
+            List<EmployeeManagerDTO> allEmployee = employeeManagerMapperDTO.mapToDTO(employeeManagerService.list());
+            model.addAttribute("ListOfEmployees", allEmployee);
+            model.addAttribute("today", LocalDate.now() );
+            model.addAttribute("newInvoice", invoiceDTO);
+            return "invoice/invoiceCreate";
+        }
         invoiceDTO.setSecondDate(invoiceDTO.getInvoiceCreationDate());
         LocalDate datePlus14days = invoiceDTO.getInvoiceCreationDate().toLocalDate().plusDays(14);
         invoiceDTO.setPayDue(Date.valueOf(datePlus14days));
         invoiceDTO.setDaysToPay(14);
-        invoiceDTO.setVat(23);
         invoiceDTO.setAmountNet(BigDecimal.valueOf(0));
         invoiceDTO.setAmountVat(BigDecimal.valueOf(0));
         invoiceDTO.setAmountPreTax(BigDecimal.valueOf(0));
+//        Integer idOfEmployee = invoiceDTO.getEmployee().getId();
+//        Integer vat = employeeManagerService.get(idOfEmployee).getVat();
+//        invoiceDTO.setVat(vat);
+        invoiceDTO.setVat(employeeManagerService.get(invoiceDTO.getEmployee().getId()).getVat());
         InvoiceDomain invoiceDomain = invoiceService.create(invoiceMapperDTO.map(invoiceDTO));
+
         return "redirect:/invoice/list";
     }
 
@@ -111,9 +127,7 @@ public class InvoiceController {
         invoiceDTO.setAmountVat(amountVat.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
         invoiceDTO.setAmountPreTax(amountPreTax.stream().reduce(BigDecimal.ZERO, BigDecimal::add));
         MoneyConverters converters = MoneyConverters.ENGLISH_BANKING_MONEY_VALUE;
-        converters.asWords(invoiceDTO.getAmountPreTax(), "PLN");
-        invoiceDTO.setAmountInWords(converters.asWords(invoiceDTO.getAmountPreTax(), "PLN"));
-
+        invoiceDTO.setAmountInWords(converters.asWords(invoiceDTO.getAmountPreTax(), " "));
         Integer days = Math.toIntExact(ChronoUnit.DAYS.between(invoiceDTO.getInvoiceCreationDate().toLocalDate(), invoiceDTO.getPayDue().toLocalDate() ));
         invoiceDTO.setDaysToPay(days);
         InvoiceDomain invoiceDomain = invoiceService.update(invoiceMapperDTO.map(invoiceDTO));

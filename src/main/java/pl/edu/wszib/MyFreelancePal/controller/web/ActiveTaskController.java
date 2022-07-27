@@ -5,6 +5,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import pl.edu.wszib.MyFreelancePal.service.TaskService;
 import pl.edu.wszib.MyFreelancePal.service.domain.TaskDomain;
 import pl.edu.wszib.MyFreelancePal.util.Utilities;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -49,9 +51,19 @@ public class ActiveTaskController {
     }
 
     @PostMapping("/create")
-    public String createAction(TaskDTO taskDTO, Model model){
-        BigDecimal price = projectManagerService.get(taskDTO.getProjectDTO().getId()).getHourPriceDefault();
-        taskDTO.setHourPrice(price);
+    public String createAction(@Valid TaskDTO taskDTO, BindingResult bindingResult, Model model){
+    //        model.addAttribute("hourPriceDefault", projectManagerService.get(taskDTO.getProjectDTO().getId()).getHourPriceDefault());
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.newTask", bindingResult);
+            model.addAttribute("ProjectsList", projectManagerMapperDTO.mapToDTO(projectManagerService.listActiveProject(true)));
+            model.addAttribute("newTask", taskDTO);
+            model.addAttribute("byIdSort", Comparator.comparing(TaskDTO::getId).reversed());
+            return "activeTasks/activeTaskList";
+
+        }
+//        BigDecimal price = projectManagerService.get(taskDTO.getProjectDTO().getId()).getHourPriceDefault();
+//        taskDTO.setHourPrice(price);
         TaskDomain taskDomain = taskService.create(taskMapperDTO.map(taskDTO));
         taskDomain.setDoneTask(Boolean.FALSE);
         return "redirect:/active-task";

@@ -16,6 +16,7 @@
             <div class="form-group">
                 <label for="name">Name: </label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></div>
             </div>
             <div class="form-group" >
                 <label for="dateStart">Date Start</label>
@@ -27,7 +28,8 @@
             </div>
             <div class="form-group" >
                 <label for="hourPrice">Hour Price</label>
-                <input id="hourPrice" class="form-control" type="number" th:field="*{hourPrice}">
+                <input id="hourPrice" class="form-control" type="number" min="0" step="0.01"  th:field="*{hourPrice}">
+                <div th:if="${#fields.hasErrors('hourPrice')}" th:errors="*{hourPrice}" class="alert alert-danger"></div>
             </div>
             <div class="form-group" hidden>
                 <label for="projectDTO.id">projectDTO_id</label>

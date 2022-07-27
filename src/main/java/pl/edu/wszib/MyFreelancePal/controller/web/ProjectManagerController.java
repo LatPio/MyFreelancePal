@@ -5,6 +5,8 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ import pl.edu.wszib.MyFreelancePal.controller.mapper.ProjectManagerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.EmployerManagerService;
 import pl.edu.wszib.MyFreelancePal.service.ProjectManagerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectManagerDomain;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -45,7 +49,14 @@ public class ProjectManagerController {
     }
 
     @PostMapping("/create")
-    public String createAction(ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer id){
+    public String createAction(@Valid ProjectManagerDTO projectManagerDTO, BindingResult bindingResult, Model model, @RequestParam Integer id ){
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.newProject", bindingResult);
+            model.addAttribute("newProject", projectManagerDTO);
+            model.addAttribute("idOfEmployer", id);
+            return "projectManager/projectManagerCreate";
+        }
         projectManagerDTO.setActiveProject(true);
         ProjectManagerDomain projectManagerDomain = projectManagerService.create(projectManagerMapperDTO.map(projectManagerDTO));
         return "redirect:/project-manager/list?id=" + id;
@@ -59,7 +70,14 @@ public class ProjectManagerController {
     }
 
     @PostMapping("/update")
-    public String updateAction(ProjectManagerDTO projectManagerDTO, Model model, @RequestParam Integer idOfEmployer){
+    public String updateAction(@Valid ProjectManagerDTO projectManagerDTO, BindingResult bindingResult, Model model, @RequestParam Integer idOfEmployer){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.updateManagerProject", bindingResult);
+            model.addAttribute("idOfEmployer", idOfEmployer);
+            model.addAttribute("updateManagerProject", projectManagerDTO);
+            return "projectManager/projectManagerUpdate";
+
+        }
         ProjectManagerDomain projectManagerDomain = projectManagerService.update(projectManagerMapperDTO.map(projectManagerDTO));
         return "redirect:/project-manager/list?id=" + idOfEmployer;
     }

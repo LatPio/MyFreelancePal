@@ -12,7 +12,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeManagerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-26T12:24:05+0200",
+    date = "2022-07-27T19:47:33+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployeeManagerMapperDTOImpl implements EmployeeManagerMapperDTO {
@@ -28,6 +28,8 @@ public class EmployeeManagerMapperDTOImpl implements EmployeeManagerMapperDTO {
         employeeManagerDTO.id( employeeManagerDomain.getId() );
         employeeManagerDTO.name( employeeManagerDomain.getName() );
         employeeManagerDTO.nip( employeeManagerDomain.getNip() );
+        employeeManagerDTO.vat( employeeManagerDomain.getVat() );
+        employeeManagerDTO.currency( employeeManagerDomain.getCurrency() );
         employeeManagerDTO.description( employeeManagerDomain.getDescription() );
         employeeManagerDTO.phone( employeeManagerDomain.getPhone() );
         employeeManagerDTO.email( employeeManagerDomain.getEmail() );
@@ -49,6 +51,8 @@ public class EmployeeManagerMapperDTOImpl implements EmployeeManagerMapperDTO {
         employeeManagerDomain.id( employeeManagerDTO.getId() );
         employeeManagerDomain.name( employeeManagerDTO.getName() );
         employeeManagerDomain.nip( employeeManagerDTO.getNip() );
+        employeeManagerDomain.vat( employeeManagerDTO.getVat() );
+        employeeManagerDomain.currency( employeeManagerDTO.getCurrency() );
         employeeManagerDomain.description( employeeManagerDTO.getDescription() );
         employeeManagerDomain.phone( employeeManagerDTO.getPhone() );
         employeeManagerDomain.email( employeeManagerDTO.getEmail() );

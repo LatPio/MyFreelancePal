@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,14 +48,8 @@ public class EmployerManagerController {
     @PostMapping("/create")
     public String createAction(@Valid EmployerManagerDTO employerManagerDTO, BindingResult bindingResult, Model model) throws IOException {
         if(bindingResult.hasErrors()){
-
-            model.addAttribute("org.springframework.validation.BindingResult.employerManagerDTO", bindingResult);
-            System.out.println("-------------------------------------------");
-            System.out.println(bindingResult.getAllErrors().get(0).getCode());
-            System.out.println(bindingResult.getAllErrors().get(0).getDefaultMessage());
-            System.out.println(bindingResult.getAllErrors());
-            System.out.println("-------------------------------------------");
-            model.addAttribute(employerManagerDTO);
+            model.addAttribute("org.springframework.validation.BindingResult.newEmployer", bindingResult);
+            model.addAttribute("newEmployer",employerManagerDTO);
             return "employerManager/employerManagerCreate";
         }
 
@@ -73,7 +67,12 @@ public class EmployerManagerController {
     }
 
     @PostMapping("/update")
-    public String updateAction(EmployerManagerDTO employerManagerDTO, Model model){
+    public String updateAction(@Valid EmployerManagerDTO employerManagerDTO, BindingResult bindingResult, Model model) throws IOException {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.updateManagerEmployer", bindingResult);
+            model.addAttribute("updateManagerEmployer", employerManagerDTO);
+            return "employerManager/employerManagerUpdate";
+        }
         EmployerManagerDomain employerManagerDomain = employerManagerService.update(employerManagerMapperDTO.map(employerManagerDTO));
         return "redirect:/employer-manager";
     }

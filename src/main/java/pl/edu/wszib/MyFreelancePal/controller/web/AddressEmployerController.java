@@ -4,6 +4,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import pl.edu.wszib.MyFreelancePal.controller.mapper.AddressEmployerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.AddressEmployerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployerDomain;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -30,14 +32,20 @@ public class AddressEmployerController {
     }
 
     @GetMapping("/create")
-    public String create(Model model, @RequestParam Integer id) {
+    public String create(Model model, @RequestParam Integer idOfEmployer) {
         model.addAttribute("newAddress", new AddressEmployerDTO());
-        model.addAttribute("idOfEmployer", id);
+        model.addAttribute("idOfEmployer", idOfEmployer);
         return "addressEmployer/addressEmployerCreate";
     }
 
     @PostMapping("/create")
-    public String createAction(AddressEmployerDTO addressEmployerDTO, Model model) {
+    public String createAction(@Valid AddressEmployerDTO addressEmployerDTO, BindingResult bindingResult, Model model, @RequestParam Integer idOfEmployer) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.newAddress", bindingResult);
+            model.addAttribute("newAddress", addressEmployerDTO);
+            model.addAttribute("idOfEmployer", idOfEmployer);
+            return "addressEmployer/addressEmployerCreate";
+        }
         AddressEmployerDomain addressEmployerDomain = addressEmployerService.create(addressEmployerMapperDTO.map(addressEmployerDTO));
         return "redirect:/employer-manager/list";
     }
@@ -48,7 +56,12 @@ public class AddressEmployerController {
     }
 
     @PostMapping("/update")
-    public String updateAction(AddressEmployerDTO addressEmployerDTO, Model model) {
+    public String updateAction(@Valid AddressEmployerDTO addressEmployerDTO, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.updateAddressEmployer", bindingResult);
+            model.addAttribute("updateAddressEmployer", addressEmployerDTO);
+            return "addressEmployer/addressEmployerUpdate";
+        }
         AddressEmployerDomain addressEmployerDomain = addressEmployerService.update(addressEmployerMapperDTO.map(addressEmployerDTO));
         return "redirect:/employer-manager";
     }

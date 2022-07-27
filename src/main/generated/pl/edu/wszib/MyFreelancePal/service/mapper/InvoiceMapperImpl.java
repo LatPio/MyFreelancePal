@@ -19,7 +19,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-26T12:24:06+0200",
+    date = "2022-07-27T19:47:33+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -146,6 +146,8 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         employeeManagerDomain.id( employee.getId() );
         employeeManagerDomain.name( employee.getName() );
         employeeManagerDomain.nip( employee.getNip() );
+        employeeManagerDomain.vat( employee.getVat() );
+        employeeManagerDomain.currency( employee.getCurrency() );
         employeeManagerDomain.description( employee.getDescription() );
         employeeManagerDomain.phone( employee.getPhone() );
         employeeManagerDomain.email( employee.getEmail() );
@@ -307,6 +309,8 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         employee.id( employeeManagerDomain.getId() );
         employee.name( employeeManagerDomain.getName() );
         employee.nip( employeeManagerDomain.getNip() );
+        employee.vat( employeeManagerDomain.getVat() );
+        employee.currency( employeeManagerDomain.getCurrency() );
         employee.description( employeeManagerDomain.getDescription() );
         employee.phone( employeeManagerDomain.getPhone() );
         employee.email( employeeManagerDomain.getEmail() );

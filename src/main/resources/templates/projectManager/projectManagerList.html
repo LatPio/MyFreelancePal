@@ -29,7 +29,7 @@
             <div class="btn-toolbar mb-2 mb-md-0">
                <div class="btn-group me-2">
                   <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/update(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
-                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/task-manager/create(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}"><i class="fa-solid fa-square-plus"></i>Add Task</a>
+                  <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/task-manager/create(idOfProject=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}"><i class="fa-solid fa-square-plus"></i>Add Task</a>
                </div>
                <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/delete(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}">
                         <span style="color: red" >

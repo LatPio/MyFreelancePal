@@ -4,17 +4,16 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.wszib.MyFreelancePal.controller.dto.InvoiceServiceEntryDTO;
 import pl.edu.wszib.MyFreelancePal.controller.dto.TaskInvoiceDTO;
-import pl.edu.wszib.MyFreelancePal.controller.mapper.InvoiceServiceEntryMapperDTO;
-import pl.edu.wszib.MyFreelancePal.controller.mapper.ProjectManagerMapperDTO;
-import pl.edu.wszib.MyFreelancePal.controller.mapper.TaskInvoiceMapperDTO;
-import pl.edu.wszib.MyFreelancePal.service.InvoiceServiceEntryService;
-import pl.edu.wszib.MyFreelancePal.service.ProjectManagerService;
-import pl.edu.wszib.MyFreelancePal.service.TaskInvoiceService;
+import pl.edu.wszib.MyFreelancePal.controller.mapper.*;
+import pl.edu.wszib.MyFreelancePal.service.*;
 import pl.edu.wszib.MyFreelancePal.service.domain.InvoiceServiceEntryDomain;
 
+import javax.validation.Valid;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Instant;
@@ -31,6 +30,15 @@ public class InvoiceServiceEntryController {
     @Autowired
     private TaskInvoiceService taskInvoiceService;
 
+    @Autowired
+    private EmployeeManagerService employeeManagerService;
+
+    @Autowired
+    private InvoiceService invoiceService;
+
+    private InvoiceMapperDTO invoiceMapperDTO = Mappers.getMapper(InvoiceMapperDTO.class);
+
+    private EmployeeManagerMapperDTO employeeManagerMapperDTO = Mappers.getMapper(EmployeeManagerMapperDTO.class);
     private TaskInvoiceMapperDTO taskInvoiceMapperDTO = Mappers.getMapper(TaskInvoiceMapperDTO.class);
     private InvoiceServiceEntryMapperDTO invoiceServiceEntryMapperDTO = Mappers.getMapper(InvoiceServiceEntryMapperDTO.class);
 
@@ -39,11 +47,20 @@ public class InvoiceServiceEntryController {
         model.addAttribute("newInvoiceEntry", new InvoiceServiceEntryDTO());
         model.addAttribute("listOfTasks",  taskInvoiceMapperDTO.mapToDTO(taskInvoiceService.findTaskTestingForGrandparent(idOfEmployer, true, false)));
         model.addAttribute("idOfInvoice", idOfInvoice);
+        model.addAttribute("idOfEmployer", idOfEmployer);
         return "invoiceServiceEntry/invoiceServiceEntryCreate";
     }
 
     @PostMapping("create")
-    public String createAction(Model model, InvoiceServiceEntryDTO invoiceServiceEntryDTO, @RequestParam String idOfInvoice){
+    public String createAction(@Valid InvoiceServiceEntryDTO invoiceServiceEntryDTO, BindingResult bindingResult, Model model, @RequestParam String idOfInvoice, @RequestParam Integer idOfEmployer) throws IOException {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.newInvoiceEntry", bindingResult);
+            model.addAttribute("listOfTasks",  taskInvoiceMapperDTO.mapToDTO(taskInvoiceService.findTaskTestingForGrandparent(idOfEmployer, true, false)));
+            model.addAttribute("idOfInvoice", idOfInvoice);
+            model.addAttribute("idOfEmployer", idOfEmployer);
+            model.addAttribute("newInvoiceEntry", invoiceServiceEntryDTO);
+            return "invoiceServiceEntry/invoiceServiceEntryCreate";
+        }
 
         List<TaskInvoiceDTO> tasks = new ArrayList<>();
         List<Integer> listOfIds = Arrays.asList(invoiceServiceEntryDTO.getIdsOfTasks().split(",")).stream().map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
@@ -73,11 +90,16 @@ public class InvoiceServiceEntryController {
         InvoiceServiceEntryDTO toUpdate = invoiceServiceEntryMapperDTO.map(invoiceServiceEntryService.get(invoiceServiceEntryDomain.getId()));
         toUpdate.setUnit("min");
         toUpdate.setNetPrice(sumResult.divide(BigDecimal.valueOf(sum), 2 , RoundingMode.HALF_UP));
-        toUpdate.setVat(23);
+        Integer vat = invoiceService.get(idOfInvoice).getEmployee().getVat();
+        toUpdate.setVat(vat);
         toUpdate.setNetAmount( toUpdate.getNetPrice().multiply(BigDecimal.valueOf(toUpdate.getAmount())) );
 
-        toUpdate.setVatAmount(sumResult.multiply(new BigDecimal(0.23)));
-        toUpdate.setPreTaxAmount(sumResult.multiply(new BigDecimal(1.23)));
+        if(vat == 0){
+            toUpdate.setVatAmount(sumResult);
+        }else {
+            toUpdate.setVatAmount(sumResult.multiply(new BigDecimal(vat.doubleValue()/100)));
+        }
+        toUpdate.setPreTaxAmount(sumResult.multiply(new BigDecimal(1 + vat)));
 
         InvoiceServiceEntryDomain invoiceServiceEntryDomainToReUpdate = invoiceServiceEntryService.update(invoiceServiceEntryMapperDTO.map(toUpdate));
         return "redirect:/invoice/update?id=" + idOfInvoice;

@@ -26,13 +26,24 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Integer id;
+    @Column(name = "Name", nullable = false)
     private String name;
+    @Column(name = "NIP", nullable = false)
     private String nip;
+    @Column(name = "VAT", nullable = false)
+    private Integer vat;
+    @Column(name = "Currency")
+    private String currency;
+    @Column(name = "Description")
     private String description;
+    @Column(name = "Phone")
     private String phone;
     @Email
+    @Column(name = "Email")
     private String email;
+    @Column(name = "BankNumber")
     private String bankNumber;
+    @Column(name = "BankIban")
     private String bankIban;
 
     @OnDelete(action = OnDeleteAction.CASCADE)

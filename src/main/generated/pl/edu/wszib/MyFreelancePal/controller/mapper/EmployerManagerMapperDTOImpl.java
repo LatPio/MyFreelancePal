@@ -15,7 +15,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-26T12:24:06+0200",
+    date = "2022-07-27T19:47:32+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployerManagerMapperDTOImpl implements EmployerManagerMapperDTO {
@@ -28,20 +28,20 @@ public class EmployerManagerMapperDTOImpl implements EmployerManagerMapperDTO {
             return null;
         }
 
-        EmployerManagerDTO.EmployerManagerDTOBuilder employerManagerDTO = EmployerManagerDTO.builder();
+        EmployerManagerDTO employerManagerDTO = new EmployerManagerDTO();
 
-        employerManagerDTO.id( employerManagerDomain.getId() );
-        employerManagerDTO.name( employerManagerDomain.getName() );
-        employerManagerDTO.description( employerManagerDomain.getDescription() );
-        employerManagerDTO.notes( employerManagerDomain.getNotes() );
-        employerManagerDTO.phone( employerManagerDomain.getPhone() );
-        employerManagerDTO.email( employerManagerDomain.getEmail() );
-        employerManagerDTO.nip( employerManagerDomain.getNip() );
-        employerManagerDTO.active( employerManagerDomain.getActive() );
-        employerManagerDTO.address( addressEmployerDomainListToAddressEmployerDTOList( employerManagerDomain.getAddress() ) );
-        employerManagerDTO.projects( projectMapperDTO.mapToDTO( employerManagerDomain.getProjects() ) );
+        employerManagerDTO.setId( employerManagerDomain.getId() );
+        employerManagerDTO.setName( employerManagerDomain.getName() );
+        employerManagerDTO.setDescription( employerManagerDomain.getDescription() );
+        employerManagerDTO.setNotes( employerManagerDomain.getNotes() );
+        employerManagerDTO.setPhone( employerManagerDomain.getPhone() );
+        employerManagerDTO.setEmail( employerManagerDomain.getEmail() );
+        employerManagerDTO.setNip( employerManagerDomain.getNip() );
+        employerManagerDTO.setActive( employerManagerDomain.getActive() );
+        employerManagerDTO.setAddress( addressEmployerDomainListToAddressEmployerDTOList( employerManagerDomain.getAddress() ) );
+        employerManagerDTO.setProjects( projectMapperDTO.mapToDTO( employerManagerDomain.getProjects() ) );
 
-        return employerManagerDTO.build();
+        return employerManagerDTO;
     }
 
     @Override
