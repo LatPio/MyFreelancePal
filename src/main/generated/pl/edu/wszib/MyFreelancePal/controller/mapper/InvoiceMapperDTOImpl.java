@@ -22,7 +22,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-24T20:44:30+0200",
+    date = "2022-07-27T19:47:32+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
@@ -38,8 +38,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDTO.id( invoiceDomain.getId() );
         invoiceDTO.invoiceCreationDate( invoiceDomain.getInvoiceCreationDate() );
         invoiceDTO.secondDate( invoiceDomain.getSecondDate() );
-        invoiceDTO.invoiceNumber( invoiceDomain.getInvoiceNumber() );
-        invoiceDTO.placeOfInvoiceCreation( invoiceDomain.getPlaceOfInvoiceCreation() );
         invoiceDTO.employee( employeeManagerDomainToEmployeeManagerDTO( invoiceDomain.getEmployee() ) );
         invoiceDTO.employer( employerManagerDomainToEmployerManagerDTO( invoiceDomain.getEmployer() ) );
         invoiceDTO.employerAddress( addressEmployerDomainToAddressEmployerDTO( invoiceDomain.getEmployerAddress() ) );
@@ -66,8 +64,6 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         invoiceDomain.id( invoiceDTO.getId() );
         invoiceDomain.invoiceCreationDate( invoiceDTO.getInvoiceCreationDate() );
         invoiceDomain.secondDate( invoiceDTO.getSecondDate() );
-        invoiceDomain.invoiceNumber( invoiceDTO.getInvoiceNumber() );
-        invoiceDomain.placeOfInvoiceCreation( invoiceDTO.getPlaceOfInvoiceCreation() );
         invoiceDomain.employee( employeeManagerDTOToEmployeeManagerDomain( invoiceDTO.getEmployee() ) );
         invoiceDomain.employer( employerManagerDTOToEmployerManagerDomain( invoiceDTO.getEmployer() ) );
         invoiceDomain.employerAddress( addressEmployerDTOToAddressEmployerDomain( invoiceDTO.getEmployerAddress() ) );
@@ -153,6 +149,8 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         employeeManagerDTO.id( employeeManagerDomain.getId() );
         employeeManagerDTO.name( employeeManagerDomain.getName() );
         employeeManagerDTO.nip( employeeManagerDomain.getNip() );
+        employeeManagerDTO.vat( employeeManagerDomain.getVat() );
+        employeeManagerDTO.currency( employeeManagerDomain.getCurrency() );
         employeeManagerDTO.description( employeeManagerDomain.getDescription() );
         employeeManagerDTO.phone( employeeManagerDomain.getPhone() );
         employeeManagerDTO.email( employeeManagerDomain.getEmail() );
@@ -241,20 +239,20 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
             return null;
         }
 
-        EmployerManagerDTO.EmployerManagerDTOBuilder employerManagerDTO = EmployerManagerDTO.builder();
+        EmployerManagerDTO employerManagerDTO = new EmployerManagerDTO();
 
-        employerManagerDTO.id( employerManagerDomain.getId() );
-        employerManagerDTO.name( employerManagerDomain.getName() );
-        employerManagerDTO.description( employerManagerDomain.getDescription() );
-        employerManagerDTO.notes( employerManagerDomain.getNotes() );
-        employerManagerDTO.phone( employerManagerDomain.getPhone() );
-        employerManagerDTO.email( employerManagerDomain.getEmail() );
-        employerManagerDTO.nip( employerManagerDomain.getNip() );
-        employerManagerDTO.active( employerManagerDomain.getActive() );
-        employerManagerDTO.address( addressEmployerDomainListToAddressEmployerDTOList( employerManagerDomain.getAddress() ) );
-        employerManagerDTO.projects( projectDomainListToProjectDTOList( employerManagerDomain.getProjects() ) );
+        employerManagerDTO.setId( employerManagerDomain.getId() );
+        employerManagerDTO.setName( employerManagerDomain.getName() );
+        employerManagerDTO.setDescription( employerManagerDomain.getDescription() );
+        employerManagerDTO.setNotes( employerManagerDomain.getNotes() );
+        employerManagerDTO.setPhone( employerManagerDomain.getPhone() );
+        employerManagerDTO.setEmail( employerManagerDomain.getEmail() );
+        employerManagerDTO.setNip( employerManagerDomain.getNip() );
+        employerManagerDTO.setActive( employerManagerDomain.getActive() );
+        employerManagerDTO.setAddress( addressEmployerDomainListToAddressEmployerDTOList( employerManagerDomain.getAddress() ) );
+        employerManagerDTO.setProjects( projectDomainListToProjectDTOList( employerManagerDomain.getProjects() ) );
 
-        return employerManagerDTO.build();
+        return employerManagerDTO;
     }
 
     protected EmployeeDomain employeeDTOToEmployeeDomain(EmployeeDTO employeeDTO) {
@@ -313,6 +311,8 @@ public class InvoiceMapperDTOImpl implements InvoiceMapperDTO {
         employeeManagerDomain.id( employeeManagerDTO.getId() );
         employeeManagerDomain.name( employeeManagerDTO.getName() );
         employeeManagerDomain.nip( employeeManagerDTO.getNip() );
+        employeeManagerDomain.vat( employeeManagerDTO.getVat() );
+        employeeManagerDomain.currency( employeeManagerDTO.getCurrency() );
         employeeManagerDomain.description( employeeManagerDTO.getDescription() );
         employeeManagerDomain.phone( employeeManagerDTO.getPhone() );
         employeeManagerDomain.email( employeeManagerDTO.getEmail() );

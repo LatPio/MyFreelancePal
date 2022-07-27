@@ -7,7 +7,6 @@
 <div class="container1">
 
     <div class="container py-2">
-        <a class="btn btn-secondary" th:href="@{/employer/create}">Create</a>
         <table class="table">
             <thead>
             <tr>
@@ -22,7 +21,6 @@
                 <td th:text="${employer.name}"></td>
                 <td>
                     <a class="btn btn-primary" th:href="@{/projects/list(id=${employer.id})}">Open</a>
-                    <a class="btn btn-secondary" th:href="@{/employer/update(id=${employer.id})}">Edit</a>
                     <a class="btn btn-danger" th:href="@{/employer/delete(id=${employer.id})}">Delete</a>
                 </td>
             </tr>

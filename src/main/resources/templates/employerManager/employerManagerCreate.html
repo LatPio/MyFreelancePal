@@ -9,16 +9,37 @@
     <div class="container">
 
         <h2>Employer:</h2>
-        <form th:method="POST" th:action="@{/employer/create}" th:object="${newEmployer}">
+        <form th:method="POST" th:action="@{/employer-manager/create}" th:object="${newEmployer}">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="nip">Description:</label>
+                <input id="description" class="form-control" type="text" th:field="*{description}">
             </div>
             <div class="form-group">
                 <label for="nip">NIP:</label>
                 <input id="nip" class="form-control" type="text" th:field="*{nip}">
+                <div th:if="${#fields.hasErrors('nip')}" th:errors="*{nip}" class="alert alert-danger"></div>
             </div>
             <div class="form-group">
+                <label for="nip">Email:</label>
+                <input id="email" class="form-control" type="text" th:field="*{email}">
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="nip">Phone:</label>
+                <input id="phone" class="form-control" type="text" th:field="*{phone}">
+                <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="notes">notes:</label>
+                <textarea id="notes" class="form-control" rows="4" type="text" th:field="*{notes}"></textarea>
+                <div th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group py-2">
                 <input type="submit" class="form-control btn btn-primary" value="Create">
                 <input onclick='javascript:window.history.back()' value='Cancel' type='button' class="form-control btn btn-secondary" />
             </div>

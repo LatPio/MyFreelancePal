@@ -24,7 +24,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.TaskInvoiceDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-24T20:44:31+0200",
+    date = "2022-07-27T19:47:33+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class TaskInvoiceMapperImpl implements TaskInvoiceMapper {
@@ -174,6 +174,8 @@ public class TaskInvoiceMapperImpl implements TaskInvoiceMapper {
         employeeManagerDomain.id( employee.getId() );
         employeeManagerDomain.name( employee.getName() );
         employeeManagerDomain.nip( employee.getNip() );
+        employeeManagerDomain.vat( employee.getVat() );
+        employeeManagerDomain.currency( employee.getCurrency() );
         employeeManagerDomain.description( employee.getDescription() );
         employeeManagerDomain.phone( employee.getPhone() );
         employeeManagerDomain.email( employee.getEmail() );
@@ -274,8 +276,6 @@ public class TaskInvoiceMapperImpl implements TaskInvoiceMapper {
         invoiceDomain.id( invoice.getId() );
         invoiceDomain.invoiceCreationDate( invoice.getInvoiceCreationDate() );
         invoiceDomain.secondDate( invoice.getSecondDate() );
-        invoiceDomain.invoiceNumber( invoice.getInvoiceNumber() );
-        invoiceDomain.placeOfInvoiceCreation( invoice.getPlaceOfInvoiceCreation() );
         invoiceDomain.employee( employeeToEmployeeManagerDomain( invoice.getEmployee() ) );
         invoiceDomain.employer( employerToEmployerManagerDomain( invoice.getEmployer() ) );
         invoiceDomain.employerAddress( addressToAddressEmployerDomain( invoice.getEmployerAddress() ) );
@@ -449,6 +449,8 @@ public class TaskInvoiceMapperImpl implements TaskInvoiceMapper {
         employee.id( employeeManagerDomain.getId() );
         employee.name( employeeManagerDomain.getName() );
         employee.nip( employeeManagerDomain.getNip() );
+        employee.vat( employeeManagerDomain.getVat() );
+        employee.currency( employeeManagerDomain.getCurrency() );
         employee.description( employeeManagerDomain.getDescription() );
         employee.phone( employeeManagerDomain.getPhone() );
         employee.email( employeeManagerDomain.getEmail() );
@@ -464,12 +466,12 @@ public class TaskInvoiceMapperImpl implements TaskInvoiceMapper {
             return null;
         }
 
-        Employer.EmployerBuilder employer = Employer.builder();
+        Employer employer = new Employer();
 
-        employer.id( employerDomain.getId() );
-        employer.name( employerDomain.getName() );
+        employer.setId( employerDomain.getId() );
+        employer.setName( employerDomain.getName() );
 
-        return employer.build();
+        return employer;
     }
 
     protected Address addressEmployerDomainToAddress(AddressEmployerDomain addressEmployerDomain) {
@@ -523,20 +525,20 @@ public class TaskInvoiceMapperImpl implements TaskInvoiceMapper {
             return null;
         }
 
-        Employer.EmployerBuilder employer = Employer.builder();
+        Employer employer = new Employer();
 
-        employer.id( employerManagerDomain.getId() );
-        employer.name( employerManagerDomain.getName() );
-        employer.description( employerManagerDomain.getDescription() );
-        employer.notes( employerManagerDomain.getNotes() );
-        employer.nip( employerManagerDomain.getNip() );
-        employer.phone( employerManagerDomain.getPhone() );
-        employer.email( employerManagerDomain.getEmail() );
-        employer.active( employerManagerDomain.getActive() );
-        employer.address( addressEmployerDomainListToAddressList( employerManagerDomain.getAddress() ) );
-        employer.projects( projectDomainListToProjectList( employerManagerDomain.getProjects() ) );
+        employer.setId( employerManagerDomain.getId() );
+        employer.setName( employerManagerDomain.getName() );
+        employer.setDescription( employerManagerDomain.getDescription() );
+        employer.setNotes( employerManagerDomain.getNotes() );
+        employer.setNip( employerManagerDomain.getNip() );
+        employer.setPhone( employerManagerDomain.getPhone() );
+        employer.setEmail( employerManagerDomain.getEmail() );
+        employer.setActive( employerManagerDomain.getActive() );
+        employer.setAddress( addressEmployerDomainListToAddressList( employerManagerDomain.getAddress() ) );
+        employer.setProjects( projectDomainListToProjectList( employerManagerDomain.getProjects() ) );
 
-        return employer.build();
+        return employer;
     }
 
     protected Invoice invoiceDomainToInvoice(InvoiceDomain invoiceDomain) {
@@ -549,8 +551,6 @@ public class TaskInvoiceMapperImpl implements TaskInvoiceMapper {
         invoice.id( invoiceDomain.getId() );
         invoice.invoiceCreationDate( invoiceDomain.getInvoiceCreationDate() );
         invoice.secondDate( invoiceDomain.getSecondDate() );
-        invoice.invoiceNumber( invoiceDomain.getInvoiceNumber() );
-        invoice.placeOfInvoiceCreation( invoiceDomain.getPlaceOfInvoiceCreation() );
         invoice.employee( employeeManagerDomainToEmployee( invoiceDomain.getEmployee() ) );
         invoice.employer( employerManagerDomainToEmployer( invoiceDomain.getEmployer() ) );
         invoice.employeeAddress( addressEmployeeDomainToAddress( invoiceDomain.getEmployeeAddress() ) );

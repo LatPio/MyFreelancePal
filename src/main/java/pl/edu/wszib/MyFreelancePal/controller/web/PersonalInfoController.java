@@ -4,6 +4,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import pl.edu.wszib.MyFreelancePal.controller.mapper.EmployeeManagerMapperDTO;
 import pl.edu.wszib.MyFreelancePal.service.EmployeeManagerService;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeManagerDomain;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -42,7 +44,12 @@ public class PersonalInfoController {
     }
 
     @PostMapping("/create")
-    public String createAction(EmployeeManagerDTO employeeManagerDTO, Model model){
+    public String createAction(@Valid EmployeeManagerDTO employeeManagerDTO, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.newEmployee", bindingResult);
+            model.addAttribute("newEmployee", employeeManagerDTO);
+            return "personalInfo/personalInfoCreate";
+        }
         EmployeeManagerDomain employeeManagerDomain = employeeManagerService.create(employeeManagerMapperDTO.map(employeeManagerDTO));
         return "redirect:/personalInfo";
     }
@@ -54,7 +61,12 @@ public class PersonalInfoController {
     }
 
     @PostMapping("/update")
-    public String updateAction(EmployeeManagerDTO employeeManagerDTO, Model model){
+    public String updateAction(@Valid EmployeeManagerDTO employeeManagerDTO, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("org.springframework.validation.BindingResult.updateEmployee", bindingResult);
+            model.addAttribute("updateEmployee", employeeManagerDTO);
+            return "personalInfo/personalInfoUpdate";
+        }
         EmployeeManagerDomain employeeManagerDomain = employeeManagerService.update(employeeManagerMapperDTO.map(employeeManagerDTO));
         return "redirect:/personalInfo";
     }

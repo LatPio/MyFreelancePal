@@ -22,19 +22,23 @@ public class    Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Integer id;
+    @Column(name = "Name")
     private String name;
-    @Column(nullable = true)
+    @Column(name = "Color", nullable = false)
     private String color;
+    @Column(name = "Description")
     private String description;
-    @Column(nullable = true)
+    @Column(name = "ActiveProject",nullable = true)
     private Boolean activeProject = true;
-    @Column(nullable = false)
+    @Column(name = "HourPriceDefault")
     private BigDecimal hourPriceDefault;
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(name = "CreationDate",updatable = false)
     private Instant createdAt;
     @UpdateTimestamp
+    @Column(name = "UpdateDate")
     private Instant updatedAt;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

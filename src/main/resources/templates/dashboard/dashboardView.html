@@ -23,7 +23,12 @@
                 </div>
               </div>
             </div>
-            <h1 class="display-5 mt-1 mb-3"  th:text="|${sumAmount} PLN|"></h1>
+
+            <div class="row">
+              <div class="col"><h1 class="display-5 mt-1 mb-3" >[[${sumAmount}]]</h1></div>
+              <div class="col d-flex align-items-center"><i class="fa-solid fa-coins"></i></div>
+
+            </div>
             <div class="mb-0">
               in current month
             </div>

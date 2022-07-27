@@ -10,41 +10,55 @@
 
         <h2>Personal Info Profile:</h2>
         <form th:method="POST" th:action="@{/personalInfo/update(id=${updateEmployee.id})}" th:object="${updateEmployee}">
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label for="id">Id</label>
                 <input id="id" class="form-control" type="text" th:field="*{id}" disabled>
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input id="name" class="form-control" type="text" th:field="*{name}">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></div>
             </div>
             <div class="form-group">
-                <label for="description">Description: </label>
+                <label for="nip">Profile Description:</label>
                 <input id="description" class="form-control" type="text" th:field="*{description}">
-            </div>
-            <div class="form-group">
-                <label for="email">Email: </label>
-                <input id="email" class="form-control" type="text" th:field="*{email}">
-            </div>
-            <div class="form-group">
-                <label for="email">Phone: </label>
-                <input id="phone" class="form-control" type="text" th:field="*{phone}">
             </div>
             <div class="form-group">
                 <label for="nip">NIP:</label>
                 <input id="nip" class="form-control" type="text" th:field="*{nip}">
+                <div th:if="${#fields.hasErrors('nip')}" th:errors="*{nip}" class="alert alert-danger"></div>
             </div>
-
             <div class="form-group">
-                <label for="email">Bank Iban:</label>
+                <label for="vat">VAT for Invoice:</label>
+                <input id="vat" class="form-control" type="number" min="0" step="1" max="32" th:field="*{vat}">
+                <div th:if="${#fields.hasErrors('vat')}" th:errors="*{vat}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="currency">Currency for Invoice:</label>
+                <input id="currency" class="form-control" type="text" th:field="*{currency}">
+                <div th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="nip">Email:</label>
+                <input id="email" class="form-control" type="text" th:field="*{email}">
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="nip">Phone:</label>
+                <input id="phone" class="form-control" type="text" th:field="*{phone}">
+                <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="alert alert-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Bank Iban</label>
                 <input id="bankIban" class="form-control" type="text" th:field="*{bankIban}">
+                <div th:if="${#fields.hasErrors('bankIban')}" th:errors="*{bankIban}" class="alert alert-danger"></div>
             </div>
             <div class="form-group">
-                <label for="email">Bank Number:</label>
+                <label for="email">Bank Number</label>
                 <input id="bankNumber" class="form-control" type="text" th:field="*{bankNumber}">
+                <div th:if="${#fields.hasErrors('bankNumber')}" th:errors="*{bankNumber}" class="alert alert-danger"></div>
             </div>
-
-            <div class="form-group">
+            <div class="form-group py-2">
                 <input type="submit" class="form-control btn btn-primary" value="Save">
                 <input onclick='javascript:window.history.back()' value='Cancel' type='button' class="form-control btn btn-secondary" />
             </div>

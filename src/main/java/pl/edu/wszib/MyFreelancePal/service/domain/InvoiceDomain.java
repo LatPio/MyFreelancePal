@@ -18,8 +18,6 @@ public class InvoiceDomain {
     private String id;
     private Date invoiceCreationDate;
     private Date secondDate;
-    private String invoiceNumber;
-    private String placeOfInvoiceCreation;
     private EmployeeManagerDomain employee;
     private EmployerManagerDomain employer;
     private AddressEmployerDomain employerAddress;

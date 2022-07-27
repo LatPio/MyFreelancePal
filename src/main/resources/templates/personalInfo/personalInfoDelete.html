@@ -8,8 +8,8 @@
 
     <body>
     <div class="container">
-        <h2>Profile: [[*{description}]]</h2>
         <form th:method="POST" th:action="@{/personalInfo/delete}" th:object="${deleteEmployee}">
+            <h2>Profile: [[*{description}]]</h2>
             <div>
                 Do You want to delete Profile?
             </div>
