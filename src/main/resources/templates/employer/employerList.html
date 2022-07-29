@@ -20,8 +20,20 @@
                 <td th:text="${employer.id}"></td>
                 <td th:text="${employer.name}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{/projects/list(id=${employer.id})}">Open</a>
-                    <a class="btn btn-danger" th:href="@{/employer/delete(id=${employer.id})}">Delete</a>
+                    <div class="btn-group me-2">
+                        <a type="button" class="btn btn btn-outline-secondary" th:href="@{/projects/list(id=${employer.id})}">
+                            <span style="color: green" >
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </span>
+                            Open
+                        </a>
+                       <a type="button" class="btn btn btn-outline-secondary" th:href="@{/employer/delete(id=${employer.id})}">
+                            <span style="color: red" >
+                                <i class="fa-solid fa-trash-can"></i>
+                            </span>
+                            Delete
+                       </a>
+                    </div>
                 </td>
             </tr>
 

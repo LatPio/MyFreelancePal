@@ -21,8 +21,20 @@
                 <td th:text="${project.id}"></td>
                 <td th:text="${project.name}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{/tasks/list2(id=${project.id})}">Open</a>
-                   <a class="btn btn-danger" th:href="@{/projects/delete(id=${project.id})}">Delete</a>
+                    <div class="btn-group me-2">
+                        <a type="button" class="btn btn btn-outline-secondary" th:href="@{/tasks/list2(id=${project.id})}">
+                            <span style="color: green" >
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </span>
+                            Open
+                        </a>
+                        <a type="button" class="btn btn btn-outline-secondary" th:href="@{/projects/delete(id=${project.id})}">
+                            <span style="color: red" >
+                                <i class="fa-solid fa-trash-can"></i>
+                            </span>
+                            Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
             </tbody>

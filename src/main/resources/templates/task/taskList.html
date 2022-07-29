@@ -6,7 +6,6 @@
 
 <div class="container1">
     <div class="container py-2">
-        <a class="btn btn-secondary" th:href="@{/tasks/create(id=${id})}">Create</a>
         <table class="table">
             <thead>
             <tr>
@@ -25,8 +24,20 @@
                 <td th:text="${#temporals.format(task.dateEnd, 'dd-MM-yyyy    HH:mm:ss')}"></td>
                 <td th:text="${task.projectDTO.name}"></td>
                 <td>
-                    <a class="btn btn-secondary" th:href="@{/tasks/update(id=${task.id})}">Edit</a>
-                    <a class="btn btn-danger" th:href="@{/tasks/delete(id=${task.id})}">Delete</a>
+                    <div class="btn-group me-2">
+                        <a type="button" class="btn btn btn-outline-secondary" th:href="@{/tasks/update(id=${task.id})}">
+                            <span style="color: blue" >
+                                <i class="fa-solid fa-file-pen"></i>
+                            </span>
+                            Update
+                        </a>
+                        <a type="button" class="btn btn btn-outline-secondary" th:href="@{/tasks/delete(id=${task.id})}">
+                            <span style="color: red" >
+                                <i class="fa-solid fa-trash-can"></i>
+                            </span>
+                            Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
             </tbody>

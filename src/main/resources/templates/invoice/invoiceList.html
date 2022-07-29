@@ -31,9 +31,26 @@
                 <td th:text="${invoice.vat}"></td>
                 <td th:text="${#dates.format(invoice.payDue, 'dd-MM-yyyy')}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{/invoice/get(id=${invoice.id})}">Open</a>
-                    <a class="btn btn-secondary" th:href="@{/invoice/update(id=${invoice.id})}">Edit</a>
-                    <a class="btn btn-danger" th:href="@{/invoice/delete(id=${invoice.id})}">Delete</a>
+                    <div class="btn-group me-2">
+                    <a type="button" class="btn btn btn-outline-secondary" th:href="@{/invoice/get(id=${invoice.id})}">
+                        <span style="color: green" >
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </span>
+
+                        Open</a>
+                    <a type="button" class="btn btn btn-outline-secondary" th:href="@{/invoice/update(id=${invoice.id})}">
+                        <span style="color: blue" >
+                        <i class="fa-solid fa-file-pen"></i>
+                        </span>
+                        Update
+                    </a>
+                    <a type="button" class="btn btn btn-outline-secondary" th:href="@{/invoice/delete(id=${invoice.id})}">
+                        <span style="color: red" >
+                            <i class="fa-solid fa-trash-can"></i>
+                        </span>
+                        Delete
+                    </a>
+                    </div>
                 </td>
             </tr>
             </tbody>

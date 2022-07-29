@@ -1,3 +1,4 @@
+select 1;
 -- Employee dataset
 
 insert into employee (id, bankiban, banknumber, currency, description, email, name, nip, phone, vat)
