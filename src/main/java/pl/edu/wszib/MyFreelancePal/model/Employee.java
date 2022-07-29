@@ -11,13 +11,12 @@ import javax.validation.constraints.Email;
 import java.time.Instant;
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-@Table()
+@Table(name = "Employee")
 @Entity
 public class Employee {
 

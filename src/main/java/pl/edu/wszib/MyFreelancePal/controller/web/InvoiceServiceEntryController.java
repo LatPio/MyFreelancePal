@@ -92,14 +92,15 @@ public class InvoiceServiceEntryController {
         toUpdate.setNetPrice(sumResult.divide(BigDecimal.valueOf(sum), 2 , RoundingMode.HALF_UP));
         Integer vat = invoiceService.get(idOfInvoice).getEmployee().getVat();
         toUpdate.setVat(vat);
+        BigDecimal taxedMultiplayer = BigDecimal.valueOf(1).add(BigDecimal.valueOf(vat).divide(BigDecimal.valueOf(100)));
         toUpdate.setNetAmount( toUpdate.getNetPrice().multiply(BigDecimal.valueOf(toUpdate.getAmount())) );
 
+        toUpdate.setPreTaxAmount(toUpdate.getNetAmount().multiply(taxedMultiplayer));
         if(vat == 0){
-            toUpdate.setVatAmount(sumResult);
+            toUpdate.setVatAmount(BigDecimal.valueOf(0));
         }else {
-            toUpdate.setVatAmount(sumResult.multiply(new BigDecimal(vat.doubleValue()/100)));
+            toUpdate.setVatAmount(toUpdate.getPreTaxAmount().subtract(toUpdate.getNetAmount()));
         }
-        toUpdate.setPreTaxAmount(sumResult.multiply(new BigDecimal(1 + vat)));
 
         InvoiceServiceEntryDomain invoiceServiceEntryDomainToReUpdate = invoiceServiceEntryService.update(invoiceServiceEntryMapperDTO.map(toUpdate));
         return "redirect:/invoice/update?id=" + idOfInvoice;

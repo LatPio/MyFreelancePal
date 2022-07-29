@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-27T19:47:32+0200",
+    date = "2022-07-29T13:06:04+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class ProjectMapperImpl implements ProjectMapper {
@@ -38,15 +38,15 @@ public class ProjectMapperImpl implements ProjectMapper {
             return null;
         }
 
-        Project.ProjectBuilder project = Project.builder();
+        Project project = new Project();
 
-        project.employer( employerDomainToEmployer( projectDomain.getEmployerDomain() ) );
-        project.id( projectDomain.getId() );
-        project.name( projectDomain.getName() );
-        project.color( projectDomain.getColor() );
-        project.hourPriceDefault( projectDomain.getHourPriceDefault() );
+        project.setEmployer( employerDomainToEmployer( projectDomain.getEmployerDomain() ) );
+        project.setId( projectDomain.getId() );
+        project.setName( projectDomain.getName() );
+        project.setColor( projectDomain.getColor() );
+        project.setHourPriceDefault( projectDomain.getHourPriceDefault() );
 
-        return project.build();
+        return project;
     }
 
     @Override

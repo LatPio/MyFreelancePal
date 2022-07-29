@@ -25,7 +25,10 @@
 
       <div class="card my-2 mx-2" th:each="projectfromlist : ${ProjectsList}">
          <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3" >
-            <h5 th:text="*{projectfromlist.name}" ></h5>
+            <div class="row row-cols-auto">
+               <span class="col" th:style="'color: '+ ${projectfromlist.color}+';'"><i class="fa-solid fa-bookmark fa-2x"></i></span>
+               <span class="col"><h5 th:text="*{projectfromlist.name}" ></h5></span>
+            </div>
             <div class="btn-toolbar mb-2 mb-md-0">
                <div class="btn-group me-2">
                   <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/project-manager/update(id=*{projectfromlist.id},idOfEmployer=*{EmployerManagerGet.id})}"><i class="fa-solid fa-file-pen"></i>Update</a>
@@ -43,7 +46,6 @@
             <div class="row">
                <div class="col">
                   <div th:text="|Description: *{projectfromlist.description}|"></div>
-                  <div th:text="|Color: *{projectfromlist.color}|"></div>
                   <div th:text="|Active? *{projectfromlist.activeProject}|"></div>
                   <div th:text="|Hour Price: *{projectfromlist.hourPriceDefault}|"></div>
                </div>

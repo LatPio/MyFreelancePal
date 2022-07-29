@@ -9,7 +9,10 @@
     <div class="container py-3">
         <div class="card my-2" th:each="activeProject : ${ProjectsList}"}>
             <div class="card-header">
-                <h5 th:text="|*{activeProject.name} for *{activeProject.employer.name}|"></h5>
+                <div class="row row-cols-auto">
+                    <span class="col" th:style="'color: '+ ${activeProject.color}+';'"><i class="fa-solid fa-bookmark fa-2x"></i></span>
+                    <span class="col"><h5 th:text="|*{activeProject.name} for *{activeProject.employer.name}|"></h5></span>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-md-6 g-4">

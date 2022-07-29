@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Builder
 @Table(name = "Address")
 @Entity
 public class Address {

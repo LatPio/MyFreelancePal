@@ -19,7 +19,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-27T19:47:33+0200",
+    date = "2022-07-29T13:06:05+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -56,24 +56,24 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        Invoice.InvoiceBuilder invoice = Invoice.builder();
+        Invoice invoice = new Invoice();
 
-        invoice.id( invoiceDomain.getId() );
-        invoice.invoiceCreationDate( invoiceDomain.getInvoiceCreationDate() );
-        invoice.secondDate( invoiceDomain.getSecondDate() );
-        invoice.employee( employeeManagerDomainToEmployee( invoiceDomain.getEmployee() ) );
-        invoice.employer( employerManagerDomainToEmployer( invoiceDomain.getEmployer() ) );
-        invoice.employeeAddress( addressEmployeeDomainToAddress( invoiceDomain.getEmployeeAddress() ) );
-        invoice.employerAddress( addressEmployerDomainToAddress( invoiceDomain.getEmployerAddress() ) );
-        invoice.vat( invoiceDomain.getVat() );
-        invoice.amountNet( invoiceDomain.getAmountNet() );
-        invoice.amountVat( invoiceDomain.getAmountVat() );
-        invoice.amountPreTax( invoiceDomain.getAmountPreTax() );
-        invoice.amountInWords( invoiceDomain.getAmountInWords() );
-        invoice.payDue( invoiceDomain.getPayDue() );
-        invoice.daysToPay( invoiceDomain.getDaysToPay() );
+        invoice.setId( invoiceDomain.getId() );
+        invoice.setInvoiceCreationDate( invoiceDomain.getInvoiceCreationDate() );
+        invoice.setSecondDate( invoiceDomain.getSecondDate() );
+        invoice.setEmployee( employeeManagerDomainToEmployee( invoiceDomain.getEmployee() ) );
+        invoice.setEmployer( employerManagerDomainToEmployer( invoiceDomain.getEmployer() ) );
+        invoice.setEmployeeAddress( addressEmployeeDomainToAddress( invoiceDomain.getEmployeeAddress() ) );
+        invoice.setEmployerAddress( addressEmployerDomainToAddress( invoiceDomain.getEmployerAddress() ) );
+        invoice.setVat( invoiceDomain.getVat() );
+        invoice.setAmountNet( invoiceDomain.getAmountNet() );
+        invoice.setAmountVat( invoiceDomain.getAmountVat() );
+        invoice.setAmountPreTax( invoiceDomain.getAmountPreTax() );
+        invoice.setAmountInWords( invoiceDomain.getAmountInWords() );
+        invoice.setPayDue( invoiceDomain.getPayDue() );
+        invoice.setDaysToPay( invoiceDomain.getDaysToPay() );
 
-        return invoice.build();
+        return invoice;
     }
 
     @Override
@@ -258,12 +258,12 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        Employee.EmployeeBuilder employee = Employee.builder();
+        Employee employee = new Employee();
 
-        employee.id( employeeDomain.getId() );
-        employee.name( employeeDomain.getName() );
+        employee.setId( employeeDomain.getId() );
+        employee.setName( employeeDomain.getName() );
 
-        return employee.build();
+        return employee;
     }
 
     protected Address addressEmployeeDomainToAddress(AddressEmployeeDomain addressEmployeeDomain) {
@@ -271,19 +271,19 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        Address.AddressBuilder address = Address.builder();
+        Address address = new Address();
 
-        address.id( addressEmployeeDomain.getId() );
-        address.name( addressEmployeeDomain.getName() );
-        address.street( addressEmployeeDomain.getStreet() );
-        address.postalCode( addressEmployeeDomain.getPostalCode() );
-        address.buildingNumber( addressEmployeeDomain.getBuildingNumber() );
-        address.flatNumber( addressEmployeeDomain.getFlatNumber() );
-        address.city( addressEmployeeDomain.getCity() );
-        address.country( addressEmployeeDomain.getCountry() );
-        address.employee( employeeDomainToEmployee( addressEmployeeDomain.getEmployee() ) );
+        address.setId( addressEmployeeDomain.getId() );
+        address.setName( addressEmployeeDomain.getName() );
+        address.setStreet( addressEmployeeDomain.getStreet() );
+        address.setPostalCode( addressEmployeeDomain.getPostalCode() );
+        address.setBuildingNumber( addressEmployeeDomain.getBuildingNumber() );
+        address.setFlatNumber( addressEmployeeDomain.getFlatNumber() );
+        address.setCity( addressEmployeeDomain.getCity() );
+        address.setCountry( addressEmployeeDomain.getCountry() );
+        address.setEmployee( employeeDomainToEmployee( addressEmployeeDomain.getEmployee() ) );
 
-        return address.build();
+        return address;
     }
 
     protected List<Address> addressEmployeeDomainListToAddressList(List<AddressEmployeeDomain> list) {
@@ -304,21 +304,21 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        Employee.EmployeeBuilder employee = Employee.builder();
+        Employee employee = new Employee();
 
-        employee.id( employeeManagerDomain.getId() );
-        employee.name( employeeManagerDomain.getName() );
-        employee.nip( employeeManagerDomain.getNip() );
-        employee.vat( employeeManagerDomain.getVat() );
-        employee.currency( employeeManagerDomain.getCurrency() );
-        employee.description( employeeManagerDomain.getDescription() );
-        employee.phone( employeeManagerDomain.getPhone() );
-        employee.email( employeeManagerDomain.getEmail() );
-        employee.bankNumber( employeeManagerDomain.getBankNumber() );
-        employee.bankIban( employeeManagerDomain.getBankIban() );
-        employee.address( addressEmployeeDomainListToAddressList( employeeManagerDomain.getAddress() ) );
+        employee.setId( employeeManagerDomain.getId() );
+        employee.setName( employeeManagerDomain.getName() );
+        employee.setNip( employeeManagerDomain.getNip() );
+        employee.setVat( employeeManagerDomain.getVat() );
+        employee.setCurrency( employeeManagerDomain.getCurrency() );
+        employee.setDescription( employeeManagerDomain.getDescription() );
+        employee.setPhone( employeeManagerDomain.getPhone() );
+        employee.setEmail( employeeManagerDomain.getEmail() );
+        employee.setBankNumber( employeeManagerDomain.getBankNumber() );
+        employee.setBankIban( employeeManagerDomain.getBankIban() );
+        employee.setAddress( addressEmployeeDomainListToAddressList( employeeManagerDomain.getAddress() ) );
 
-        return employee.build();
+        return employee;
     }
 
     protected Employer employerDomainToEmployer(EmployerDomain employerDomain) {
@@ -339,19 +339,19 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        Address.AddressBuilder address = Address.builder();
+        Address address = new Address();
 
-        address.id( addressEmployerDomain.getId() );
-        address.name( addressEmployerDomain.getName() );
-        address.street( addressEmployerDomain.getStreet() );
-        address.postalCode( addressEmployerDomain.getPostalCode() );
-        address.buildingNumber( addressEmployerDomain.getBuildingNumber() );
-        address.flatNumber( addressEmployerDomain.getFlatNumber() );
-        address.city( addressEmployerDomain.getCity() );
-        address.country( addressEmployerDomain.getCountry() );
-        address.employer( employerDomainToEmployer( addressEmployerDomain.getEmployer() ) );
+        address.setId( addressEmployerDomain.getId() );
+        address.setName( addressEmployerDomain.getName() );
+        address.setStreet( addressEmployerDomain.getStreet() );
+        address.setPostalCode( addressEmployerDomain.getPostalCode() );
+        address.setBuildingNumber( addressEmployerDomain.getBuildingNumber() );
+        address.setFlatNumber( addressEmployerDomain.getFlatNumber() );
+        address.setCity( addressEmployerDomain.getCity() );
+        address.setCountry( addressEmployerDomain.getCountry() );
+        address.setEmployer( employerDomainToEmployer( addressEmployerDomain.getEmployer() ) );
 
-        return address.build();
+        return address;
     }
 
     protected List<Address> addressEmployerDomainListToAddressList(List<AddressEmployerDomain> list) {
@@ -372,14 +372,14 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        Project.ProjectBuilder project = Project.builder();
+        Project project = new Project();
 
-        project.id( projectDomain.getId() );
-        project.name( projectDomain.getName() );
-        project.color( projectDomain.getColor() );
-        project.hourPriceDefault( projectDomain.getHourPriceDefault() );
+        project.setId( projectDomain.getId() );
+        project.setName( projectDomain.getName() );
+        project.setColor( projectDomain.getColor() );
+        project.setHourPriceDefault( projectDomain.getHourPriceDefault() );
 
-        return project.build();
+        return project;
     }
 
     protected List<Project> projectDomainListToProjectList(List<ProjectDomain> list) {

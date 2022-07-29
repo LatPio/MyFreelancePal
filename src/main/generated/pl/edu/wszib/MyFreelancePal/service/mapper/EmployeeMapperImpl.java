@@ -8,7 +8,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-27T19:47:32+0200",
+    date = "2022-07-29T13:06:04+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployeeMapperImpl implements EmployeeMapper {
@@ -33,12 +33,12 @@ public class EmployeeMapperImpl implements EmployeeMapper {
             return null;
         }
 
-        Employee.EmployeeBuilder employee = Employee.builder();
+        Employee employee = new Employee();
 
-        employee.id( employeeDomain.getId() );
-        employee.name( employeeDomain.getName() );
+        employee.setId( employeeDomain.getId() );
+        employee.setName( employeeDomain.getName() );
 
-        return employee.build();
+        return employee;
     }
 
     @Override

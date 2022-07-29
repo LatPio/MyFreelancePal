@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-
 @EqualsAndHashCode
 public class TaskDTO {
 

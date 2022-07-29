@@ -18,8 +18,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table()
-@Entity(name = "Employer")
+@Table(name = "Employer")
+@Entity
 public class Employer {
 
     @Id

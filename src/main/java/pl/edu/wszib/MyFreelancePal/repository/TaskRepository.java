@@ -21,10 +21,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     @Query(value = "SELECT sum(timeOfWorkInMin) from Task")
     Long totalMinutes();
 
-    @Query(nativeQuery = true, value = "SELECT sum(timeOfWorkInMin) from Task where invoiceserviceentryid ?")
-    public Long totalMinutesByID(Integer id);
-
-    @Query("""
+     @Query("""
             select t from Task t
             where t.project.employer.id = :id and t.doneTask = :doneTask and t.invoiceCreated = :invoiceCreated""")
     List<Task> findTaskTestingForGrandparent(@Param("id") Integer id, @Param("doneTask") Boolean doneTask, @Param("invoiceCreated") Boolean invoiceCreated);

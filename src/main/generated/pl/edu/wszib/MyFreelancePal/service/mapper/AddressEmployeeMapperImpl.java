@@ -10,7 +10,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-27T19:47:32+0200",
+    date = "2022-07-29T13:06:04+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class AddressEmployeeMapperImpl implements AddressEmployeeMapper {
@@ -42,19 +42,19 @@ public class AddressEmployeeMapperImpl implements AddressEmployeeMapper {
             return null;
         }
 
-        Address.AddressBuilder address = Address.builder();
+        Address address = new Address();
 
-        address.id( addressEmployeeDomain.getId() );
-        address.name( addressEmployeeDomain.getName() );
-        address.street( addressEmployeeDomain.getStreet() );
-        address.postalCode( addressEmployeeDomain.getPostalCode() );
-        address.buildingNumber( addressEmployeeDomain.getBuildingNumber() );
-        address.flatNumber( addressEmployeeDomain.getFlatNumber() );
-        address.city( addressEmployeeDomain.getCity() );
-        address.country( addressEmployeeDomain.getCountry() );
-        address.employee( employeeDomainToEmployee( addressEmployeeDomain.getEmployee() ) );
+        address.setId( addressEmployeeDomain.getId() );
+        address.setName( addressEmployeeDomain.getName() );
+        address.setStreet( addressEmployeeDomain.getStreet() );
+        address.setPostalCode( addressEmployeeDomain.getPostalCode() );
+        address.setBuildingNumber( addressEmployeeDomain.getBuildingNumber() );
+        address.setFlatNumber( addressEmployeeDomain.getFlatNumber() );
+        address.setCity( addressEmployeeDomain.getCity() );
+        address.setCountry( addressEmployeeDomain.getCountry() );
+        address.setEmployee( employeeDomainToEmployee( addressEmployeeDomain.getEmployee() ) );
 
-        return address.build();
+        return address;
     }
 
     @Override
@@ -89,11 +89,11 @@ public class AddressEmployeeMapperImpl implements AddressEmployeeMapper {
             return null;
         }
 
-        Employee.EmployeeBuilder employee = Employee.builder();
+        Employee employee = new Employee();
 
-        employee.id( employeeDomain.getId() );
-        employee.name( employeeDomain.getName() );
+        employee.setId( employeeDomain.getId() );
+        employee.setName( employeeDomain.getName() );
 
-        return employee.build();
+        return employee;
     }
 }

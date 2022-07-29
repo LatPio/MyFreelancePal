@@ -12,12 +12,11 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
-
 @EqualsAndHashCode
 @Table(name = "Task")
 @Entity

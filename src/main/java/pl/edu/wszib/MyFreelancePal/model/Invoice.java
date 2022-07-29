@@ -13,14 +13,13 @@ import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-@Table
+@Table(name = "Invoice")
 @Entity
 public class Invoice {
 

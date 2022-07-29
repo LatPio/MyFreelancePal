@@ -15,7 +15,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.ProjectManagerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-27T19:47:33+0200",
+    date = "2022-07-29T13:06:05+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class ProjectManagerMapperImpl implements ProjectManagerMapper {
@@ -48,18 +48,18 @@ public class ProjectManagerMapperImpl implements ProjectManagerMapper {
             return null;
         }
 
-        Project.ProjectBuilder project = Project.builder();
+        Project project = new Project();
 
-        project.id( projectDomain.getId() );
-        project.name( projectDomain.getName() );
-        project.color( projectDomain.getColor() );
-        project.description( projectDomain.getDescription() );
-        project.activeProject( projectDomain.getActiveProject() );
-        project.hourPriceDefault( projectDomain.getHourPriceDefault() );
-        project.tasks( taskMapper.mapToTasks( projectDomain.getTasks() ) );
-        project.employer( employerManagerDomainToEmployer( projectDomain.getEmployer() ) );
+        project.setId( projectDomain.getId() );
+        project.setName( projectDomain.getName() );
+        project.setColor( projectDomain.getColor() );
+        project.setDescription( projectDomain.getDescription() );
+        project.setActiveProject( projectDomain.getActiveProject() );
+        project.setHourPriceDefault( projectDomain.getHourPriceDefault() );
+        project.setTasks( taskMapper.mapToTasks( projectDomain.getTasks() ) );
+        project.setEmployer( employerManagerDomainToEmployer( projectDomain.getEmployer() ) );
 
-        return project.build();
+        return project;
     }
 
     @Override
@@ -189,19 +189,19 @@ public class ProjectManagerMapperImpl implements ProjectManagerMapper {
             return null;
         }
 
-        Address.AddressBuilder address = Address.builder();
+        Address address = new Address();
 
-        address.id( addressEmployerDomain.getId() );
-        address.name( addressEmployerDomain.getName() );
-        address.street( addressEmployerDomain.getStreet() );
-        address.postalCode( addressEmployerDomain.getPostalCode() );
-        address.buildingNumber( addressEmployerDomain.getBuildingNumber() );
-        address.flatNumber( addressEmployerDomain.getFlatNumber() );
-        address.city( addressEmployerDomain.getCity() );
-        address.country( addressEmployerDomain.getCountry() );
-        address.employer( employerDomainToEmployer( addressEmployerDomain.getEmployer() ) );
+        address.setId( addressEmployerDomain.getId() );
+        address.setName( addressEmployerDomain.getName() );
+        address.setStreet( addressEmployerDomain.getStreet() );
+        address.setPostalCode( addressEmployerDomain.getPostalCode() );
+        address.setBuildingNumber( addressEmployerDomain.getBuildingNumber() );
+        address.setFlatNumber( addressEmployerDomain.getFlatNumber() );
+        address.setCity( addressEmployerDomain.getCity() );
+        address.setCountry( addressEmployerDomain.getCountry() );
+        address.setEmployer( employerDomainToEmployer( addressEmployerDomain.getEmployer() ) );
 
-        return address.build();
+        return address;
     }
 
     protected List<Address> addressEmployerDomainListToAddressList(List<AddressEmployerDomain> list) {
@@ -222,14 +222,14 @@ public class ProjectManagerMapperImpl implements ProjectManagerMapper {
             return null;
         }
 
-        Project.ProjectBuilder project = Project.builder();
+        Project project = new Project();
 
-        project.id( projectDomain.getId() );
-        project.name( projectDomain.getName() );
-        project.color( projectDomain.getColor() );
-        project.hourPriceDefault( projectDomain.getHourPriceDefault() );
+        project.setId( projectDomain.getId() );
+        project.setName( projectDomain.getName() );
+        project.setColor( projectDomain.getColor() );
+        project.setHourPriceDefault( projectDomain.getHourPriceDefault() );
 
-        return project.build();
+        return project;
     }
 
     protected List<Project> projectDomainListToProjectList(List<ProjectDomain> list) {

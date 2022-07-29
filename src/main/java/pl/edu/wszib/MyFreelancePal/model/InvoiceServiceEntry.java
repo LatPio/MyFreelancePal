@@ -10,13 +10,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
-@Table
+@Table(name = "InvoiceServiceEntry")
 @Entity
 public class InvoiceServiceEntry {
 
