@@ -31,12 +31,16 @@ Project Created with:
 # Some Features of application and walk around:
 1. To be able, add first task and count time, first add in Manage Employers page new **_Employer_** with assigned to it some **_Projects_**.
    ![Add Employer and Project](https://github.com/LatPio/MyFreelancePal/blob/main/gifs/gif1.gif?raw=true)
-
-2. Main page: simple Dashboard with some statistical data. In section _List Of Project for..._ you can  switch Project between <span style="color:green">_**Active**_</span> and <span style="color:red">_**Inactive**_</span> to show less projects in **_Active Task_** page. 
-3. At page Active Tasks are listed active project with Staring Task square. After setting task name, will appear new square with stopper like function after hitting play and stop it will count time spent on task and save it to database. 
+2. Main page: simple Dashboard with some statistical data. In section _List Of Project for..._ you can  switch Project between <span style="color:green">_**Active**_</span> and <span style="color:red">_**Inactive**_</span> to show less projects in **_Active Task_** page.
+   ![On/Off Project](https://github.com/LatPio/MyFreelancePal/blob/main/gifs/png2.png?raw=true)
+3. At page Active Tasks are listed active project with Staring Task square. After setting task name, will appear new square with stopper like function after hitting play and stop it will count time spent on task and save it to database.
+   ![Add Task](https://github.com/LatPio/MyFreelancePal/blob/main/gifs/gif3.gif?raw=true)
 4. In section Manage Employers you can go to Detailed Information where are stored data on Project and Task.
+   ![Detailed info](https://github.com/LatPio/MyFreelancePal/blob/main/gifs/gif4.gif4?raw=true)
 5. To be able to create Invoice first Create your own profile.
+   ![Create Profile](https://github.com/LatPio/MyFreelancePal/blob/main/gif5.gif.png?raw=true)
 6. In section Billings you can create Invoice. Invoice Creation consist of three steps. First create template of Invoice choosing Employer and Your Profile. Next Open and Update Information such as Dates and pick Appropriate Addresses. And finally click Add Entry, in this page you can choose Task assigned for chosen Employer which wasn't put in another InvoiceEntry. After specifying Name and save InvoiceEntry and later saving Invoice app will calculate and populate Invoice Table with appropriate Values. To Nicely layout Invoice hit print button it will redirect to clean view of Invoice, form where you can print your Invoice and send it to your Employer.           
- 
+   ![CreateInvoice](https://github.com/LatPio/MyFreelancePal/blob/main/gif6.gif.png?raw=true)
+7. 
 ### Features to be added:
 - Login Page with managing many tenant 
