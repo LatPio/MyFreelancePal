@@ -63,7 +63,7 @@ public class DashboardController {
 
         List<String> labels = new ArrayList<>();
         Stream.iterate(12, n -> n-1).limit(13).forEach(integer -> labels.add(LocalDateTime.now().minusMonths(integer).format(DateTimeFormatter.ofPattern("yyyy - MM"))) );
-        model.addAttribute("labels", labels.stream().toList());
+        model.addAttribute("labels", labels.toArray());
 
         List<BigDecimal> monthlyEarnings = new ArrayList<>();
         Stream.iterate(12, n -> n-1).limit(13).forEach(integer -> {
@@ -73,7 +73,7 @@ public class DashboardController {
             monthlyEarnings.add(taskService.sumAmountByInvoiceCreated(LocalDateTime.now().withDayOfMonth(1).minusMonths(integer), LocalDateTime.now().withDayOfMonth(31).minusMonths(integer)).setScale(2, RoundingMode.HALF_UP));
             }
         });
-        model.addAttribute("dataSetMonthlyEarnings", monthlyEarnings.stream().toList());
+        model.addAttribute("dataSetMonthlyEarnings", monthlyEarnings);
 
         List<Long> monthlySpendTime = new ArrayList<>();
         Stream.iterate(12, n -> n-1).limit(13).forEach(integer -> {
@@ -83,7 +83,8 @@ public class DashboardController {
                 monthlySpendTime.add(taskService.sumTimeByInvoiceCreated(LocalDateTime.now().withDayOfMonth(1).minusMonths(integer), LocalDateTime.now().withDayOfMonth(31).minusMonths(integer)));
             }
         });
-        model.addAttribute("dataSetMonthlySpendTime", monthlySpendTime.stream().toList());
+
+        model.addAttribute("dataSetMonthlySpendTime", monthlySpendTime.toArray());
         return "dashboard/dashboardView";
     }
 

@@ -2,13 +2,13 @@ package pl.edu.wszib.MyFreelancePal.controller.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.processing.Generated;
+import javax.annotation.Generated;
 import pl.edu.wszib.MyFreelancePal.controller.dto.EmployerDTO;
 import pl.edu.wszib.MyFreelancePal.service.domain.EmployerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-29T19:32:52+0200",
+    date = "2022-07-30T12:46:27+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployerMapperDTOImpl implements EmployerMapperDTO {

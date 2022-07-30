@@ -2,7 +2,7 @@ package pl.edu.wszib.MyFreelancePal.service.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.processing.Generated;
+import javax.annotation.Generated;
 import pl.edu.wszib.MyFreelancePal.model.Address;
 import pl.edu.wszib.MyFreelancePal.model.Employee;
 import pl.edu.wszib.MyFreelancePal.service.domain.AddressEmployeeDomain;
@@ -11,7 +11,7 @@ import pl.edu.wszib.MyFreelancePal.service.domain.EmployeeManagerDomain;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-07-29T19:32:51+0200",
+    date = "2022-07-30T12:46:28+0200",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class EmployeeManagerMapperImpl implements EmployeeManagerMapper {
