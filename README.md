@@ -3,6 +3,8 @@
 _made by Piotr Łątka_
 
 _First Java-SpringBoot project written as part of the Course: [JWD - WSZIB Krakow](https://www.wszib.edu.pl/en/postgraduate-studies-and-courses/postgraduate-studies/java-web-developer/)_
+_See Live Demo version of this project -> [click here](https://myfreelancepal.herokuapp.com/) 
+
 
 ## Main features:
 
