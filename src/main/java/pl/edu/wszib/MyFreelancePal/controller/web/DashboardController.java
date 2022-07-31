@@ -11,7 +11,6 @@ import pl.edu.wszib.MyFreelancePal.controller.dto.ProjectManagerDTO;
 import pl.edu.wszib.MyFreelancePal.controller.mapper.*;
 import pl.edu.wszib.MyFreelancePal.service.*;
 import pl.edu.wszib.MyFreelancePal.service.domain.ProjectManagerDomain;
-import pl.edu.wszib.MyFreelancePal.util.Utilities;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Controller
-@RequestMapping("/dashboard")
+@RequestMapping
 public class DashboardController {
     @Autowired
     private TaskService taskService;
@@ -39,8 +38,8 @@ public class DashboardController {
     private EmployerManagerMapperDTO employerManagerMapperDTO = Mappers.getMapper(EmployerManagerMapperDTO.class);
 
     @GetMapping
-    public String deflautView(){
-        return "redirect:dashboard/";
+    public String defaultView(){
+        return "redirect:/";
     }
 
     @GetMapping("/")
@@ -63,7 +62,7 @@ public class DashboardController {
 
         List<String> labels = new ArrayList<>();
         Stream.iterate(12, n -> n-1).limit(13).forEach(integer -> labels.add(LocalDateTime.now().minusMonths(integer).format(DateTimeFormatter.ofPattern("yyyy - MM"))) );
-        model.addAttribute("labels", labels.toArray());
+        model.addAttribute("labels", labels);
 
         List<BigDecimal> monthlyEarnings = new ArrayList<>();
         Stream.iterate(12, n -> n-1).limit(13).forEach(integer -> {
@@ -84,7 +83,7 @@ public class DashboardController {
             }
         });
 
-        model.addAttribute("dataSetMonthlySpendTime", monthlySpendTime.toArray());
+        model.addAttribute("dataSetMonthlySpendTime", monthlySpendTime);
         return "dashboard/dashboardView";
     }
 
@@ -93,7 +92,7 @@ public class DashboardController {
         ProjectManagerDTO projectManagerDTO = projectManagerMapperDTO.map(projectManagerService.get(id));
         projectManagerDTO.setActiveProject(true);
         ProjectManagerDomain projectManagerDomain=projectManagerService.update(projectManagerMapperDTO.map(projectManagerDTO));
-        return "redirect:/dashboard";
+        return "redirect:/";
     }
 
     @GetMapping("/updateActiveFalse")
@@ -101,6 +100,6 @@ public class DashboardController {
         ProjectManagerDTO projectManagerDTO = projectManagerMapperDTO.map(projectManagerService.get(id));
         projectManagerDTO.setActiveProject(false);
         ProjectManagerDomain projectManagerDomain=projectManagerService.update(projectManagerMapperDTO.map(projectManagerDTO));
-        return "redirect:/dashboard";
+        return "redirect:/";
     }
 }
