@@ -4,6 +4,7 @@ _made by Piotr Łątka_
 
 _First Java-SpringBoot project written as part of the Course: [JWD - WSZIB Krakow](https://www.wszib.edu.pl/en/postgraduate-studies-and-courses/postgraduate-studies/java-web-developer/)_
 
+_See Live Demo version of this project -> [click here](https://myfreelancepal.herokuapp.com/)_ 
 ## Main features:
 
 
@@ -38,9 +39,9 @@ Project Created with:
 4. In section Manage Employers you can go to Detailed Information where are stored data on Project and Task.
    ![Detailed info](https://github.com/LatPio/MyFreelancePal/blob/main/gifs/gif4.gif?raw=true)
 5. To be able to create Invoice first Create your own profile.
-   ![Create Profile](https://github.com/LatPio/MyFreelancePal/blob/main/gif5.gif)
+   ![Create Profile](https://github.com/LatPio/MyFreelancePal/blob/main/gifs/gif5.gif?raw=true)
 6. In section Billings you can create Invoice. Invoice Creation consist of three steps. First create template of Invoice choosing Employer and Your Profile. Next Open and Update Information such as Dates and pick Appropriate Addresses. And finally click Add Entry, in this page you can choose Task assigned for chosen Employer which wasn't put in another InvoiceEntry. After specifying Name and save InvoiceEntry and later saving Invoice app will calculate and populate Invoice Table with appropriate Values. To Nicely layout Invoice hit print button it will redirect to clean view of Invoice, form where you can print your Invoice and send it to your Employer.           
-   ![Create Invoice](https://github.com/LatPio/MyFreelancePal/blob/main/gif6.gif)
+   ![Create Invoice](https://github.com/LatPio/MyFreelancePal/blob/main/gifs/gif6.gif?raw=true)
 
 ### Features to be added:
 - Login Page with managing many tenant 
