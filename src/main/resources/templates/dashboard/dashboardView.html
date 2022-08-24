@@ -114,8 +114,8 @@
               <div>
                 <span class="col" th:style="'color: '+ ${projectlist.color}+';'"><i class="fa-solid fa-bookmark"></i></span>
                 <span class="fw-bold">[[*{projectlist.name}]]</span> for [[*{projectlist.employer.name}]]</div>
-              <div th:if="*{projectlist.activeProject == false}" ><span class="text-danger" th:text="|Project Inactive|"></span> Change for: <span class="text-success">Active</span><a type="button" class="btn" th:href="@{/dashboard/updateActiveTrue(id=*{projectlist.id})}"><i class="fa-solid fa-rotate"></i></a></div>
-              <div th:unless="*{projectlist.activeProject == false}" ><span class="text-success" th:text="|Project Active|"></span> Change for: <span class="text-danger">Inactive</span><a type="button" class="btn" th:href="@{/dashboard/updateActiveFalse(id=*{projectlist.id})}"><i class="fa-solid fa-rotate"></i></a></div>
+              <div th:if="*{projectlist.activeProject == false}" ><span class="text-danger" th:text="|Project Inactive|"></span> Change for: <span class="text-success">Active</span><a type="button" class="btn" th:href="@{/updateActiveTrue(id=*{projectlist.id})}"><i class="fa-solid fa-rotate"></i></a></div>
+              <div th:unless="*{projectlist.activeProject == false}" ><span class="text-success" th:text="|Project Active|"></span> Change for: <span class="text-danger">Inactive</span><a type="button" class="btn" th:href="@{/updateActiveFalse(id=*{projectlist.id})}"><i class="fa-solid fa-rotate"></i></a></div>
             </div>
           </div>
         </div>
